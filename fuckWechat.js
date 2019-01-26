@@ -49,7 +49,7 @@ if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) {
 
     document.getElementsByTagName("body").item(0).appendChild(div);
     var title = document.title;
-    document.title = '提示';
+   //document.title = '提示';
 
     var fakeWechatStyleButton = document.getElementById('fakeWechatStyleButton');
     fakeWechatStyleButton.addEventListener('touchstart', function () {
