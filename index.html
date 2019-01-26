@@ -389,7 +389,7 @@
 
         //上传图片
         document.getElementById('configAvatar').addEventListener('change', function () {
-            document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0]);
+            document.getElementById('avatar').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
         });
         document.getElementById('configArticleIcon').addEventListener('change', function () {
             document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
