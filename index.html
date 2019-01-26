@@ -1,0 +1,483 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <!--<link href="mdui.min.css" rel="stylesheet">-->
+    <link href="https://cdn.bootcss.com/mdui/0.4.2/css/mdui.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0 0 0 0;
+        }
+
+        #fakeWechatMoment {
+            background-color: #ffffff;
+            display: none;
+            position: fixed;
+            left: 100%;
+            top: 0;
+        }
+
+        .topBar {
+            width: calc(100% - 32px);
+            height: 72px;
+            background-color: #303030;
+            font-size: 34px;
+            font-weight: 500;
+            color: #ffffff;
+            display: flex;
+            justify-content: flex-end;
+            align-items: Center;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .header {
+            width: 100%;
+            height: 132px;
+            background-color: #303030;
+            font-size: 48px;
+            color: #ffffff;
+            display: flex;
+            align-items: Center;
+        }
+
+        .main {
+            margin-left: 33px;
+            margin-right: 33px;
+        }
+
+        .footer {
+            width: calc(100% - 64px);
+            height: 132px;
+            border-top: 2px solid #d8d8d8;
+            position: relative;
+            display: flex;
+            align-items: Center;
+            justify-content: center;
+            padding-left: 32px;
+            padding-right: 32px;
+            background-color: #f5f5f5;
+        }
+
+        .avatarOut {
+            display: inline-block;
+            background-color: #f1f1f1;
+            width: 116px;
+            height: 116px;
+            vertical-align: top;
+        }
+
+        .avatarIn {
+            position: relative;
+            left: 6px;
+            top: 6px;
+            width: 104px;
+            height: 104px;
+        }
+
+        .content {
+            position: relative;
+            display: inline-block;
+            width: calc(100% - 143px);
+            left: 22px;
+            vertical-align: top;
+        }
+
+        .name {
+            color: #576b95;
+            font-size: 40px;
+        }
+
+        .text {
+            font-size: 36px;
+            line-height: 1.25em;
+        }
+
+        .article {
+            background-color: #ececec;
+            height: 170px;
+            display: flex;
+            align-items: Center;
+        }
+
+        .articleIcon {
+            position: relative;
+            left: 16px;
+            width: 138px;
+            height: 138px;
+        }
+
+        .articleTitle {
+            position: relative;
+            left: 32px;
+            width: calc(100% - 170px);
+            font-size: 36px;
+            max-width: 700px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .info {
+            display: inline-block;
+            color: #808080;
+            font-size: 32px;
+            width: calc(100% - 65px);
+        }
+
+        .like {
+            width: 100%;
+            background-color: #eeeeee;
+            font-size: 0;
+        }
+
+        .likeAvatarList {
+            position: relative;
+            display: inline-block;
+            width: calc(100% - 92px);
+            left: 60px;
+            vertical-align: top;
+        }
+
+        .likeAvatar {
+            width: 88px;
+            height: 88px;
+            margin: 17px 17px 0 0;
+            display: inline-block;
+        }
+
+        #generatedPopup {
+            text-align: center;
+        }
+
+        #generated {
+            width: auto;
+            height: 400px;
+            display: inline-block;
+        }
+
+        .squareImage {
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .heimu{
+            background-color: #000000;
+            color: #000000;
+            transition: color .2s ease;
+        }
+        .heimu:hover{
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-appbar-with-toolbar">
+    <header class="mdui-appbar mdui-appbar-fixed">
+        <div class="mdui-toolbar mdui-color-theme">
+            <span class="mdui-typo-title">朋友圈转发截图生成工具</span>
+            <div class="mdui-toolbar-spacer"></div>
+            <a class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#about'}" mdui-tooltip="{content: '关于'}"><i class="mdui-icon material-icons">info_outline</i></a>
+            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '查看 Github'}">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon" style="width: 24px;height:24px;">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#ffffff" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5
+	                c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1
+	                c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4
+	                c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7
+	                c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5
+	                c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z" />
+                </svg>
+            </a>
+        </div>
+    </header>
+    <div class="mdui-container">
+        <div class="mdui-row">
+            <div class="mdui-col-xs-8 mdui-col-sm-10">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">名字</label>
+                    <input id="configName" class="mdui-textfield-input" type="text" value="营销号免费广告姬" />
+                </div>
+            </div>
+            <div class="mdui-col-xs-4 mdui-col-sm-2">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">&nbsp;</label>
+                    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block" onclick="javascript: document.getElementById('configAvatar').click();">上传头像</button>
+                    <input id="configAvatar" type="file" style="display: none;" />
+                </div>
+            </div>
+        </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">转发文章标题</label>
+            <input id="configArticleTitle" class="mdui-textfield-input" type="text" value="还不会用Google的你，就要被时代淘汰了" />
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-6">
+                <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block" onclick="javascript: document.getElementById('configArticleIcon').click();">上传文章图标</button>
+                <input id="configArticleIcon" type="file" style="display: none;" />
+            </div>
+            <div class="mdui-col-xs-6">
+                    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block" mdui-dialog="{target: '#helpArticleIcon'}">如何获取文章图标</button>
+                </div>
+            </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">转发正文</label>
+            <textarea id="configText" class="mdui-textfield-input">很实用的教程&#10;需要收集五个赞&nbsp;谢谢大家啦～(　^ω^)</textarea>
+        </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">转发出处</label>
+            <input id="configApp" class="mdui-textfield-input" type="text" value="" />
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-textfield mdui-col-xs-5">
+                <label class="mdui-textfield-label">日期</label>
+                <input id="configDate" class="mdui-textfield-input" type="date" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-2">
+                <label class="mdui-textfield-label">时间</label>
+                <input id="configTimeHour" class="mdui-textfield-input" type="number" min="0" max="23" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-2">
+                <label class="mdui-textfield-label">&nbsp;</label>
+                <input id="configTimeMinute" class="mdui-textfield-input" type="number" min="0" max="59" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-3">
+                <label class="mdui-textfield-label">点赞数</label>
+                <input id="configLike" class="mdui-textfield-input" type="number" min="0" />
+            </div>
+        </div>
+
+        <button id="generate" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block">生成</button>
+
+        <div id="fakeWechatMoment">
+            <div id="topBar" class="topBar">
+                <img src="icons.svg" height="36" />
+                <span id="topBarTime"></span>
+            </div>
+            <div id="header" class="header">
+                <div style="width: 40px;"></div>
+                <img src="back.svg" style="width: auto; height: 48px;" />
+                <div style="width: 40px;"></div>
+                详情
+            </div>
+            <div id="main" class="main">
+                <div style="height: 30px;"></div>
+                <div class="avatarOut">
+                    <div id="avatar" class="avatarIn squareImage" style="background-image: url(https://ae01.alicdn.com/kf/HTB1sqJDa.LrK1Rjy1zbq6AenFXaf.jpg);"></div>
+                </div>
+                <div class="content">
+                    <div id="name" class="name"></div>
+                    <div style="height: 11px;"></div>
+                    <div id="text" class="text"></div>
+                    <div style="height: 36px;"></div>
+                    <div class="article">
+                        <div id="articleIcon" class="articleIcon squareImage" style="background-image: url(https://ae01.alicdn.com/kf/HTB1ci0Da5zxK1RjSspjq6AS.pXaD.jpg);"></div>
+                        <div id="articleTitle" class="articleTitle"></div>
+                    </div>
+                    <div style="height: 20px;"></div>
+                    <div class="info">
+                        <span id="time"></span>&nbsp;<span style="color: #576b95">删除</span>
+                    </div>
+                    <img src="comment.svg" style="position: relative; display: inline-block; width: auto; height: 42px; top: 9px;" />
+                </div>
+                <div style="height: 50px;"></div>
+                <img id="triangle" src="triangle.svg" width="40" height="16" style="position: relative; left: 25px; top: 5px;" />
+                <div id="like" class="like">
+                    <img src="like.svg" width="32" height="32" style="position: relative; left: 30px; top: 40px; display: inline-block; vertical-align: top;" />
+                    <div id="likeAvatarList" class="likeAvatarList"></div>
+                    <div style="height: 17px;"></div>
+                </div>
+            </div>
+            <div id="footer" class="footer">
+                <div style="border: none; border-bottom: 2px solid #5ec838; font-size: 40px; color: #bbbbbb; width:760px; height: 88px; padding-left: 24px; padding-right: 24px; display: flex; align-items: center;">评论</div>
+                <div style="width: 22px; display: inline-block;"></div>
+                <img src="emoticon.svg" width="88" height="88" />
+                <div style="width: 40px; display: inline-block;"></div>
+                <div style="border: 2px solid #dcdcdc; border-radius: 7px; font-size: 36px; color: #dcdcdc; width: 122px; height: 88px; display: flex; align-items: center; justify-content: center; ">发送</div>
+            </div>
+        </div>
+
+        <div style="height: 50px;"></div>
+        <div class="mdui-typo-caption-opacity" style="text-align: center;">
+            Copyright © 2019 ✨小透明・宸✨
+        </div>
+
+        <div id="generatedPopup" class="mdui-dialog">
+            <div class="mdui-dialog-title">生成完毕| ω・`)</div>
+            <img id="generated" />
+            <div class="mdui-dialog-actions">
+                <a id="save" class="mdui-btn mdui-ripple">保存</a>
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
+            </div>
+        </div>
+
+        <div id="helpArticleIcon" class="mdui-dialog">
+            <div class="mdui-dialog-title">如何获取文章图标</div>
+            <div class="mdui-dialog-content mdui-typo">
+                <ol>
+                    <li>在右上角的菜单中复制文章的链接。</li>
+                    <li>获取文章的网页源代码。你可以使用<a href="http://mk.mkblog.cn/home/html.php">这个</a>在线工具。</li>
+                    <li>在源代码中查找<kbd>Ctrl+F</kbd><code>msg_cdn_url</code>，后面就是文章图标的链接。</li>
+                    <li>将图标保存下来，然后上传。</li>
+                </ol>
+                由于浏览器同源策略限制，这里无法通过输入文章链接自动读取网页源代码并载入图标，请手动完成以上步骤。
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
+            </div>
+        </div>
+
+        <div id="about" class="mdui-dialog">
+            <div class="mdui-dialog-title">关于</div>
+            <div class="mdui-dialog-content mdui-typo">
+                <h4>这个小工具是什么？</h4>
+                一个因为不喜欢也不想往朋友圈发某些不得不发的废文而做出来的摸鱼产物。
+                <h4>为什么生成的截图不是iOS版/7.x版的界面样式？</h4>
+                因为手上只有猴机，以及并不想用7.x版。
+                <h4>能不能生成纯文字/转发图片的截图？</h4>
+                懒得写样式，心情好<span class="heimu">有了萌妹子</span>的时候再加上～(*´ω`*)
+                <h4>开源就是好</h4>
+                <ul>
+                    <li>
+                        <a href="https://html2canvas.hertzen.com/">html2canvas</a>&nbsp;开源许可：<a href="https://github.com/niklasvh/html2canvas/blob/master/LICENSE">The MIT License</a>
+                    </li>
+                    <li>
+                        <a href="https://www.mdui.org/">MDUI</a>&nbsp;开源许可：<a href="https://github.com/zdhxiong/mdui/blob/master/LICENSE">The MIT License</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!--<script src="mdui.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/mdui/0.4.2/js/mdui.min.js"></script>
+    <!--<script src="html2canvas.min.js"></script>-->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="avatarURL.js"></script>
+    <script src="fuckWechat.js"></script>
+    <script>
+        //设初始值
+        document.getElementById('configDate').valueAsDate = new Date();
+        document.getElementById('configTimeHour').value = (new Date()).getHours();
+        document.getElementById('configTimeMinute').value = (new Date()).getMinutes();
+        document.getElementById('configLike').value = Math.floor(20 * Math.random());
+
+        //检验数值是否合法
+        document.getElementById('configTimeHour').addEventListener('input', function () {
+            if (document.getElementById('configTimeHour').value > 23) {
+                document.getElementById('configTimeHour').value = 23;
+            } else if (document.getElementById('configTimeHour').value < 0) {
+                document.getElementById('configTimeHour').value = 0;
+            }
+        })
+        document.getElementById('configTimeMinute').addEventListener('input', function () {
+            if (document.getElementById('configTimeMinute').value > 59) {
+                document.getElementById('configTimeMinute').value = 59;
+            } else if (document.getElementById('configTimeMinute').value < 0) {
+                document.getElementById('configTimeMinute').value = 0;
+            }
+        })
+        document.getElementById('configLike').addEventListener('input', function () {
+            if (document.getElementById('configLike').value <0) {
+                document.getElementById('configLike').value = 0;
+            }
+        })
+
+        //上传图片
+        document.getElementById('configAvatar').addEventListener('change', function () {
+            document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0]);
+        });
+        document.getElementById('configArticleIcon').addEventListener('change', function () {
+            document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
+
+        document.getElementById('generate').addEventListener('click', function () {
+            //设置生成的图片上的各种属性
+            document.getElementById('name').innerText = document.getElementById('configName').value;
+            document.getElementById('text').innerText = document.getElementById('configText').value;
+            document.getElementById('articleTitle').innerText = document.getElementById('configArticleTitle').value;
+
+            //设置时间
+            var configDate = document.getElementById('configDate').valueAsDate;
+            configDate.setHours(document.getElementById('configTimeHour').value);
+            configDate.setMinutes(document.getElementById('configTimeMinute').value);
+            var date = new Date();
+            date.setSeconds(0);
+            date.setMilliseconds(0);
+            var diff = date.getTime() - configDate.getTime();
+            if (diff > 0 && diff < 60 * 60 * 1000) {
+                document.getElementById('time').innerText = Math.floor(diff / (60 * 1000)) + '分钟前';
+            } else if (diff > 0 && diff < 60 * 60 * 24 * 1000) {
+                document.getElementById('time').innerText = Math.floor(diff / (60 * 60 * 1000)) + '小时前';
+            } else {
+                document.getElementById('time').innerText = configDate.getFullYear() + '年' + (configDate.getMonth() + 1) + '月' + configDate.getDate() + '日 ' + ((configDate.getHours() < 10) ? ('0' + configDate.getHours()) : configDate.getHours()) + ':' + ((configDate.getMinutes() < 10) ? ('0' + configDate.getMinutes()) : configDate.getMinutes());
+            }
+            document.getElementById('topBarTime').innerText = ((date.getHours() < 10) ? ('0' + date.getHours()) : date.getHours()) + ':' + ((date.getMinutes() < 10) ? ('0' + date.getMinutes()) : date.getMinutes());
+
+            if (document.getElementById('configApp') != '') {
+                document.getElementById('time').innerText += ' ' + document.getElementById('configApp').value;
+            }
+
+            //加入点赞头像
+            var avatar = document.getElementsByClassName('likeAvatar');
+            var avatarSource = avatarURL.concat();
+            var avatarUsedIndex = 0;
+            document.getElementById('likeAvatarList').innerHTML = '';
+            for (var i = 0; i < document.getElementById('configLike').value; i++) {
+                if (avatarSource.length <= 0) {
+                    avatarSource = avatarURL.concat();
+                }
+                avatarUsedIndex = Math.floor(Math.random() * avatarSource.length);
+                var div = document.createElement('div');
+                div.setAttribute('class', 'likeAvatar squareImage');
+                div.setAttribute('style', 'background-image: url(\"' + avatarSource[avatarUsedIndex] + '\");');
+                document.getElementById('likeAvatarList').appendChild(div);
+                avatarSource.splice(avatarUsedIndex, 1)
+            }
+
+            //显示用于生成图片的div
+            document.getElementById('fakeWechatMoment').style.display = 'block';
+            document.getElementById('fakeWechatMoment').style.width = '1080px';
+            document.getElementById('fakeWechatMoment').style.height = '';
+            document.getElementById('fakeWechatMoment').style.height = ((window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') > 1920) ? window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') : 1920) + 'px';
+
+            //点赞数为0时隐藏点赞区
+            if (document.getElementById('configLike').value <= 0) {
+                document.getElementById('triangle').style.display = 'none';
+                document.getElementById('like').style.display = 'none';
+            } else {
+                document.getElementById('triangle').style.display = 'block';
+                document.getElementById('like').style.display = 'block';
+            }
+            
+            //修正底部位置
+            var offset = Number(window.getComputedStyle(document.getElementById('topBar')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('header')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('main')).height.replace('px', ''));
+            document.getElementById('footer').style.bottom = ((offset < 1920 - Number(window.getComputedStyle(document.getElementById('footer')).height.replace('px', ''))) ? (-1920 + Number(window.getComputedStyle(document.getElementById('footer')).height.replace('px', '')) + offset) : 0) + 'px';
+
+            //按钮上的提示
+            document.getElementById('generate').setAttribute('disabled', '');
+            document.getElementById('generate').innerText = '生成中...'
+
+            var option = {
+                useCORS: true,
+                scale: 1
+            }
+            html2canvas(document.getElementById('fakeWechatMoment'), option).then(function (canvas) {
+                var dURL = canvas.toDataURL();
+                document.getElementById('generated').src = dURL;
+                document.getElementById('save').setAttribute('href', dURL);
+                document.getElementById('save').setAttribute('download', (new Date()).getTime() + '.png');
+                (new mdui.Dialog(document.getElementById('generatedPopup'))).open();
+
+                document.getElementById('fakeWechatMoment').style.display = 'none';
+                document.getElementById('generate').removeAttribute('disabled');
+                document.getElementById('generate').innerText = '生成'
+            });
+        });
+    </script>
+</body>
+</html>
