@@ -35,11 +35,11 @@ if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) {
         '<div style="padding-left: 20px; padding-right: 20px;">',
         '    <span style="margin-bottom: 5px; font-weight: 400; font-size: 20px;">已停止访问该网页</span>',
         '    <div style="height: 21px;"></div>',
-        '    <span style="font-size: 14px; color: #999; line-height: 1.6;">你正在使用微信打开该网页。微信对部分网页恶意屏蔽，为维护自由上网环境，本页面不建议使用微信打开。</span>',
+        '    <span style="font-size: 14px; color: #999; line-height: 1.6;">你正在使用微信打开该网页。微信对部分网页恶意屏蔽，为维护自由上网环境，本页面不建议使用微信打开。使用浏览器打开本页面不会出现此提示。</span>',
         '</div>',
         '<div style="height: 25px;"></div>',
-        '<div id="fakeWechatStyleButton" style="display: inline-block; border: none; border-radius: 5px; background-color: #1aad19; color: #ffffff; width: calc(100% - 30px); height: 46px; line-height: 46px; font-size: 18px; user-select: none;">',
-        '    继续访问',
+        '<div id="fakeWechatStyleButton" style="display: inline-block; border: none; border-radius: 5px; background-color: #9ed99d; color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.1); width: calc(100% - 30px); height: 46px; line-height: 46px; font-size: 18px; user-select: none;">',
+        '    继续访问<span id="delay">&nbsp;(10)</span>',
         '</div>',
         '<div style="display: flex; position: absolute; left: 0; right: 0; bottom: 0; justify-content: center; line-height: 1; margin-bottom: 15px; font-size: 14px; color: #999;">',
         '    <a href="https://www.zhihu.com/question/32012886/answer/246667830" style="text-decoration: none; color: #586c94;">"Don\'t be evil."</a>',
@@ -48,21 +48,33 @@ if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) {
     div.innerHTML = divContent;
 
     document.getElementsByTagName("body").item(0).appendChild(div);
-    var title = document.title;
-   //document.title = '提示';
+    //var title = document.title;
+    //document.title = '提示';
 
     var fakeWechatStyleButton = document.getElementById('fakeWechatStyleButton');
-    fakeWechatStyleButton.addEventListener('touchstart', function () {
-        fakeWechatStyleButton.style.backgroundColor = '#179b16';
-        fakeWechatStyleButton.style.color = '#a2d7a2';
-    })
-    document.addEventListener('touchend', function () {
-        fakeWechatStyleButton.style.backgroundColor = '#1aad19';
-        fakeWechatStyleButton.style.color = '#ffffff';
-    })
-    fakeWechatStyleButton.addEventListener('click', function () {
-        var d = document.getElementById('fuckWechat');
-        d.parentNode.removeChild(d);
-        document.title = title;
-    })
+    var delay = 10;
+    var i = setInterval(function () {
+        delay--;
+        document.getElementById('delay').innerText = ' (' + delay + ')';
+        if (delay == 0) {
+            clearInterval(i);
+            fakeWechatStyleButton.style.backgroundColor = '#1aad19';
+            fakeWechatStyleButton.style.color = '#ffffff';
+            document.getElementById('delay').innerText = '';
+
+            fakeWechatStyleButton.addEventListener('touchstart', function () {
+                fakeWechatStyleButton.style.backgroundColor = '#179b16';
+                fakeWechatStyleButton.style.color = 'rgba(255, 255, 255, 0.6)';
+            });
+            document.addEventListener('touchend', function () {
+                fakeWechatStyleButton.style.backgroundColor = '#1aad19';
+                fakeWechatStyleButton.style.color = '#ffffff';
+            });
+            fakeWechatStyleButton.addEventListener('click', function () {
+                var d = document.getElementById('fuckWechat');
+                d.parentNode.removeChild(d);
+                //document.title = title;
+            });
+        }
+    }, 1000);
 }
