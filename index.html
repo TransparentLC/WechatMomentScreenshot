@@ -17,6 +17,7 @@
             background-color: #ffffff;
             display: none;
             position: fixed;
+            /*display: block;*/
             left: 100%;
             top: 0;
         }
@@ -99,6 +100,7 @@
 
         .article {
             background-color: #ececec;
+            margin-top: 36px;
             height: 170px;
             display: flex;
             align-items: Center;
@@ -120,6 +122,26 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        .singleImage {
+            margin-top: 28px;
+        }
+
+        .multiImage {
+            margin-top: 28px;
+        }
+
+        .image {
+            max-width: 550px;
+            max-height: 550px;
+        }
+
+        .multiImageBox {
+            width: 265px;
+            height: 265px;
+            margin: 0 8px 8px 0;
+            display: inline-block;
         }
 
         .info {
@@ -205,31 +227,118 @@
             <div class="mdui-col-xs-4 mdui-col-sm-2">
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">&nbsp;</label>
-                    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block" onclick="javascript: document.getElementById('configAvatar').click();">上传头像</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configAvatar').click();">上传头像</button>
                     <input id="configAvatar" type="file" style="display: none;" />
                 </div>
             </div>
         </div>
         <div class="mdui-textfield">
-            <label class="mdui-textfield-label">转发文章标题</label>
-            <input id="configArticleTitle" class="mdui-textfield-input" type="text" value="还不会用Google的你，就要被时代淘汰了" />
-        </div>
-        <div class="mdui-row">
-            <div class="mdui-col-xs-6">
-                <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block" onclick="javascript: document.getElementById('configArticleIcon').click();">上传文章图标</button>
-                <input id="configArticleIcon" type="file" style="display: none;" />
-            </div>
-            <div class="mdui-col-xs-6">
-                    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block" mdui-dialog="{target: '#helpArticleIcon'}">如何获取文章图标</button>
-                </div>
-            </div>
-        <div class="mdui-textfield">
-            <label class="mdui-textfield-label">转发正文</label>
+            <label class="mdui-textfield-label">正文</label>
             <textarea id="configText" class="mdui-textfield-input">很实用的教程&#10;需要收集五个赞&nbsp;谢谢大家啦～(　^ω^)</textarea>
         </div>
         <div class="mdui-textfield">
-            <label class="mdui-textfield-label">转发出处</label>
-            <input id="configApp" class="mdui-textfield-input" type="text" value="" />
+            <label class="mdui-textfield-label">截图类型</label>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-6">
+                <label class="mdui-radio">
+                    <input id="configTypeText" type="radio" name="group" checked />
+                    <i class="mdui-radio-icon"></i>纯文字
+                </label>
+            </div>
+            <div class="mdui-col-xs-6">
+                <label class="mdui-radio">
+                    <input id="configTypeWebsite" type="radio" name="group" />
+                    <i class="mdui-radio-icon"></i>网页
+                </label>
+            </div>
+            <div class="mdui-col-xs-6">
+                <label class="mdui-radio">
+                    <input id="configTypeSingleImage" type="radio" name="group" />
+                    <i class="mdui-radio-icon"></i>图片（单张）
+                </label>
+            </div>
+            <div class="mdui-col-xs-6">
+                <label class="mdui-radio">
+                    <input id="configTypeMultiImage" type="radio" name="group" />
+                    <i class="mdui-radio-icon"></i>图片（九宫格）
+                </label>
+            </div>
+        </div>
+
+        <div id="configWebsite" style="display: none;">
+            <div class="mdui-textfield">
+                <label class="mdui-textfield-label">转发文章标题</label>
+                <input id="configArticleTitle" class="mdui-textfield-input" type="text" value="还不会用Google的你，就要被时代淘汰了" />
+            </div>
+            <div class="mdui-row">
+                <div class="mdui-col-xs-6">
+                    <button class="mdui-btn mdui-ripplet mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configArticleIcon').click();">上传文章图标</button>
+                    <input id="configArticleIcon" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-6">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-dialog="{target: '#helpArticleIcon'}">如何获取文章图标</button>
+                </div>
+            </div>
+            <div class="mdui-textfield">
+                <label class="mdui-textfield-label">转发出处</label>
+                <input id="configApp" class="mdui-textfield-input" type="text" value="" />
+            </div>
+        </div>
+
+        <div id="configSingleImage" style="display: none;">
+            <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetSingleImage').click();">上传图片</button>
+            <input id="configSetSingleImage" type="file" style="display: none;" />
+        </div>
+
+        <div id="configMultiImage" style="display: none;">
+            <div class="mdui-m-y-1">请按图片 1 - 9 的顺序添加图片～<br />如果只需要显示一张图片，建议选择“图片（单张）”。</div>
+            <div class="mdui-row">
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage1').click();">上传图片1</button>
+                    <input id="configSetMultiImage1" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage2').click();">上传图片2</button>
+                    <input id="configSetMultiImage2" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage3').click();">上传图片3</button>
+                    <input id="configSetMultiImage3" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage4').click();">上传图片4</button>
+                    <input id="configSetMultiImage4" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage5').click();">上传图片5</button>
+                    <input id="configSetMultiImage5" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage6').click();">上传图片6</button>
+                    <input id="configSetMultiImage6" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage7').click();">上传图片7</button>
+                    <input id="configSetMultiImage7" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage8').click();">上传图片8</button>
+                    <input id="configSetMultiImage8" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage9').click();">上传图片9</button>
+                    <input id="configSetMultiImage9" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-12">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: clearMultiImage();">清空所有图片</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">定位</label>
+            <input id="configLocation" class="mdui-textfield-input" type="text" value="" />
         </div>
         <div class="mdui-row">
             <div class="mdui-textfield mdui-col-xs-5">
@@ -272,13 +381,32 @@
                     <div id="name" class="name"></div>
                     <div style="height: 11px;"></div>
                     <div id="text" class="text"></div>
-                    <div style="height: 36px;"></div>
-                    <div class="article">
+
+                    <div id="article" class="article">
                         <div id="articleIcon" class="articleIcon squareImage" style="background-image: url(https://ae01.alicdn.com/kf/HTB1ci0Da5zxK1RjSspjq6AS.pXaD.jpg);"></div>
                         <div id="articleTitle" class="articleTitle"></div>
                     </div>
+
+                    <div id="singleImage" class="singleImage">
+                        <img id="image" class="image" src="https://ae01.alicdn.com/kf/HTB13rXuJCzqK1RjSZPxq6A4tVXae.jpg" />
+                    </div>
+
+                    <div id="multiImage" class="multiImage">
+                        <div id="image1" class="multiImageBox squareImage"></div>
+                        <div id="image2" class="multiImageBox squareImage"></div>
+                        <div id="image3" class="multiImageBox squareImage"></div>
+                        <div id="image4" class="multiImageBox squareImage"></div>
+                        <div id="image5" class="multiImageBox squareImage"></div>
+                        <div id="image6" class="multiImageBox squareImage"></div>
+                        <div id="image7" class="multiImageBox squareImage"></div>
+                        <div id="image8" class="multiImageBox squareImage"></div>
+                        <div id="image9" class="multiImageBox squareImage"></div>
+                    </div>
+
                     <div style="height: 20px;"></div>
                     <div class="info">
+                        <span id="location" style="color: #576b95;"></span>
+                        <div style="height: 20px;"></div>
                         <span id="time"></span>&nbsp;<span style="color: #576b95">删除</span>
                     </div>
                     <img src="comment.svg" style="position: relative; display: inline-block; width: auto; height: 42px; top: 9px;" />
@@ -302,7 +430,7 @@
 
         <div style="height: 50px;"></div>
         <div class="mdui-typo-caption-opacity" style="text-align: center;">
-            Copyright © 2019 ✨小透明・宸✨
+            ©&nbsp;2019&nbsp;✨小透明・宸✨
         </div>
 
         <div id="generatedPopup" class="mdui-dialog">
@@ -342,7 +470,11 @@
                 <h4>为什么生成的截图不是iOS版/7.x版的界面样式？</h4>
                 因为手上只有猴机，以及并不想用7.x版。
                 <h4>能不能生成纯文字/转发图片的截图？</h4>
-                懒得写样式，心情好<span class="heimu">有了萌妹子</span>的时候再加上～(*´ω`*)
+                <del>懒得写样式，心情好<span class="heimu">有了萌妹子</span>的时候再加上～(*´ω`*)</del>
+                <br />
+                已经可以生成啦～但是小透明有<span class="heimu">萌妹子</span>了吗？
+                <br />
+                <strong>还没有。</strong>
                 <h4>开源就是好</h4>
                 <ul>
                     <li>
@@ -366,6 +498,46 @@
     <script src="avatarURL.js"></script>
     <script src="fuckWechat.js"></script>
     <script>
+        function clearMultiImage() {
+            for (var i = 1; i <= 9; i++) {
+                document.getElementById('image' + i).style.backgroundImage = '';   
+            }
+        }
+
+        //设置界面显示
+        document.getElementById('configTypeText').onclick = function () {
+            document.getElementById('configWebsite').style.display = 'none';
+            document.getElementById('configSingleImage').style.display = 'none';
+            document.getElementById('configMultiImage').style.display = 'none';
+            document.getElementById('article').style.display = 'none';
+            document.getElementById('singleImage').style.display = 'none';
+            document.getElementById('multiImage').style.display = 'none';
+        }
+        document.getElementById('configTypeWebsite').onclick = function () {
+            document.getElementById('configWebsite').style.display = 'block';
+            document.getElementById('configSingleImage').style.display = 'none';
+            document.getElementById('configMultiImage').style.display = 'none';
+            document.getElementById('article').style.display = 'flex';
+            document.getElementById('singleImage').style.display = 'none';
+            document.getElementById('multiImage').style.display = 'none';
+        }
+        document.getElementById('configTypeSingleImage').onclick = function () {
+            document.getElementById('configWebsite').style.display = 'none';
+            document.getElementById('configSingleImage').style.display = 'block';
+            document.getElementById('configMultiImage').style.display = 'none';
+            document.getElementById('article').style.display = 'none';
+            document.getElementById('singleImage').style.display = 'block';
+            document.getElementById('multiImage').style.display = 'none';
+        }
+        document.getElementById('configTypeMultiImage').onclick = function () {
+            document.getElementById('configWebsite').style.display = 'none';
+            document.getElementById('configSingleImage').style.display = 'none';
+            document.getElementById('configMultiImage').style.display = 'block';
+            document.getElementById('article').style.display = 'none';
+            document.getElementById('singleImage').style.display = 'none';
+            document.getElementById('multiImage').style.display = 'block';
+        }
+
         //设初始值
         document.getElementById('configDate').valueAsDate = new Date();
         document.getElementById('configTimeHour').value = (new Date()).getHours();
@@ -400,12 +572,78 @@
         document.getElementById('configArticleIcon').addEventListener('change', function () {
             document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
         });
+        document.getElementById('configSetSingleImage').addEventListener('change', function () {
+            var reader = new FileReader;
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function () {
+                document.getElementById('image').src = this.result;
+            }
+        });
+
+        document.getElementById('configSetMultiImage1').addEventListener('change', function () {
+            document.getElementById('image1').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
+        document.getElementById('configSetMultiImage2').addEventListener('change', function () {
+            document.getElementById('image2').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
+        document.getElementById('configSetMultiImage3').addEventListener('change', function () {
+            document.getElementById('image3').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
+        document.getElementById('configSetMultiImage4').addEventListener('change', function () {
+            document.getElementById('image4').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
+        document.getElementById('configSetMultiImage5').addEventListener('change', function () {
+            document.getElementById('image5').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
+        document.getElementById('configSetMultiImage6').addEventListener('change', function () {
+            document.getElementById('image6').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
+        document.getElementById('configSetMultiImage7').addEventListener('change', function () {
+            document.getElementById('image7').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
+        document.getElementById('configSetMultiImage8').addEventListener('change', function () {
+            document.getElementById('image8').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
+        document.getElementById('configSetMultiImage9').addEventListener('change', function () {
+            document.getElementById('image9').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+        });
 
         document.getElementById('generate').addEventListener('click', function () {
             //设置生成的图片上的各种属性
             document.getElementById('name').innerText = document.getElementById('configName').value;
             document.getElementById('text').innerText = document.getElementById('configText').value;
             document.getElementById('articleTitle').innerText = document.getElementById('configArticleTitle').value;
+            if (document.getElementById('configLocation').value == '') {
+                document.getElementById('location').style.display = 'none';
+            } else {
+                document.getElementById('location').style.display = 'inline';
+                document.getElementById('location').innerText = document.getElementById('configLocation').value;
+            }
+
+            //九宫格模式设定
+            if (document.getElementById('configTypeMultiImage').checked) {
+                for (var i = 1; i <= 9; i++) {
+                    document.getElementById('image' + i).style.display = 'inline-block';
+                }
+                var multiImageCount = 0;
+                for (multiImageCount = 9; multiImageCount >= 1; multiImageCount--) {
+                    if (document.getElementById('image' + multiImageCount).style.backgroundImage != '') {
+                        break;
+                    }
+                }
+                //四张图的修正
+                if (multiImageCount == 4) {
+                    document.getElementById('image5').style.backgroundImage = document.getElementById('image4').style.backgroundImage;
+                    document.getElementById('image4').style.backgroundImage = document.getElementById('image3').style.backgroundImage;
+                    document.getElementById('image3').style.backgroundImage = '';
+                    multiImageCount = 5;
+                }
+                for (var i = multiImageCount + 1; i <= 9; i++) {
+                    console.log(i);
+                    document.getElementById('image' + i).style.display = 'none';
+                }
+            }
+
 
             //设置时间
             var configDate = document.getElementById('configDate').valueAsDate;
