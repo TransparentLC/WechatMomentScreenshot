@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
     <title>朋友圈转发截图生成工具</title>
@@ -206,12 +206,13 @@
             <a class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#about'}" mdui-tooltip="{content: '关于'}"><i class="mdui-icon material-icons">info_outline</i></a>
             <a href="https://github.com/TransparentLC/WechatMomentScreenshot" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '查看 Github'}">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon" style="width: 24px;height:24px;">
-                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#ffffff" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#ffffff" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5
 	                c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1
 	                c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4
 	                c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7
 	                c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5
 	                c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z" />
+
                 </svg>
             </a>
         </div>
@@ -249,7 +250,7 @@
             <div class="mdui-col-xs-6">
                 <label class="mdui-radio">
                     <input id="configTypeWebsite" type="radio" name="group" />
-                    <i class="mdui-radio-icon"></i>网页
+                    <i class="mdui-radio-icon"></i>分享网页
                 </label>
             </div>
             <div class="mdui-col-xs-6">
@@ -359,7 +360,7 @@
             </div>
         </div>
 
-        <button id="generate" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block">生成</button>
+        <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block">生成</button>
 
         <div id="fakeWechatMoment">
             <div id="topBar" class="topBar">
@@ -428,14 +429,21 @@
             </div>
         </div>
 
-        <div style="height: 50px;"></div>
-        <div class="mdui-typo-caption-opacity" style="text-align: center;">
-            ©&nbsp;2019&nbsp;✨小透明・宸✨
+        <div class="mdui-m-y-4" style="text-align: center;">
+            <iframe src="https://ghbtns.com/github-btn.html?user=TransparentLC&repo=WechatMomentScreenshot&type=star&count=true" frameborder="0" scrolling="no" width="90" height="30"></iframe>
+            <br />
+            <span class="mdui-typo-caption-opacity ">©&nbsp;2019&nbsp;✨小透明・宸✨</span>
         </div>
 
         <div id="generatedPopup" class="mdui-dialog">
             <div class="mdui-dialog-title">生成完毕| ω・`)</div>
             <img id="generated" />
+
+            <div class="mdui-typo-caption-opacity mdui-m-y-2">
+                如果点击“保存”没有反应
+                <br />
+                请尝试长按/右键图片进行另存为操作(　ﾟ 3ﾟ)
+            </div>
             <div class="mdui-dialog-actions">
                 <a id="save" class="mdui-btn mdui-ripple">保存</a>
                 <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
@@ -475,7 +483,7 @@
                 已经可以生成啦～但是小透明有<span class="heimu">萌妹子</span>了吗？
                 <br />
                 <strong>还没有。</strong>
-                <h4>生成图片后点击“保存”没有反应</h4>
+                <h4>生成图片后点击“保存”没有反应？</h4>
                 也可以试试长按图片手动另存为呢(　ﾟ 3ﾟ)
                 <h4>开源就是好</h4>
                 <ul>
@@ -502,7 +510,7 @@
     <script>
         function clearMultiImage() {
             for (var i = 1; i <= 9; i++) {
-                document.getElementById('image' + i).style.backgroundImage = '';   
+                document.getElementById('image' + i).style.backgroundImage = '';
             }
         }
 
@@ -562,7 +570,7 @@
             }
         })
         document.getElementById('configLike').addEventListener('input', function () {
-            if (document.getElementById('configLike').value <0) {
+            if (document.getElementById('configLike').value < 0) {
                 document.getElementById('configLike').value = 0;
             }
         })
@@ -699,7 +707,7 @@
                 document.getElementById('triangle').style.display = 'block';
                 document.getElementById('like').style.display = 'block';
             }
-            
+
             //修正底部位置
             var offset = Number(window.getComputedStyle(document.getElementById('topBar')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('header')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('main')).height.replace('px', ''));
             document.getElementById('footer').style.bottom = ((offset < 1920 - Number(window.getComputedStyle(document.getElementById('footer')).height.replace('px', ''))) ? (-1920 + Number(window.getComputedStyle(document.getElementById('footer')).height.replace('px', '')) + offset) : 0) + 'px';
