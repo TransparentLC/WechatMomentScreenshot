@@ -296,39 +296,39 @@
             <div class="mdui-m-y-1">请按图片 1 - 9 的顺序添加图片～<br />如果只需要显示一张图片，建议选择“图片（单张）”。</div>
             <div class="mdui-row">
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage1').click();">上传图片1</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage1').click();">上传图片 1</button>
                     <input id="configSetMultiImage1" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage2').click();">上传图片2</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage2').click();">上传图片 2</button>
                     <input id="configSetMultiImage2" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage3').click();">上传图片3</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage3').click();">上传图片 3</button>
                     <input id="configSetMultiImage3" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage4').click();">上传图片4</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage4').click();">上传图片 4</button>
                     <input id="configSetMultiImage4" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage5').click();">上传图片5</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage5').click();">上传图片 5</button>
                     <input id="configSetMultiImage5" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage6').click();">上传图片6</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage6').click();">上传图片 6</button>
                     <input id="configSetMultiImage6" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage7').click();">上传图片7</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage7').click();">上传图片 7</button>
                     <input id="configSetMultiImage7" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage8').click();">上传图片8</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage8').click();">上传图片 8</button>
                     <input id="configSetMultiImage8" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage9').click();">上传图片9</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage9').click();">上传图片 9</button>
                     <input id="configSetMultiImage9" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-12">
@@ -357,6 +357,20 @@
             <div class="mdui-textfield mdui-col-xs-3">
                 <label class="mdui-textfield-label">点赞数</label>
                 <input id="configLike" class="mdui-textfield-input" type="number" min="0" />
+            </div>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-8 mdui-col-sm-10">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">图片长度</label>
+                    <input id="configHeight" class="mdui-textfield-input" type="number" value="1920" min="1920" />
+                </div>
+            </div>
+            <div class="mdui-col-xs-4 mdui-col-sm-2">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">&nbsp;</label>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-tooltip="{content: '图片宽度默认为 1080 像素，长度根据设备长宽比确定计算，可能和实际存在偏差'}" onclick="javascript: document.getElementById('configHeight').value = Math.round(document.body.clientHeight / document.body.clientWidth * 1080);">自动设定</button>
+                </div>
             </div>
         </div>
 
@@ -694,10 +708,11 @@
             }
 
             //显示用于生成图片的div
+            var height = Number(document.getElementById('configHeight').value);
             document.getElementById('fakeWechatMoment').style.display = 'block';
             document.getElementById('fakeWechatMoment').style.width = '1080px';
             document.getElementById('fakeWechatMoment').style.height = '';
-            document.getElementById('fakeWechatMoment').style.height = ((window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') > 1920) ? window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') : 1920) + 'px';
+            document.getElementById('fakeWechatMoment').style.height = ((window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') > height) ? window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') : height) + 'px';
 
             //点赞数为0时隐藏点赞区
             if (document.getElementById('configLike').value <= 0) {
@@ -710,7 +725,7 @@
 
             //修正底部位置
             var offset = Number(window.getComputedStyle(document.getElementById('topBar')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('header')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('main')).height.replace('px', ''));
-            document.getElementById('footer').style.bottom = ((offset < 1920 - Number(window.getComputedStyle(document.getElementById('footer')).height.replace('px', ''))) ? (-1920 + Number(window.getComputedStyle(document.getElementById('footer')).height.replace('px', '')) + offset) : 0) + 'px';
+            document.getElementById('footer').style.bottom = ((offset < height - Number(window.getComputedStyle(document.getElementById('footer')).height.replace('px', ''))) ? (-height + Number(window.getComputedStyle(document.getElementById('footer')).height.replace('px', '')) + offset) : 0) + 'px';
 
             //按钮上的提示
             document.getElementById('generate').setAttribute('disabled', '');
