@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>朋友圈转发截图生成工具</title>
@@ -15,9 +15,9 @@
 
         #fakeWechatMoment {
             background-color: #ffffff;
-            display: none;
+            /*display: none;*/
             position: fixed;
-            /*display: block;*/
+            display: block;
             left: 100%;
             top: 0;
         }
@@ -188,6 +188,13 @@
             background-repeat: no-repeat;
         }
 
+        .emoticon {
+            width: 1.25em;
+            height: 1.25em;
+            display: inline-block;
+            vertical-align: text-top;
+        }
+
         .heimu{
             background-color: #000000;
             color: #000000;
@@ -222,7 +229,7 @@
             <div class="mdui-col-xs-8 mdui-col-sm-10">
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">名字</label>
-                    <input id="configName" class="mdui-textfield-input" type="text" value="营销号免费广告姬" />
+                    <input id="configName" class="mdui-textfield-input" type="text" value="A 营销号免费广告姬" />
                 </div>
             </div>
             <div class="mdui-col-xs-4 mdui-col-sm-2">
@@ -235,7 +242,7 @@
         </div>
         <div class="mdui-textfield">
             <label class="mdui-textfield-label">正文</label>
-            <textarea id="configText" class="mdui-textfield-input">很实用的教程&#10;需要收集五个赞&nbsp;谢谢大家啦～(　^ω^)</textarea>
+            <textarea id="configText" class="mdui-textfield-input">很实用的教程[微笑]&#10;需要收集五个赞&nbsp;谢谢大家啦～(　^ω^)</textarea>
         </div>
         <div class="mdui-textfield">
             <label class="mdui-textfield-label">截图类型</label>
@@ -390,7 +397,7 @@
             <div id="main" class="main">
                 <div style="height: 30px;"></div>
                 <div class="avatarOut">
-                    <div id="avatar" class="avatarIn squareImage" style="background-image: url(https://ae01.alicdn.com/kf/HTB1sqJDa.LrK1Rjy1zbq6AenFXaf.jpg);"></div>
+                    <div id="avatar" class="avatarIn squareImage" style="background-image: url(https://ae01.alicdn.com/kf/HTB1yE4fMmzqK1RjSZFp761kSXXal.png);"></div>
                 </div>
                 <div class="content">
                     <div id="name" class="name"></div>
@@ -446,7 +453,7 @@
         <div class="mdui-m-y-4" style="text-align: center;">
             <iframe src="https://ghbtns.com/github-btn.html?user=TransparentLC&repo=WechatMomentScreenshot&type=star&count=true" frameborder="0" scrolling="no" width="90" height="30"></iframe>
             <br />
-            <span class="mdui-typo-caption-opacity ">©&nbsp;2019&nbsp;✨小透明・宸✨</span>
+            <span class="mdui-typo-caption-opacity">©&nbsp;2019&nbsp;✨小透明・宸✨</span>
         </div>
 
         <div id="generatedPopup" class="mdui-dialog">
@@ -508,6 +515,12 @@
                         <a href="https://www.mdui.org/">MDUI</a>&nbsp;开源许可：<a href="https://github.com/zdhxiong/mdui/blob/master/LICENSE">The MIT License</a>
                     </li>
                 </ul>
+                <h4>请小透明喝一瓶肥宅快乐水～(*´∀`)</h4>
+                <div style="text-align: center;">
+                    <img style="width: 60%;" src="https://ae01.alicdn.com/kf/HTB1r20aMgDqK1RjSZSy761xEVXaG.png" />
+                    <br />
+                    <span class="mdui-typo-caption-opacity">微信支付</span>
+                </div>
             </div>
             <div class="mdui-dialog-actions">
                 <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
@@ -520,6 +533,7 @@
     <!--<script src="html2canvas.min.js"></script>-->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="avatarURL.js"></script>
+    <script src="emoticon.js"></script>
     <script src="fuckWechat.js"></script>
     <script>
         function clearMultiImage() {
@@ -643,6 +657,14 @@
                 document.getElementById('location').style.display = 'inline';
                 document.getElementById('location').innerText = document.getElementById('configLocation').value;
             }
+
+            //表情替换
+            document.getElementById('text').innerText = document.getElementById('text').innerText.replace(/\r\n/g, '<br />');
+            document.getElementById('text').innerText = document.getElementById('text').innerText.replace(/\n/g, '<br />');
+            for (var i = 0; i < emoticon.length; i++) {
+                document.getElementById('text').innerText = document.getElementById('text').innerText.replace(new RegExp(emoticon[i].name, 'g'), '<img class="emoticon" src="' + emoticon[i].URL + '" />');
+            }
+            document.getElementById('text').innerHTML = document.getElementById('text').innerText;
 
             //九宫格模式设定
             if (document.getElementById('configTypeMultiImage').checked) {
