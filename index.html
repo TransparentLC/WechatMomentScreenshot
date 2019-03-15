@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
     <title>朋友圈转发截图生成工具</title>
@@ -764,7 +764,7 @@
                 document.getElementById('save').setAttribute('download', (new Date()).getTime() + '.png');
                 (new mdui.Dialog(document.getElementById('generatedPopup'))).open();
 
-                document.getElementById('fakeWechatMoment').style.display = 'none';
+                //document.getElementById('fakeWechatMoment').style.display = 'none';
                 document.getElementById('generate').removeAttribute('disabled');
                 document.getElementById('generate').innerText = '生成'
             });
