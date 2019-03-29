@@ -196,6 +196,12 @@
             vertical-align: text-top;
         }
 
+        .topBarIcon {
+            height: 36px;
+            width: auto;
+            margin-right: 4px;
+        }
+
         .heimu{
             background-color: #000000;
             color: #000000;
@@ -386,7 +392,9 @@
 
         <div id="fakeWechatMoment">
             <div id="topBar" class="topBar">
-                <img src="icons.svg" height="36" />
+                <img id="topBarIconWifi" class="topBarIcon" />
+                <img id="topBarIconSignal" class="topBarIcon" />
+                <img id="topBarIconBattery" class="topBarIcon" />
                 <span id="topBarTime"></span>
             </div>
             <div id="header" class="header">
@@ -693,6 +701,13 @@
                 }
             }
 
+            //设置顶栏图标
+            var iconWifi = [4, 4, 4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 0];
+            var iconSignal = [4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 0];
+            var iconBattery = [20, 30, 50, 60, 80, 90, 'full'];
+            document.getElementById('topBarIconWifi').src = 'mdicons/ic_signal_wifi_' + iconWifi[Math.floor(Math.random() * iconWifi.length)] +  '_bar_48px.svg';
+            document.getElementById('topBarIconSignal').src = 'mdicons/ic_signal_cellular_' + iconWifi[Math.floor(Math.random() * iconSignal.length)] +  '_bar_48px.svg';
+            document.getElementById('topBarIconBattery').src = 'mdicons/ic_battery_' + ((Math.random() > 0.75) ? 'charging_' : '') + iconBattery[Math.floor(Math.random() * iconBattery.length)] +  '_48px.svg';
 
             //设置时间
             var configDate = document.getElementById('configDate').valueAsDate;
