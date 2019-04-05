@@ -38,11 +38,11 @@ if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) {
         '    <span style="font-size: 14px; color: #999; line-height: 1.6;">你正在使用微信打开该网页。微信对部分网页恶意屏蔽，为维护自由上网环境，本页面禁止使用微信打开。</span>',
         '</div>',
         '<div style="height: 25px;"></div>',
-        '<div id="fakeWechatStyleButton" style="display: inline-block; border: none; border-radius: 5px; background-color: #1aad19; color: #ffffff; border: 1px solid rgba(0, 0, 0, 0.1); width: calc(100% - 30px); height: 46px; line-height: 46px; font-size: 18px; user-select: none;" onclick="javascript: alert(\'恢复是不可能恢复的，请点击右上角，选择“在浏览器打开”。\\n\\n你仍然可以将此网页发送给微信好友/分享到朋友圈，对方使用浏览器打开即可正常访问。\');">',
+        '<div id="fakeWechatStyleButton" style="display: inline-block; border: none; border-radius: 5px; background-color: #1aad19; color: #ffffff; border: 1px solid rgba(0, 0, 0, 0.1); width: calc(100% - 30px); height: 46px; line-height: 46px; font-size: 18px; user-select: none;" onclick="javascript: alert(\'恢复是不可能恢复的，请点击右上角，选择“在浏览器打开”。\\n\\n你仍然可以将此网页发送给微信好友/分享到朋友圈，对方使用浏览器打开即可正常访问。\'); if (Math.random() < .5) { location.href = \'https://www.zhihu.com/question/318459753/answer/641027942\'; };">',
         '    申请恢复访问',
         '</div>',
         '<div style="display: flex; position: absolute; left: 0; right: 0; bottom: 0; justify-content: center; line-height: 1; margin-bottom: 15px; font-size: 14px; color: #999;">',
-        '    <a href="https://www.zhihu.com/question/32012886/answer/246667830" style="text-decoration: none; color: #586c94;">"Don\'t be evil."</a>',
+        '    <a href="https://www.zhihu.com/question/318459753/answer/641027942" style="text-decoration: none; color: #586c94;">"Don\'t be evil."</a>',
         '</div>'
     ].join('\n');
     div.innerHTML = divContent;
