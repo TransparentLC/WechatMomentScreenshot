@@ -31,7 +31,7 @@
             font-weight: 500;
             color: #ffffff;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: Center;
             padding-left: 16px;
             padding-right: 16px;
@@ -199,7 +199,12 @@
         .topBarIcon {
             height: 36px;
             width: auto;
-            margin-right: 4px;
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+
+        #topBarAppIcons{
+            height: 36px;
         }
 
         .heimu{
@@ -218,7 +223,7 @@
             <span class="mdui-typo-title">朋友圈转发截图生成工具</span>
             <div class="mdui-toolbar-spacer"></div>
             <a class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#about'}" mdui-tooltip="{content: '关于'}"><i class="mdui-icon material-icons">info_outline</i></a>
-            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '查看 Github'}">
+            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '查看 GitHub'}">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon" style="width: 24px;height:24px;">
                 <path fill-rule="evenodd" clip-rule="evenodd" fill="#ffffff" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5
 	                c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1
@@ -388,10 +393,32 @@
             </div>
         </div>
 
-        <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block">生成</button>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">通知栏</label>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-6">
+                <label class="mdui-checkbox">
+                    <input id="configTopBarAppIcons" type="checkbox" name="configTopBarAppIcons" />
+                    <i class="mdui-checkbox-icon"></i>
+                    显示 APP 图标
+                </label>
+            </div>
+            <div class="mdui-col-xs-6">
+                <label class="mdui-checkbox">
+                    <input id="configTopBarStatusIcons" type="checkbox" name="configTopBarStatusIcons" checked />
+                    <i class="mdui-checkbox-icon"></i>
+                    随机信号和电量
+                </label>
+            </div>
+        </div>
+
+        <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
 
         <div id="fakeWechatMoment">
             <div id="topBar" class="topBar">
+                <div id="topBarAppIcons"></div>
+                <div style="flex-grow: 1;"></div>
                 <img id="topBarIconWifi" class="topBarIcon" />
                 <img id="topBarIconSignal" class="topBarIcon" />
                 <img id="topBarIconBattery" class="topBarIcon" />
@@ -518,17 +545,23 @@
                 <h4>开源就是好</h4>
                 <ul>
                     <li>
-                        <a href="https://html2canvas.hertzen.com/">html2canvas</a>&nbsp;开源许可：<a href="https://github.com/niklasvh/html2canvas/blob/master/LICENSE">The MIT License</a>
+                        <a href="https://html2canvas.hertzen.com">html2canvas</a>&nbsp;开源许可：<a href="https://github.com/niklasvh/html2canvas/blob/master/LICENSE">The MIT License</a>
                     </li>
                     <li>
-                        <a href="https://www.mdui.org/">MDUI</a>&nbsp;开源许可：<a href="https://github.com/zdhxiong/mdui/blob/master/LICENSE">The MIT License</a>
+                        <a href="https://www.mdui.org">MDUI</a>&nbsp;开源许可：<a href="https://github.com/zdhxiong/mdui/blob/master/LICENSE">The MIT License</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/google/material-design-icons">Material Design icons</a>&nbsp;开源许可：<a href="https://github.com/google/material-design-icons/blob/master/LICENSE">Apache License 2.0</a>
+                    </li>
+                    <li>
+                        <a href="https://www.iconfont.cn">Iconfont 阿里巴巴矢量图标库</a>
                     </li>
                 </ul>
                 <h4>请小透明喝一瓶肥宅快乐水～(*´∀`)</h4>
                 <div style="text-align: center;">
                     <img style="width: 60%;" src="https://ae01.alicdn.com/kf/HTB1jlfNNkzoK1RjSZFl761i4VXay.png" />
                     <br />
-                    <span class="mdui-typo-caption-opacity">微信支付</span>
+                    <span class="mdui-typo-caption-opacity">长按二维码保存，然后微信扫一扫(`ε´ )<br />（微信支付）</span>
                 </div>
             </div>
             <div class="mdui-dialog-actions">
@@ -705,9 +738,25 @@
             var iconWifi = [4, 4, 4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 0];
             var iconSignal = [4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 0];
             var iconBattery = [20, 30, 50, 60, 80, 90, 'full'];
-            document.getElementById('topBarIconWifi').src = 'mdicons/ic_signal_wifi_' + iconWifi[Math.floor(Math.random() * iconWifi.length)] +  '_bar_48px.svg';
-            document.getElementById('topBarIconSignal').src = 'mdicons/ic_signal_cellular_' + iconWifi[Math.floor(Math.random() * iconSignal.length)] +  '_bar_48px.svg';
-            document.getElementById('topBarIconBattery').src = 'mdicons/ic_battery_' + ((Math.random() > 0.75) ? 'charging_' : '') + iconBattery[Math.floor(Math.random() * iconBattery.length)] +  '_48px.svg';
+            if (document.getElementById('configTopBarStatusIcons').checked) {
+                document.getElementById('topBarIconWifi').src = 'mdicons/ic_signal_wifi_' + iconWifi[Math.floor(Math.random() * iconWifi.length)] + '_bar_48px.svg';
+                document.getElementById('topBarIconSignal').src = 'mdicons/ic_signal_cellular_' + iconWifi[Math.floor(Math.random() * iconSignal.length)] + '_bar_48px.svg';
+                document.getElementById('topBarIconBattery').src = 'mdicons/ic_battery_' + ((Math.random() > 0.75) ? 'charging_' : '') + iconBattery[Math.floor(Math.random() * iconBattery.length)] + '_48px.svg';
+            } else {
+                document.getElementById('topBarIconWifi').src = 'mdicons/ic_signal_wifi_4_bar_48px.svg';
+                document.getElementById('topBarIconSignal').src = 'mdicons/ic_signal_cellular_4_bar_48px.svg';
+                document.getElementById('topBarIconBattery').src = 'mdicons/ic_battery_full_48px.svg';
+            }
+            var iconApp = [['qq', .5], ['wechat', .5], ['cloudmusic', .25], ['coolapk', .15], ['tieba', .15], ['acfun', .15]];
+            iconApp.sort(function () { return (Math.random() > .5) ? 1 : -1 });
+            document.getElementById('topBarAppIcons').innerHTML = '';
+            if (document.getElementById('configTopBarAppIcons').checked) {
+                for (var i = 0; i < iconApp.length; i++) {
+                    if (Math.random() < iconApp[i][1]) {
+                        document.getElementById('topBarAppIcons').innerHTML += '<img class="topBarIcon" src="mdicons/app_' + iconApp[i][0] +'.svg">';
+                    }
+                }
+            }
 
             //设置时间
             var configDate = document.getElementById('configDate').valueAsDate;
