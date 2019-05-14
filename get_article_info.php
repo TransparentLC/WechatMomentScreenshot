@@ -3,7 +3,7 @@
 /* https://github.com/TransparentLC/WechatMomentScreenshot */
 
 //允许跨域
-header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Origin: *');
 
 if (empty($_GET['url'])) {
     $result['title'] = '';

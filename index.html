@@ -588,7 +588,7 @@
         function getArticleInfo() {
             mdui.prompt('文章链接', function (value) {
                 var xhr = new XMLHttpRequest;
-                xhr.open('GET', 'http://101.132.76.23/get_article_info.php?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
+                xhr.open('GET', 'https://lit-inlet-66876.herokuapp.com/get_article_info.php?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4) {
                         var result = JSON.parse(xhr.responseText);
