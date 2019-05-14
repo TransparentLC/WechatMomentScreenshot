@@ -6,6 +6,14 @@
 
 [去这里使用](https://transparentlc.github.io/WechatMomentScreenshot)
 
+---
+
+**2019.5.14 新功能：输入微信公众号文章链接，自动获取文章标题和封面**
+
+相关后端代码参见文件 `get_article_info.php`。
+
+---
+
 ### 这个小工具是什么？
 
 一个因为不喜欢也不想往朋友圈发某些不得不发的废文而做出来的摸鱼产物。

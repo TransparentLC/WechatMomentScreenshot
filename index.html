@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta http-equiv="Cache-Control" content="no-transform" />
-    <!--<link href="mdui.min.css" rel="stylesheet">-->
-    <!--<link href="https://cdn.bootcss.com/mdui/0.4.2/css/mdui.min.css" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="mdui.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/mdui/0.4.2/css/mdui.min.css">-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.2/dist/css/mdui.min.css">
     <style>
         body {
@@ -120,9 +120,11 @@
             width: calc(100% - 170px);
             font-size: 36px;
             max-width: 700px;
-            white-space: nowrap;
+            /* html2canvas不支持文本截断 */
+            /* https://github.com/niklasvh/html2canvas/issues/324 */
+            /*text-overflow: ellipsis;*/
+            /*white-space: nowrap;*/
             overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .singleImage {
@@ -293,11 +295,11 @@
             </div>
             <div class="mdui-row">
                 <div class="mdui-col-xs-6">
-                    <button class="mdui-btn mdui-ripplet mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configArticleIcon').click();">上传文章图标</button>
+                    <button class="mdui-btn mdui-ripplet mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configArticleIcon').click();">上传文章封面</button>
                     <input id="configArticleIcon" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-6">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-dialog="{target: '#helpArticleIcon'}">如何获取文章图标</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: getArticleInfo();">自动获取文章标题/封面</button>
                 </div>
             </div>
             <div class="mdui-textfield">
@@ -414,6 +416,7 @@
         </div>
 
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target: '#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
 
         <div id="fakeWechatMoment">
             <div id="topBar" class="topBar">
@@ -486,7 +489,7 @@
             </div>
         </div>
 
-        <div class="mdui-m-y-4" style="text-align: center; line-height: 1.5em;">
+        <div class="mdui-m-y-2" style="text-align: center; line-height: 1.5em;">
             <a href="https://github.com/TransparentLC/WechatMomentScreenshot" target="_blank" style="text-decoration: none;"><img src="https://img.shields.io/github/stars/TransparentLC/WechatMomentScreenshot.svg?style=social" />&nbsp;<img src="http://hits.dwyl.io/TransparentLC/WechatMomentScreenshot.svg" style="border-radius: 2px;" /></a>
             <br />
             <span class="mdui-typo-caption-opacity">©&nbsp;2019&nbsp;✨小透明・宸✨</span>
@@ -503,26 +506,6 @@
             </div>
             <div class="mdui-dialog-actions">
                 <a id="save" class="mdui-btn mdui-ripple">保存</a>
-                <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
-            </div>
-        </div>
-
-        <div id="helpArticleIcon" class="mdui-dialog">
-            <div class="mdui-dialog-title">如何获取文章图标</div>
-            <div class="mdui-dialog-content mdui-typo">
-                最简单的方法当然是直接截图啦|ω•`)
-                <img class="mdui-center mdui-img-rounded mdui-shadow-2 mdui-hoverable" src="https://ae01.alicdn.com/kf/HTB18rlKaZ_vK1Rjy0Fo760IxVXaD.png" />
-                <hr />
-                也可以使用下面的<del>很复杂的</del>方法，直接获取这张图片的链接：
-                <ol>
-                    <li>在右上角的菜单中复制文章的链接。</li>
-                    <li>获取文章的网页源代码。你可以使用<a href="http://mk.mkblog.cn/home/html.php">这个</a>在线工具。</li>
-                    <li>在源代码中查找<kbd>Ctrl+F</kbd><code>msg_cdn_url</code>，后面就是文章图标的链接。</li>
-                    <li>将图标保存下来，然后上传。</li>
-                </ol>
-                由于浏览器同源策略限制，这里无法通过输入文章链接自动读取网页源代码并载入图标，请手动完成以上步骤。
-            </div>
-            <div class="mdui-dialog-actions">
                 <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
             </div>
         </div>
@@ -557,22 +540,41 @@
                         <a href="https://www.iconfont.cn">Iconfont 阿里巴巴矢量图标库</a>
                     </li>
                 </ul>
-                <h4>请小透明喝一瓶肥宅快乐水～(*´∀`)</h4>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
+            </div>
+        </div>
+
+        <div id="request" class="mdui-dialog">
+            <div id="requestResult" class="mdui-dialog-title"></div>
+            <div id="requestResultContent" class="mdui-dialog-content mdui-typo"></div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
+            </div>
+        </div>
+
+        <div id="donate" class="mdui-dialog">
+            <div class="mdui-dialog-title">请小透明喝一瓶肥宅快乐水～(*´∀`)</div>
+            <div class="mdui-dialog-content mdui-typo">
                 <div style="text-align: center;">
-                    <img style="width: 60%;" src="https://ae01.alicdn.com/kf/HTB1jlfNNkzoK1RjSZFl761i4VXay.png" />
-                    <br />
-                    <span class="mdui-typo-caption-opacity">长按二维码保存，然后微信扫一扫(`ε´ )<br />（微信支付）</span>
+                    <div>
+                    <img style="width: 50%;" src="https://ae01.alicdn.com/kf/HTB1DpS1VMHqK1RjSZFE763GMXXac.png" /><img style="width: 50%;" src="https://ae01.alicdn.com/kf/HTB1.nuUVHvpK1RjSZPi762mwXXat.png" />
+                    </div>
+                    <span class="mdui-typo-caption-opacity">扫一扫(`ε´ )<br />左：微信 右：支付宝</span>
                 </div>
             </div>
             <div class="mdui-dialog-actions">
-                <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
             </div>
         </div>
     </div>
 
     <!--<script src="mdui.min.js"></script>-->
     <!--<script src="https://cdn.bootcss.com/mdui/0.4.2/js/mdui.min.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.2/dist/js/mdui.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/mdui@0.4.2/dist/js/mdui.min.js"></script>-->
+    <!-- 因为jsDelivr对JS的压缩有问题导致对话框不能正常使用？ https://github.com/zdhxiong/mdui/issues/190 -->
+    <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.2/dist/js/mdui.js"></script>
     <!--<script src="html2canvas.min.js"></script>-->
     <!--<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.min.js"></script>
@@ -581,6 +583,31 @@
     <script src="fuckWechat.js"></script>
     <script>
         //mdui.alert('<span class="mdui-typo">本工具已获得微信官方“绿色网站”认证（滑稽），请不要尝试在微信中使用本工具。<br /><br />作者坚决反对破坏自由（而不是所谓“绿色”）上网环境的<a href="https://www.zhihu.com/question/318459753/answer/641027942" target="_blank">作恶行为</a>。<br /><br />请支持 996.icu 项目：</span><a href="https://996.icu" target="_blank"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>');
+
+        //输入微信文章的链接，通过后端自动获取文章标题和文章封面
+        function getArticleInfo() {
+            mdui.prompt('文章链接', function (value) {
+                var xhr = new XMLHttpRequest;
+                xhr.open('GET', 'http://101.132.76.23/get_article_info.php?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        var result = JSON.parse(xhr.responseText);
+                        if (result.success) {
+                            document.getElementById('configArticleTitle').value = result.title;
+                            document.getElementById('articleTitle').innerText = result.title;
+                            document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + result.cover + '\")';
+                            document.getElementById('requestResult').innerText = '获取成功！(ゝ∀･)';
+                            document.getElementById('requestResultContent').innerHTML = '标题：' + result.title + '<br />封面：<a target="_blank" href="' + result.cover +'">点此查看</a>';
+                        } else {
+                            document.getElementById('requestResult').innerText = '获取失败！( ´_っ`)';
+                            document.getElementById('requestResultContent').innerHTML = '输入的链接是否为微信公众号文章？<br />（链接通常以 <code>https://mp.weixin.qq.com/</code> 作为开头）';
+                        }
+                        (new mdui.Dialog('#request')).open();
+                    }
+                }
+                xhr.send();
+            }, function () { });
+        }
 
         function clearMultiImage() {
             for (var i = 1; i <= 9; i++) {
