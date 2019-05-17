@@ -550,7 +550,7 @@
             <div id="requestResult" class="mdui-dialog-title"></div>
             <div id="requestResultContent" class="mdui-dialog-content mdui-typo"></div>
             <div class="mdui-dialog-actions">
-                <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
+                <button id="requestAction" class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
             </div>
         </div>
 
@@ -586,26 +586,36 @@
 
         //输入微信文章的链接，通过后端自动获取文章标题和文章封面
         function getArticleInfo() {
+            var requestDialog = new mdui.Dialog('#request');
             mdui.prompt('文章链接', function (value) {
                 var xhr = new XMLHttpRequest;
                 xhr.open('GET', 'https://lit-inlet-66876.herokuapp.com/get_article_info.php?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4) {
                         var result = JSON.parse(xhr.responseText);
-                        if (result.success) {
-                            document.getElementById('configArticleTitle').value = result.title;
-                            document.getElementById('articleTitle').innerText = result.title;
-                            document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + result.cover + '\")';
-                            document.getElementById('requestResult').innerText = '获取成功！(ゝ∀･)';
-                            document.getElementById('requestResultContent').innerHTML = '标题：' + result.title + '<br />封面：<a target="_blank" href="' + result.cover +'">点此查看</a>';
-                        } else {
-                            document.getElementById('requestResult').innerText = '获取失败！( ´_っ`)';
-                            document.getElementById('requestResultContent').innerHTML = '输入的链接是否为微信公众号文章？<br />（链接通常以 <code>https://mp.weixin.qq.com/</code> 作为开头）';
+                        document.getElementById('requestAction').innerText = 'OK';
+
+                        if (requestDialog.getState() == 'opening' || requestDialog.getState() == 'opened') {
+                            if (typeof(result) != 'undefined' && result.success) {
+                                document.getElementById('configArticleTitle').value = result.title;
+                                document.getElementById('articleTitle').innerText = result.title;
+                                document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + result.cover + '\")';
+                                document.getElementById('requestResult').innerText = '获取成功！(ゝ∀･)';
+                                document.getElementById('requestResultContent').innerHTML = '标题：' + result.title + '<br />封面：<a target="_blank" href="' + result.cover + '">点此查看</a>';
+                            } else {
+                                document.getElementById('requestResult').innerText = '获取失败！( ´_っ`)';
+                                document.getElementById('requestResultContent').innerHTML = '输入的链接是否为微信公众号文章？<br />（链接通常以 <code>https://mp.weixin.qq.com/</code> 作为开头）';
+                            }
                         }
-                        (new mdui.Dialog('#request')).open();
                     }
+                    requestDialog.handleUpdate();
                 }
                 xhr.send();
+                document.getElementById('requestResult').innerText = '';
+                document.getElementById('requestAction').innerText = 'CANCEL';
+                document.getElementById('requestResultContent').innerHTML = '<div class="mdui-valign"><div class="mdui-spinner"></div><span class="mdui-m-l-2">获取中…… (oﾟωﾟo)</span></div>';
+                mdui.updateSpinners();
+                requestDialog.open();
             }, function () { });
         }
 
