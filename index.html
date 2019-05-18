@@ -670,12 +670,14 @@
         }
 
         //设初始值
-        document.getElementById('configPostDate').valueAsDate = new Date();
-        document.getElementById('configPostTimeHour').value = (new Date()).getHours();
-        document.getElementById('configPostTimeMinute').value = (new Date()).getMinutes();
-        document.getElementById('configScreenshotDate').valueAsDate = new Date();
-        document.getElementById('configScreenshotTimeHour').value = (new Date()).getHours();
-        document.getElementById('configScreenshotTimeMinute').value = (new Date()).getMinutes();
+        var date = new Date();
+        document.getElementById('configScreenshotDate').valueAsDate = date;
+        document.getElementById('configScreenshotTimeHour').value = date.getHours();
+        document.getElementById('configScreenshotTimeMinute').value = date.getMinutes();
+        date.setTime(date.getTime() - 1000 * 60);
+        document.getElementById('configPostDate').valueAsDate = date;
+        document.getElementById('configPostTimeHour').value = date.getHours();
+        document.getElementById('configPostTimeMinute').value = date.getMinutes();
         document.getElementById('configLike').value = Math.floor(20 * Math.random());
 
         //检验数值是否合法
