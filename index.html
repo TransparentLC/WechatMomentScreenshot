@@ -363,31 +363,41 @@
             <input id="configLocation" class="mdui-textfield-input" type="text" value="" />
         </div>
         <div class="mdui-row">
-            <div class="mdui-textfield mdui-col-xs-5">
-                <label class="mdui-textfield-label">日期</label>
-                <input id="configDate" class="mdui-textfield-input" type="date" />
-            </div>
-            <div class="mdui-textfield mdui-col-xs-2">
-                <label class="mdui-textfield-label">时间</label>
-                <input id="configTimeHour" class="mdui-textfield-input" type="number" min="0" max="23" />
-            </div>
-            <div class="mdui-textfield mdui-col-xs-2">
-                <label class="mdui-textfield-label">&nbsp;</label>
-                <input id="configTimeMinute" class="mdui-textfield-input" type="number" min="0" max="59" />
+            <div class="mdui-textfield mdui-col-xs-6">
+                <label class="mdui-textfield-label">发表日期</label>
+                <input id="configPostDate" class="mdui-textfield-input" type="date" />
             </div>
             <div class="mdui-textfield mdui-col-xs-3">
+                <label class="mdui-textfield-label">发表时间</label>
+                <input id="configPostTimeHour" class="mdui-textfield-input" type="number" min="0" max="23" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-3">
+                <label class="mdui-textfield-label">&nbsp;</label>
+                <input id="configPostTimeMinute" class="mdui-textfield-input" type="number" min="0" max="59" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-6">
+                <label class="mdui-textfield-label">截图日期</label>
+                <input id="configScreenshotDate" class="mdui-textfield-input" type="date" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-3">
+                <label class="mdui-textfield-label">截图时间</label>
+                <input id="configScreenshotTimeHour" class="mdui-textfield-input" type="number" min="0" max="23" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-3">
+                <label class="mdui-textfield-label">&nbsp;</label>
+                <input id="configScreenshotTimeMinute" class="mdui-textfield-input" type="number" min="0" max="59" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-4 mdui-col-sm-6">
                 <label class="mdui-textfield-label">点赞数</label>
                 <input id="configLike" class="mdui-textfield-input" type="number" min="0" />
             </div>
-        </div>
-        <div class="mdui-row">
-            <div class="mdui-col-xs-8 mdui-col-sm-10">
+            <div class="mdui-col-xs-4 mdui-col-sm-3">
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">图片长度</label>
                     <input id="configHeight" class="mdui-textfield-input" type="number" value="1920" min="1920" />
                 </div>
             </div>
-            <div class="mdui-col-xs-4 mdui-col-sm-2">
+            <div class="mdui-col-xs-4 mdui-col-sm-3">
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">&nbsp;</label>
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-tooltip="{content: '图片宽度默认为 1080 像素，长度根据设备长宽比确定计算，可能和实际存在偏差'}" onclick="javascript: document.getElementById('configHeight').value = Math.round(document.body.clientHeight / document.body.clientWidth * 1080);">自动设定</button>
@@ -413,7 +423,7 @@
                     随机信号和电量
                 </label>
             </div>
-        </div>
+、        </div>
 
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target: '#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
@@ -660,24 +670,41 @@
         }
 
         //设初始值
-        document.getElementById('configDate').valueAsDate = new Date();
-        document.getElementById('configTimeHour').value = (new Date()).getHours();
-        document.getElementById('configTimeMinute').value = (new Date()).getMinutes();
+        document.getElementById('configPostDate').valueAsDate = new Date();
+        document.getElementById('configPostTimeHour').value = (new Date()).getHours();
+        document.getElementById('configPostTimeMinute').value = (new Date()).getMinutes();
+        document.getElementById('configScreenshotDate').valueAsDate = new Date();
+        document.getElementById('configScreenshotTimeHour').value = (new Date()).getHours();
+        document.getElementById('configScreenshotTimeMinute').value = (new Date()).getMinutes();
         document.getElementById('configLike').value = Math.floor(20 * Math.random());
 
         //检验数值是否合法
-        document.getElementById('configTimeHour').addEventListener('input', function () {
-            if (document.getElementById('configTimeHour').value > 23) {
-                document.getElementById('configTimeHour').value = 23;
-            } else if (document.getElementById('configTimeHour').value < 0) {
-                document.getElementById('configTimeHour').value = 0;
+        document.getElementById('configPostTimeHour').addEventListener('input', function () {
+            if (document.getElementById('configPostTimeHour').value > 23) {
+                document.getElementById('configPostTimeHour').value = 23;
+            } else if (document.getElementById('configPostTimeHour').value < 0) {
+                document.getElementById('configPostTimeHour').value = 0;
             }
         })
-        document.getElementById('configTimeMinute').addEventListener('input', function () {
-            if (document.getElementById('configTimeMinute').value > 59) {
-                document.getElementById('configTimeMinute').value = 59;
-            } else if (document.getElementById('configTimeMinute').value < 0) {
-                document.getElementById('configTimeMinute').value = 0;
+        document.getElementById('configPostTimeMinute').addEventListener('input', function () {
+            if (document.getElementById('configPostTimeMinute').value > 59) {
+                document.getElementById('configPostTimeMinute').value = 59;
+            } else if (document.getElementById('configPostTimeMinute').value < 0) {
+                document.getElementById('configPostTimeMinute').value = 0;
+            }
+        })
+        document.getElementById('configScreenshotTimeHour').addEventListener('input', function () {
+            if (document.getElementById('configScreenshotTimeHour').value > 23) {
+                document.getElementById('configScreenshotTimeHour').value = 23;
+            } else if (document.getElementById('configScreenshotTimeHour').value < 0) {
+                document.getElementById('configScreenshotTimeHour').value = 0;
+            }
+        })
+        document.getElementById('configScreenshotTimeMinute').addEventListener('input', function () {
+            if (document.getElementById('configScreenshotTimeMinute').value > 59) {
+                document.getElementById('configScreenshotTimeMinute').value = 59;
+            } else if (document.getElementById('configScreenshotTimeMinute').value < 0) {
+                document.getElementById('configScreenshotTimeMinute').value = 0;
             }
         })
         document.getElementById('configLike').addEventListener('input', function () {
@@ -798,21 +825,21 @@
             }
 
             //设置时间
-            var configDate = document.getElementById('configDate').valueAsDate;
-            configDate.setHours(document.getElementById('configTimeHour').value);
-            configDate.setMinutes(document.getElementById('configTimeMinute').value);
-            var date = new Date();
-            date.setSeconds(0);
-            date.setMilliseconds(0);
-            var diff = date.getTime() - configDate.getTime();
+            var configPostDate = document.getElementById('configPostDate').valueAsDate;
+            configPostDate.setHours(document.getElementById('configPostTimeHour').value);
+            configPostDate.setMinutes(document.getElementById('configPostTimeMinute').value);
+            var configScreenshotDate = document.getElementById('configScreenshotDate').valueAsDate;
+            configScreenshotDate.setHours(document.getElementById('configScreenshotTimeHour').value);
+            configScreenshotDate.setMinutes(document.getElementById('configScreenshotTimeMinute').value);
+            var diff = configScreenshotDate.getTime() - configPostDate.getTime();
             if (diff > 0 && diff < 60 * 60 * 1000) {
                 document.getElementById('time').innerText = Math.floor(diff / (60 * 1000)) + '分钟前';
             } else if (diff > 0 && diff < 60 * 60 * 24 * 1000) {
                 document.getElementById('time').innerText = Math.floor(diff / (60 * 60 * 1000)) + '小时前';
             } else {
-                document.getElementById('time').innerText = configDate.getFullYear() + '年' + (configDate.getMonth() + 1) + '月' + configDate.getDate() + '日 ' + ((configDate.getHours() < 10) ? ('0' + configDate.getHours()) : configDate.getHours()) + ':' + ((configDate.getMinutes() < 10) ? ('0' + configDate.getMinutes()) : configDate.getMinutes());
+                document.getElementById('time').innerText = configPostDate.getFullYear() + '年' + (configPostDate.getMonth() + 1) + '月' + configPostDate.getDate() + '日 ' + ((configPostDate.getHours() < 10) ? ('0' + configPostDate.getHours()) : configPostDate.getHours()) + ':' + ((configPostDate.getMinutes() < 10) ? ('0' + configPostDate.getMinutes()) : configPostDate.getMinutes());
             }
-            document.getElementById('topBarTime').innerText = ((date.getHours() < 10) ? ('0' + date.getHours()) : date.getHours()) + ':' + ((date.getMinutes() < 10) ? ('0' + date.getMinutes()) : date.getMinutes());
+            document.getElementById('topBarTime').innerText = ((document.getElementById('configScreenshotTimeHour').value < 10) ? ('0' + document.getElementById('configScreenshotTimeHour').value) : document.getElementById('configScreenshotTimeHour').value) + ':' + ((document.getElementById('configScreenshotTimeMinute').value < 10) ? ('0' + document.getElementById('configScreenshotTimeMinute').value) : document.getElementById('configScreenshotTimeMinute').value);
 
             if (document.getElementById('configApp') != '') {
                 document.getElementById('time').innerText += ' ' + document.getElementById('configApp').value;
