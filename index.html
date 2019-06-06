@@ -427,7 +427,7 @@
 
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target: '#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
-        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="javascript: var r = document.createRange(); r.selectNodeContents(document.getElementById('gitLink')); var s = document.getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('Copy'); s.removeAllRanges(); mdui.snackbar({message: '已复制～(=ﾟωﾟ)='});">复制链接，分享给有需要的人～(`ヮ´ )<div id="gitLink" style="text-transform: initial;">https://git.io/WMS</div></button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="javascript: copyGitLink();">复制链接，分享给有需要的人～(`ヮ´ )<div id="gitLink" style="text-transform: initial;">https://git.io/WMS</div></button>
 
         <div id="fakeWechatMoment">
             <div id="topBar" class="topBar">
@@ -634,6 +634,19 @@
             for (var i = 1; i <= 9; i++) {
                 document.getElementById('image' + i).style.backgroundImage = '';
             }
+        }
+
+        function copyGitLink() {
+            var range = document.createRange();
+            range.selectNodeContents(document.getElementById('gitLink'));
+            var selection = document.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('Copy');
+            selection.removeAllRanges();
+            mdui.snackbar({
+                message: '已复制到剪贴板～( っ*\'ω\'*c)'
+            });
         }
 
         //设置界面显示
