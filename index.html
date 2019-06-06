@@ -423,11 +423,12 @@
                     随机信号和电量
                 </label>
             </div>
-、        </div>
+        </div>
 
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target: '#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
-        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="copyGitLink();">复制链接，分享给有需要的人～(`ヮ´ )<div id="gitLink" style="text-transform: initial;">https://git.io/WMS</div></button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="copyGitLink()">复制链接，分享给有需要的人～(`ヮ´ )</button>
+        <div id="gitLink" style="display: none;">https://git.io/WMS</div>
 
         <div id="fakeWechatMoment">
             <div id="topBar" class="topBar">
@@ -637,6 +638,7 @@
         }
 
         function copyGitLink() {
+            document.getElementById('gitLink').style.display = 'block';
             var range = document.createRange();
             range.selectNodeContents(document.getElementById('gitLink'));
             var selection = document.getSelection();
@@ -647,6 +649,7 @@
             mdui.snackbar({
                 message: '已复制到剪贴板～( っ*\'ω\'*c)'
             });
+            document.getElementById('gitLink').style.display = 'none';
         }
 
         //设置界面显示
