@@ -290,16 +290,16 @@
 
         <div id="configWebsite" style="display: none;">
             <div class="mdui-textfield">
-                <label class="mdui-textfield-label">转发文章标题</label>
+                <label class="mdui-textfield-label">网页标题</label>
                 <input id="configArticleTitle" class="mdui-textfield-input" type="text" value="还不会用Google的你，就要被时代淘汰了" />
             </div>
             <div class="mdui-row">
                 <div class="mdui-col-xs-6">
-                    <button class="mdui-btn mdui-ripplet mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configArticleIcon').click();">上传文章封面</button>
+                    <button class="mdui-btn mdui-ripplet mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configArticleIcon').click();">上传网页图标</button>
                     <input id="configArticleIcon" type="file" style="display: none;" />
                 </div>
                 <div class="mdui-col-xs-6">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: getArticleInfo();">自动获取文章标题/封面</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: getArticleInfo();">自动获取公众号文章标题/封面图</button>
                 </div>
             </div>
             <div class="mdui-textfield">
@@ -427,6 +427,7 @@
 
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target: '#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="javascript: var r = document.createRange(); document.getElementById('gitLink').style.display = 'initial'; r.selectNodeContents(document.getElementById('gitLink')); var s = document.getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('Copy'); s.removeAllRanges(); document.getElementById('gitLink').style.display = 'none'; mdui.snackbar({message: '已复制～(=ﾟωﾟ)='});">复制链接<span id="gitLink" style="display: none;">https://git.io/WMS</span>，分享给有需要的人～(`ヮ´ )</button>
 
         <div id="fakeWechatMoment">
             <div id="topBar" class="topBar">
@@ -597,7 +598,7 @@
         //输入微信文章的链接，通过后端自动获取文章标题和文章封面
         function getArticleInfo() {
             var requestDialog = new mdui.Dialog('#request');
-            mdui.prompt('文章链接', function (value) {
+            mdui.prompt('公众号文章链接', function (value) {
                 var xhr = new XMLHttpRequest;
                 xhr.open('GET', 'https://lit-inlet-66876.herokuapp.com/get_article_info.php?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
                 xhr.onreadystatechange = function () {
@@ -674,7 +675,6 @@
         document.getElementById('configScreenshotDate').valueAsDate = date;
         document.getElementById('configScreenshotTimeHour').value = date.getHours();
         document.getElementById('configScreenshotTimeMinute').value = date.getMinutes();
-        date.setTime(date.getTime() - 1000 * 60);
         document.getElementById('configPostDate').valueAsDate = date;
         document.getElementById('configPostTimeHour').value = date.getHours();
         document.getElementById('configPostTimeMinute').value = date.getMinutes();
@@ -733,6 +733,7 @@
         document.getElementById('configSetMultiImage1').addEventListener('change', function () {
             document.getElementById('image1').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
         });
+
         document.getElementById('configSetMultiImage2').addEventListener('change', function () {
             document.getElementById('image2').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
         });
@@ -797,7 +798,6 @@
                     multiImageCount = 5;
                 }
                 for (var i = multiImageCount + 1; i <= 9; i++) {
-                    console.log(i);
                     document.getElementById('image' + i).style.display = 'none';
                 }
             }
@@ -833,14 +833,15 @@
             var configScreenshotDate = document.getElementById('configScreenshotDate').valueAsDate;
             configScreenshotDate.setHours(document.getElementById('configScreenshotTimeHour').value);
             configScreenshotDate.setMinutes(document.getElementById('configScreenshotTimeMinute').value);
-            var diff = configScreenshotDate.getTime() - configPostDate.getTime();
-            if (diff > 0 && diff < 60 * 60 * 1000) {
-                document.getElementById('time').innerText = Math.floor(diff / (60 * 1000)) + '分钟前';
-            } else if (diff > 0 && diff < 60 * 60 * 24 * 1000) {
-                document.getElementById('time').innerText = Math.floor(diff / (60 * 60 * 1000)) + '小时前';
+
+            if (document.getElementById('configScreenshotDate').valueAsDate.getTime() == document.getElementById('configPostDate').valueAsDate.getTime()) {
+                document.getElementById('time').innerText = ((configPostDate.getHours() < 10) ? ('0' + configPostDate.getHours()) : configPostDate.getHours()) + ':' + ((configPostDate.getMinutes() < 10) ? ('0' + configPostDate.getMinutes()) : configPostDate.getMinutes());
+            } else if (document.getElementById('configScreenshotDate').valueAsDate.getTime() - document.getElementById('configPostDate').valueAsDate.getTime() == 60 * 60 * 24 * 1000) {
+                document.getElementById('time').innerText = '昨天 ' + ((configPostDate.getHours() < 10) ? ('0' + configPostDate.getHours()) : configPostDate.getHours()) + ':' + ((configPostDate.getMinutes() < 10) ? ('0' + configPostDate.getMinutes()) : configPostDate.getMinutes());
             } else {
                 document.getElementById('time').innerText = configPostDate.getFullYear() + '年' + (configPostDate.getMonth() + 1) + '月' + configPostDate.getDate() + '日 ' + ((configPostDate.getHours() < 10) ? ('0' + configPostDate.getHours()) : configPostDate.getHours()) + ':' + ((configPostDate.getMinutes() < 10) ? ('0' + configPostDate.getMinutes()) : configPostDate.getMinutes());
             }
+
             document.getElementById('topBarTime').innerText = ((document.getElementById('configScreenshotTimeHour').value < 10) ? ('0' + document.getElementById('configScreenshotTimeHour').value) : document.getElementById('configScreenshotTimeHour').value) + ':' + ((document.getElementById('configScreenshotTimeMinute').value < 10) ? ('0' + document.getElementById('configScreenshotTimeMinute').value) : document.getElementById('configScreenshotTimeMinute').value);
 
             if (document.getElementById('configApp') != '') {
