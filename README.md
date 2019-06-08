@@ -10,10 +10,9 @@
 
 ### 更新记录
 
-#### TODO
+#### 2019.6.8
 
-* 添加评论
-* ~~7.x 版微信的白色界面~~什么时候张小龙学会做产品了就考虑加上(　ﾟ 3ﾟ)
+还是根据 [Issue #4](https://github.com/TransparentLC/WechatMomentScreenshot/issues/4)，增加了在生成的截图中设定评论的功能～ฅ•̀∀•́ฅ
 
 #### 2019.6.6
 

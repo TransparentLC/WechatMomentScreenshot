@@ -209,6 +209,35 @@
             height: 36px;
         }
 
+        .commentItem {
+            padding: 22px 0;
+        }
+
+        .commentName {
+            color: #576b95;
+            font-size: 34px;
+        }
+
+        .commentTime {
+            color: #808080;
+            font-size: 34px;
+            float: right;
+            margin-right: 25px;
+        }
+
+        .commentText {
+            font-size: 39px;
+            line-height: 1.25em;
+            color: #454545;
+            margin-top: 15px;
+        }
+
+        .commentAvatar {
+            width: 88px;
+            height: 88px;
+            display: inline-block;
+        }
+
         .heimu{
             background-color: #000000;
             color: #000000;
@@ -242,7 +271,7 @@
         <div class="mdui-row">
             <div class="mdui-col-xs-8 mdui-col-sm-10">
                 <div class="mdui-textfield">
-                    <label class="mdui-textfield-label">名字</label>
+                    <label class="mdui-textfield-label">用户名</label>
                     <input id="configName" class="mdui-textfield-input" type="text" value="A 营销号免费广告姬" />
                 </div>
             </div>
@@ -271,7 +300,7 @@
             <div class="mdui-col-xs-6">
                 <label class="mdui-radio">
                     <input id="configTypeWebsite" type="radio" name="group" />
-                    <i class="mdui-radio-icon"></i>分享网页
+                    <i class="mdui-radio-icon"></i>分享网页/公众号文章
                 </label>
             </div>
             <div class="mdui-col-xs-6">
@@ -406,6 +435,43 @@
         </div>
 
         <div class="mdui-textfield">
+            <label class="mdui-textfield-label">评论区</label>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-12">
+                <label class="mdui-checkbox">
+                    <input id="configShowComment" type="checkbox" name="configShowComment" onclick="document.getElementById('configCommentPreview').classList.toggle('mdui-hidden');" />
+                    <i class="mdui-checkbox-icon"></i>
+                    显示评论区
+                </label>
+            </div>
+            <div id="configCommentPreview" class="mdui-col-xs-12 mdui-hidden">
+                <div class="mdui-table-fluid mdui-m-y-2">
+                    <table class="mdui-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>用户名</th>
+                                <th>评论内容</th>
+                                <th>时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="configCommentList">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mdui-row">
+                    <div class="mdui-col-xs-6">
+                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-dialog="{target: '#addComment'}">添加评论</button>
+                    </div>
+                    <div class="mdui-col-xs-6">
+                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="removeComment();">删除评论</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdui-textfield">
             <label class="mdui-textfield-label">通知栏</label>
         </div>
         <div class="mdui-row">
@@ -427,7 +493,7 @@
 
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target: '#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
-        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="copyGitLink()">复制链接，分享给有需要的人～(`ヮ´ )</button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="copyGitLink()">复制本工具的链接，分享给有需要的人(`ヮ´ )</button>
         <div id="gitLink" style="display: none;">https://git.io/WMS</div>
 
         <div id="fakeWechatMoment">
@@ -491,6 +557,10 @@
                     <div id="likeAvatarList" class="likeAvatarList"></div>
                     <div style="height: 17px;"></div>
                 </div>
+                <div id="comment" class="like" style="margin-top: 1px;">
+                    <img src="commentlist.svg" width="32" height="32" style="position: relative; left: 30px; top: 45px; display: inline-block; vertical-align: top;" />
+                    <div id="commentList" class="likeAvatarList"></div>
+                </div>
             </div>
             <div id="footer" class="footer">
                 <div style="border: none; border-bottom: 2px solid #5ec838; font-size: 40px; color: #bbbbbb; width:760px; height: 88px; padding-left: 24px; padding-right: 24px; display: flex; align-items: center;">评论</div>
@@ -505,6 +575,49 @@
             <a href="https://github.com/TransparentLC/WechatMomentScreenshot" target="_blank" style="text-decoration: none;"><img src="https://img.shields.io/github/stars/TransparentLC/WechatMomentScreenshot.svg?style=social" />&nbsp;<img src="http://hits.dwyl.io/TransparentLC/WechatMomentScreenshot.svg" style="border-radius: 2px;" /></a>
             <br />
             <span class="mdui-typo-caption-opacity">©&nbsp;2019&nbsp;✨小透明・宸✨</span>
+        </div>
+
+        <div id="addComment" class="mdui-dialog">
+            <div class="mdui-dialog-title">添加评论</div>
+            <div class="mdui-dialog-content mdui-typo">
+                <div class="mdui-row">
+                    <div class="mdui-col-xs-8 mdui-col-sm-10">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">用户名</label>
+                            <input id="configCommentName" class="mdui-textfield-input" type="text" value="" />
+                        </div>
+                    </div>
+                    <div class="mdui-col-xs-4 mdui-col-sm-2">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">&nbsp;</label>
+                            <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configCommentAvatar').click();">上传头像</button>
+                            <input id="configCommentAvatar" type="file" style="display: none;" />
+                        </div>
+                    </div>
+                    <div class="mdui-col-xs-12">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">评论内容</label>
+                            <textarea id="configCommentText" class="mdui-textfield-input"></textarea>
+                        </div>
+                    </div>
+                    <div class="mdui-textfield mdui-col-xs-6">
+                        <label class="mdui-textfield-label">评论日期</label>
+                        <input id="configCommentDate" class="mdui-textfield-input" type="date" />
+                    </div>
+                    <div class="mdui-textfield mdui-col-xs-3">
+                        <label class="mdui-textfield-label">评论时间</label>
+                        <input id="configCommentTimeHour" class="mdui-textfield-input" type="number" min="0" max="23" />
+                    </div>
+                    <div class="mdui-textfield mdui-col-xs-3">
+                        <label class="mdui-textfield-label">&nbsp;</label>
+                        <input id="configCommentTimeMinute" class="mdui-textfield-input" type="number" min="0" max="59" />
+                    </div>
+                </div>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>CANCEL</button>
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close onclick="if (typeof (document.getElementById('configCommentAvatar').files[0]) == 'undefined') { mdui.alert('还没有设定头像啦⊂彡☆))∀`)'); } else { var configCommentDate = document.getElementById('configCommentDate').valueAsDate; configCommentDate.setHours(document.getElementById('configCommentTimeHour').value); configCommentDate.setMinutes(document.getElementById('configCommentTimeMinute').value); addComment(window.URL.createObjectURL(document.getElementById('configCommentAvatar').files[0]), document.getElementById('configCommentName').value, document.getElementById('configCommentText').value, configCommentDate); }">OK</button>
+            </div>
         </div>
 
         <div id="generatedPopup" class="mdui-dialog">
@@ -571,7 +684,7 @@
             <div class="mdui-dialog-content mdui-typo">
                 <div style="text-align: center;">
                     <div>
-                    <img style="width: 50%;" src="https://ae01.alicdn.com/kf/HTB1DpS1VMHqK1RjSZFE763GMXXac.png" /><img style="width: 50%;" src="https://ae01.alicdn.com/kf/HTB1.nuUVHvpK1RjSZPi762mwXXat.png" />
+                        <img style="width: 50%;" src="https://ae01.alicdn.com/kf/HTB1DpS1VMHqK1RjSZFE763GMXXac.png" /><img style="width: 50%;" src="https://ae01.alicdn.com/kf/HTB1.nuUVHvpK1RjSZPi762mwXXat.png" />
                     </div>
                     <span class="mdui-typo-caption-opacity">扫一扫(`ε´ )<br />左：微信 右：支付宝</span>
                 </div>
@@ -631,12 +744,27 @@
             }, function () { });
         }
 
+        //删除所有发表的九宫格图片
         function clearMultiImage() {
             for (var i = 1; i <= 9; i++) {
                 document.getElementById('image' + i).style.backgroundImage = '';
             }
         }
 
+        //将时间转换为微信中显示的格式
+        function getTimeString(currentDate, specificDate) {
+            var cd = new Date(currentDate.getTime() - currentDate.getTimezoneOffset() * 60 * 1000 - (currentDate.getTime() - currentDate.getTimezoneOffset() * 60 * 1000) % (60 * 60 * 24 * 1000));
+            var sd = new Date(specificDate.getTime() - specificDate.getTimezoneOffset() * 60 * 1000 - (specificDate.getTime() - specificDate.getTimezoneOffset() * 60 * 1000) % (60 * 60 * 24 * 1000));
+            if (cd.getTime() == sd.getTime()) {
+                return ((specificDate.getHours() < 10) ? ('0' + specificDate.getHours()) : specificDate.getHours()) + ':' + ((specificDate.getMinutes() < 10) ? ('0' + specificDate.getMinutes()) : specificDate.getMinutes());
+            } else if (cd.getTime() - sd.getTime() == 60 * 60 * 24 * 1000) {
+                return '昨天 ' + ((specificDate.getHours() < 10) ? ('0' + specificDate.getHours()) : specificDate.getHours()) + ':' + ((specificDate.getMinutes() < 10) ? ('0' + specificDate.getMinutes()) : specificDate.getMinutes());
+            } else {
+                return specificDate.getFullYear() + '年' + (specificDate.getMonth() + 1) + '月' + specificDate.getDate() + '日 ' + ((specificDate.getHours() < 10) ? ('0' + specificDate.getHours()) : specificDate.getHours()) + ':' + ((specificDate.getMinutes() < 10) ? ('0' + specificDate.getMinutes()) : specificDate.getMinutes());
+            }
+        }
+
+        //复制短链接
         function copyGitLink() {
             document.getElementById('gitLink').style.display = 'block';
             var range = document.createRange();
@@ -650,6 +778,39 @@
                 message: '已复制到剪贴板～( っ*\'ω\'*c)'
             });
             document.getElementById('gitLink').style.display = 'none';
+        }
+
+        var commentList = Array();
+
+        //添加评论
+        function addComment(avatar, name, content, date) {
+            commentList.push({
+                'avatar': avatar,
+                'name': name,
+                'content': content,
+                'date': date
+            });
+
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<th>' + (document.getElementById('configCommentList').childElementCount + 1) + '</th><th>' + name + '</th><th>' + content + '</th><th>' + date.toLocaleString() + '</th>';
+            document.getElementById('configCommentList').append(tr);
+        }
+
+        //删除（最后一条）评论
+        function removeComment() {
+            if (commentList.length) {
+                commentList.pop();
+                document.getElementById('configCommentList').removeChild(document.getElementById('configCommentList').childNodes[document.getElementById('configCommentList').childElementCount]);
+            }
+        }
+
+        //替换表情文字和换行符为对应的HTML标签
+        function emoticonReplace(text) {
+            text = text.replace(/\r\n/g, '<br />').replace(/\n/g, '<br />');
+            for (var i = 0; i < emoticon.length; i++) {
+                text = text.replace(new RegExp(emoticon[i].name, 'g'), '<img class="emoticon" src="' + emoticon[i].URL + '" />');
+            }
+            return text;
         }
 
         //设置界面显示
@@ -694,6 +855,9 @@
         document.getElementById('configPostDate').valueAsDate = date;
         document.getElementById('configPostTimeHour').value = date.getHours();
         document.getElementById('configPostTimeMinute').value = date.getMinutes();
+        document.getElementById('configCommentDate').valueAsDate = date;
+        document.getElementById('configCommentTimeHour').value = date.getHours();
+        document.getElementById('configCommentTimeMinute').value = date.getMinutes();
         document.getElementById('configLike').value = Math.floor(20 * Math.random());
 
         //检验数值是否合法
@@ -723,6 +887,20 @@
                 document.getElementById('configScreenshotTimeMinute').value = 59;
             } else if (document.getElementById('configScreenshotTimeMinute').value < 0) {
                 document.getElementById('configScreenshotTimeMinute').value = 0;
+            }
+        })
+        document.getElementById('configCommentTimeHour').addEventListener('input', function () {
+            if (document.getElementById('configCommentTimeHour').value > 23) {
+                document.getElementById('configCommentTimeHour').value = 23;
+            } else if (document.getElementById('configCommentTimeHour').value < 0) {
+                document.getElementById('configCommentTimeHour').value = 0;
+            }
+        })
+        document.getElementById('configCommentTimeMinute').addEventListener('input', function () {
+            if (document.getElementById('configCommentTimeMinute').value > 59) {
+                document.getElementById('configCommentTimeMinute').value = 59;
+            } else if (document.getElementById('configCommentTimeMinute').value < 0) {
+                document.getElementById('configCommentTimeMinute').value = 0;
             }
         })
         document.getElementById('configLike').addEventListener('input', function () {
@@ -788,12 +966,7 @@
             }
 
             //表情替换
-            document.getElementById('text').innerText = document.getElementById('text').innerText.replace(/\r\n/g, '<br />');
-            document.getElementById('text').innerText = document.getElementById('text').innerText.replace(/\n/g, '<br />');
-            for (var i = 0; i < emoticon.length; i++) {
-                document.getElementById('text').innerText = document.getElementById('text').innerText.replace(new RegExp(emoticon[i].name, 'g'), '<img class="emoticon" src="' + emoticon[i].URL + '" />');
-            }
-            document.getElementById('text').innerHTML = document.getElementById('text').innerText;
+            document.getElementById('text').innerHTML = emoticonReplace(document.getElementById('text').innerText);
 
             //九宫格模式设定
             if (document.getElementById('configTypeMultiImage').checked) {
@@ -850,14 +1023,7 @@
             configScreenshotDate.setHours(document.getElementById('configScreenshotTimeHour').value);
             configScreenshotDate.setMinutes(document.getElementById('configScreenshotTimeMinute').value);
 
-            if (document.getElementById('configScreenshotDate').valueAsDate.getTime() == document.getElementById('configPostDate').valueAsDate.getTime()) {
-                document.getElementById('time').innerText = ((configPostDate.getHours() < 10) ? ('0' + configPostDate.getHours()) : configPostDate.getHours()) + ':' + ((configPostDate.getMinutes() < 10) ? ('0' + configPostDate.getMinutes()) : configPostDate.getMinutes());
-            } else if (document.getElementById('configScreenshotDate').valueAsDate.getTime() - document.getElementById('configPostDate').valueAsDate.getTime() == 60 * 60 * 24 * 1000) {
-                document.getElementById('time').innerText = '昨天 ' + ((configPostDate.getHours() < 10) ? ('0' + configPostDate.getHours()) : configPostDate.getHours()) + ':' + ((configPostDate.getMinutes() < 10) ? ('0' + configPostDate.getMinutes()) : configPostDate.getMinutes());
-            } else {
-                document.getElementById('time').innerText = configPostDate.getFullYear() + '年' + (configPostDate.getMonth() + 1) + '月' + configPostDate.getDate() + '日 ' + ((configPostDate.getHours() < 10) ? ('0' + configPostDate.getHours()) : configPostDate.getHours()) + ':' + ((configPostDate.getMinutes() < 10) ? ('0' + configPostDate.getMinutes()) : configPostDate.getMinutes());
-            }
-
+            document.getElementById('time').innerText = getTimeString(configScreenshotDate, configPostDate);
             document.getElementById('topBarTime').innerText = ((document.getElementById('configScreenshotTimeHour').value < 10) ? ('0' + document.getElementById('configScreenshotTimeHour').value) : document.getElementById('configScreenshotTimeHour').value) + ':' + ((document.getElementById('configScreenshotTimeMinute').value < 10) ? ('0' + document.getElementById('configScreenshotTimeMinute').value) : document.getElementById('configScreenshotTimeMinute').value);
 
             if (document.getElementById('configApp') != '') {
@@ -879,6 +1045,26 @@
                 div.setAttribute('style', 'background-image: url(\"' + avatarSource[avatarUsedIndex] + '\");');
                 document.getElementById('likeAvatarList').appendChild(div);
                 avatarSource.splice(avatarUsedIndex, 1)
+            }
+
+            //加入评论区
+            document.getElementById('commentList').innerHTML = '';
+            if (document.getElementById('configShowComment').checked && commentList.length) {
+                document.getElementById('comment').style.display = 'block';
+                for (var i = 0; i < commentList.length; i++) {
+                    document.getElementById('commentList').innerHTML += [
+                        '<div class="commentItem">',
+                        '    <div class="commentAvatar squareImage" style="background-image: url(' + commentList[i].avatar + ');"></div>',
+                        '    <div class="content">',
+                        '        <span class="commentName">' + commentList[i].name + '</span>',
+                        '        <span class="commentTime">' + getTimeString(configScreenshotDate, commentList[i].date) + '</span>',
+                        '        <div class="commentText">' + emoticonReplace(commentList[i].content) + '</div>',
+                        '    </div>',
+                        '</div>'
+                    ].join('');
+                }
+            } else {
+                document.getElementById('comment').style.display = 'none';
             }
 
             //显示用于生成图片的div
