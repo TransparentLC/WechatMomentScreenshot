@@ -714,7 +714,7 @@
             var requestDialog = new mdui.Dialog('#request');
             mdui.prompt('公众号文章链接', function (value) {
                 var xhr = new XMLHttpRequest;
-                xhr.open('GET', 'https://lit-inlet-66876.herokuapp.com/get_article_info.php?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
+                xhr.open('GET', 'https://williamkong.xyz/TransparentLC/get_article_info.php?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4) {
                         var result = JSON.parse(xhr.responseText);
