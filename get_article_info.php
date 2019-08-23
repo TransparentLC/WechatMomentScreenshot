@@ -64,5 +64,5 @@ if (!empty($result['cover'])) {
 }
 
 $result['success'] = !empty($result['title']) && !empty($result['cover']);
-echo json_encode($result);
+echo json_encode($result, JSON_UNESCAPED_UNICODE);
 ?>
