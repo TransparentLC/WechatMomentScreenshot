@@ -6,19 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta http-equiv="Cache-Control" content="no-transform" />
-    <!--<link rel="stylesheet" href="mdui.min.css">-->
-    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/mdui/0.4.2/css/mdui.min.css">-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css" integrity="sha256-6qmBnKuMpat5q87DddBqPCow5gfT/seDX7MMCqcF23g=" crossorigin="anonymous">
     <style>
         body {
             margin: 0 0 0 0;
+            overflow-x: hidden;
         }
 
         #fakeWechatMoment {
-            background-color: #ffffff;
-            /*display: none;*/
-            position: fixed;
+            background-color: #fff;
             display: block;
+            position: fixed;
             left: 100%;
             top: 0;
         }
@@ -29,7 +27,7 @@
             background-color: #303030;
             font-size: 34px;
             font-weight: 500;
-            color: #ffffff;
+            color: #fff;
             display: flex;
             justify-content: space-between;
             align-items: Center;
@@ -42,7 +40,7 @@
             height: 132px;
             background-color: #303030;
             font-size: 48px;
-            color: #ffffff;
+            color: #fff;
             display: flex;
             align-items: Center;
         }
@@ -156,7 +154,7 @@
 
         .like {
             width: 100%;
-            background-color: #eeeeee;
+            background-color: #eee;
             font-size: 0;
         }
 
@@ -238,13 +236,77 @@
             display: inline-block;
         }
 
+        .commentInput {
+            border: none;
+            border-bottom: 2px solid #5ec838;
+            font-size: 40px; color: #bbb;
+            width:760px;
+            height: 88px;
+            padding-left: 24px;
+            padding-right: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .commentSend {
+            border: 2px solid #dcdcdc;
+            border-radius: 7px;
+            font-size: 36px;
+            color: #dcdcdc;
+            width: 122px;
+            height: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .heimu{
-            background-color: #000000;
-            color: #000000;
+            background-color: #000;
+            color: #000;
             transition: color .2s ease;
         }
         .heimu:hover{
-            color: #ffffff;
+            color: #fff;
+        }
+
+        .whiteUI #topBarTime {
+            color: #000;
+        }
+
+        .whiteUI .topBar,
+        .whiteUI .header {
+            background-color: #efefef;
+            color: #181818;
+        }
+
+        .whiteUI #topBarTime {
+            color: #626262;
+        }
+
+        .whiteUI .squareImage {
+            border-radius: 10px;
+        }
+
+        .whiteUI .avatarOut {
+            background-color: transparent;
+        }
+
+        .whiteUI .avatarIn {
+            left: 0;
+            top: 0;
+            width: 116px;
+            height: 116px;
+        }
+
+        .whiteUI .footer {
+            border-top: #bfbfbf;
+            background-color: #f7f7f7;
+        }
+
+        .whiteUI .commentInput {
+            background-color: #fff;
+            border: none;
+            color: #aaa;
         }
     </style>
 </head>
@@ -472,6 +534,18 @@
         </div>
 
         <div class="mdui-textfield">
+            <label class="mdui-textfield-label">界面</label>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-12">
+                <label class="mdui-checkbox">
+                    <input id="configUIWhite" type="checkbox" name="configUIWhite" />
+                    <i class="mdui-checkbox-icon"></i>使用 7.0 以上版本白色界面
+                </label>
+            </div>
+        </div>
+
+        <div class="mdui-textfield">
             <label class="mdui-textfield-label">通知栏</label>
         </div>
         <div class="mdui-row">
@@ -507,7 +581,7 @@
             </div>
             <div id="header" class="header">
                 <div style="width: 40px;"></div>
-                <img src="back.svg" style="width: auto; height: 48px;" />
+                <img style="width: auto; height: 48px;" />
                 <div style="width: 40px;"></div>
                 详情
             </div>
@@ -548,7 +622,7 @@
                         <div style="height: 20px;"></div>
                         <span id="time"></span>&nbsp;<span style="color: #576b95">删除</span>
                     </div>
-                    <img src="comment.svg" style="position: relative; display: inline-block; width: auto; height: 42px; top: 9px;" />
+                    <img style="position: relative; display: inline-block; width: auto; height: 42px; top: 9px;" />
                 </div>
                 <div style="height: 50px;"></div>
                 <img id="triangle" src="triangle.svg" width="40" height="16" style="position: relative; left: 25px; top: 5px;" />
@@ -563,11 +637,11 @@
                 </div>
             </div>
             <div id="footer" class="footer">
-                <div style="border: none; border-bottom: 2px solid #5ec838; font-size: 40px; color: #bbbbbb; width:760px; height: 88px; padding-left: 24px; padding-right: 24px; display: flex; align-items: center;">评论</div>
+                <div class="commentInput">评论</div>
                 <div style="width: 22px; display: inline-block;"></div>
-                <img src="emoticon.svg" width="88" height="88" />
+                <img style="width: 88px !important; height: 88px !important;" />
                 <div style="width: 40px; display: inline-block;"></div>
-                <div style="border: 2px solid #dcdcdc; border-radius: 7px; font-size: 36px; color: #dcdcdc; width: 122px; height: 88px; display: flex; align-items: center; justify-content: center; ">发送</div>
+                <div class="commentSend">发送</div>
             </div>
         </div>
 
@@ -684,7 +758,7 @@
             <div class="mdui-dialog-content mdui-typo">
                 <div style="text-align: center;">
                     <div>
-                        <img style="width: 50%;" src="https://ae01.alicdn.com/kf/HTB1DpS1VMHqK1RjSZFE763GMXXac.png" /><img style="width: 50%;" src="https://ae01.alicdn.com/kf/HTB1.nuUVHvpK1RjSZPi762mwXXat.png" />
+                        <img id="donateWechat" width="50%" src="https://ae01.alicdn.com/kf/HTB1DpS1VMHqK1RjSZFE763GMXXac.png" /><img id="donateAlipay" width="50%" src="https://ae01.alicdn.com/kf/HTB1.nuUVHvpK1RjSZPi762mwXXat.png" />
                     </div>
                     <span class="mdui-typo-caption-opacity">扫一扫(`ε´ )<br />左：微信 右：支付宝</span>
                 </div>
@@ -695,12 +769,8 @@
         </div>
     </div>
 
-    <!--<script src="mdui.min.js"></script>-->
-    <!--<script src="https://cdn.bootcss.com/mdui/0.4.2/js/mdui.min.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
-    <!--<script src="html2canvas.min.js"></script>-->
-    <!--<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js" integrity="sha256-czQNy3ygtVNeyJKT2CrwVzzDBa9VfksAad4F6y2oad4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.min.js" integrity="sha256-feQHyrGaCrKuXRH9q/y7/1+YlHczxI0FybmcWNtjdlI=" crossorigin="anonymous"></script>
     <script src="avatarURL.js"></script>
     <script src="emoticon.js"></script>
     <script>
@@ -741,7 +811,7 @@
                 document.getElementById('requestResultContent').innerHTML = '<div class="mdui-valign"><div class="mdui-spinner"></div><span class="mdui-m-l-2">获取中…… (oﾟωﾟo)</span></div>';
                 mdui.updateSpinners();
                 requestDialog.open();
-            }, function () { });
+            }, null);
         }
 
         //删除所有发表的九宫格图片
@@ -780,7 +850,7 @@
             document.getElementById('gitLink').style.display = 'none';
         }
 
-        var commentList = Array();
+        var commentList = [];
 
         //添加评论
         function addComment(avatar, name, content, date) {
@@ -924,36 +994,29 @@
             }
         });
 
-        document.getElementById('configSetMultiImage1').addEventListener('change', function () {
-            document.getElementById('image1').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
-        });
-
-        document.getElementById('configSetMultiImage2').addEventListener('change', function () {
-            document.getElementById('image2').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
-        });
-        document.getElementById('configSetMultiImage3').addEventListener('change', function () {
-            document.getElementById('image3').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
-        });
-        document.getElementById('configSetMultiImage4').addEventListener('change', function () {
-            document.getElementById('image4').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
-        });
-        document.getElementById('configSetMultiImage5').addEventListener('change', function () {
-            document.getElementById('image5').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
-        });
-        document.getElementById('configSetMultiImage6').addEventListener('change', function () {
-            document.getElementById('image6').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
-        });
-        document.getElementById('configSetMultiImage7').addEventListener('change', function () {
-            document.getElementById('image7').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
-        });
-        document.getElementById('configSetMultiImage8').addEventListener('change', function () {
-            document.getElementById('image8').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
-        });
-        document.getElementById('configSetMultiImage9').addEventListener('change', function () {
-            document.getElementById('image9').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
-        });
+        for (var i = 1; i <= 9; i++) {
+            !function (i) {
+                document.getElementById('configSetMultiImage' + i).addEventListener('change', function () {
+                    document.getElementById('image' + i).style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+                });
+            }(i);
+        }
 
         document.getElementById('generate').addEventListener('click', function () {
+            // 是否使用7.0以上版本白色界面？
+            var useWhiteUI = document.getElementById('configUIWhite').checked;
+            if (useWhiteUI) {
+                document.getElementById('fakeWechatMoment').classList.add('whiteUI');
+                document.querySelector('#header > img').src = 'mdicons/black_icons/back.svg';
+                document.querySelector('.content > img').src = 'mdicons/black_icons/comment.svg';
+                document.querySelector('#footer > img').src = 'mdicons/black_icons/emoticon.svg';
+            } else {
+                document.getElementById('fakeWechatMoment').classList.remove('whiteUI');
+                document.querySelector('#header > img').src = 'mdicons/white_icons/back.svg';
+                document.querySelector('.content > img').src = 'mdicons/white_icons/comment.svg';
+                document.querySelector('#footer > img').src = 'mdicons/white_icons/emoticon.svg';
+            }
+
             //设置生成的图片上的各种属性
             document.getElementById('name').innerText = document.getElementById('configName').value;
             document.getElementById('text').innerText = document.getElementById('configText').value;
@@ -996,13 +1059,13 @@
             var iconSignal = [4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 0];
             var iconBattery = [20, 30, 50, 60, 80, 90, 'full'];
             if (document.getElementById('configTopBarStatusIcons').checked) {
-                document.getElementById('topBarIconWifi').src = 'mdicons/ic_signal_wifi_' + iconWifi[Math.floor(Math.random() * iconWifi.length)] + '_bar_48px.svg';
-                document.getElementById('topBarIconSignal').src = 'mdicons/ic_signal_cellular_' + iconWifi[Math.floor(Math.random() * iconSignal.length)] + '_bar_48px.svg';
-                document.getElementById('topBarIconBattery').src = 'mdicons/ic_battery_' + ((Math.random() > 0.75) ? 'charging_' : '') + iconBattery[Math.floor(Math.random() * iconBattery.length)] + '_48px.svg';
+                document.getElementById('topBarIconWifi').src = 'mdicons/' + (useWhiteUI ? 'black_icons' : 'white_icons') + '/ic_signal_wifi_' + iconWifi[Math.floor(Math.random() * iconWifi.length)] + '_bar_48px.svg';
+                document.getElementById('topBarIconSignal').src = 'mdicons/' + (useWhiteUI ? 'black_icons' : 'white_icons') + '/ic_signal_cellular_' + iconWifi[Math.floor(Math.random() * iconSignal.length)] + '_bar_48px.svg';
+                document.getElementById('topBarIconBattery').src = 'mdicons/' + (useWhiteUI ? 'black_icons' : 'white_icons') + '/ic_battery_' + ((Math.random() > 0.75) ? 'charging_' : '') + iconBattery[Math.floor(Math.random() * iconBattery.length)] + '_48px.svg';
             } else {
-                document.getElementById('topBarIconWifi').src = 'mdicons/ic_signal_wifi_4_bar_48px.svg';
-                document.getElementById('topBarIconSignal').src = 'mdicons/ic_signal_cellular_4_bar_48px.svg';
-                document.getElementById('topBarIconBattery').src = 'mdicons/ic_battery_full_48px.svg';
+                document.getElementById('topBarIconWifi').src = 'mdicons/' + (useWhiteUI ? 'black_icons' : 'white_icons') + '/ic_signal_wifi_4_bar_48px.svg';
+                document.getElementById('topBarIconSignal').src = 'mdicons/' + (useWhiteUI ? 'black_icons' : 'white_icons') + '/ic_signal_cellular_4_bar_48px.svg';
+                document.getElementById('topBarIconBattery').src = 'mdicons/' + (useWhiteUI ? 'black_icons' : 'white_icons') + '/ic_battery_full_48px.svg';
             }
             var iconApp = [['qq', .5], ['wechat', .5], ['cloudmusic', .25], ['coolapk', .15], ['tieba', .15], ['acfun', .15]];
             iconApp.sort(function () { return (Math.random() > .5) ? 1 : -1 });
@@ -1010,7 +1073,7 @@
             if (document.getElementById('configTopBarAppIcons').checked) {
                 for (var i = 0; i < iconApp.length; i++) {
                     if (Math.random() < iconApp[i][1]) {
-                        document.getElementById('topBarAppIcons').innerHTML += '<img class="topBarIcon" src="mdicons/app_' + iconApp[i][0] +'.svg">';
+                        document.getElementById('topBarAppIcons').innerHTML += '<img class="topBarIcon" src="mdicons/' + (useWhiteUI ? 'black_icons' : 'white_icons') + '/app_' + iconApp[i][0] +'.svg">';
                     }
                 }
             }
@@ -1052,16 +1115,15 @@
             if (document.getElementById('configShowComment').checked && commentList.length) {
                 document.getElementById('comment').style.display = 'block';
                 for (var i = 0; i < commentList.length; i++) {
-                    document.getElementById('commentList').innerHTML += [
-                        '<div class="commentItem">',
-                        '    <div class="commentAvatar squareImage" style="background-image: url(' + commentList[i].avatar + ');"></div>',
-                        '    <div class="content">',
-                        '        <span class="commentName">' + commentList[i].name + '</span>',
-                        '        <span class="commentTime">' + getTimeString(configScreenshotDate, commentList[i].date) + '</span>',
-                        '        <div class="commentText">' + emoticonReplace(commentList[i].content) + '</div>',
-                        '    </div>',
-                        '</div>'
-                    ].join('');
+                    document.getElementById('commentList').innerHTML += ''
+                      + '<div class="commentItem">'
+                      +     '<div class="commentAvatar squareImage" style="background-image: url(' + commentList[i].avatar + ');"></div>'
+                      +     '<div class="content">'
+                      +         '<span class="commentName">' + commentList[i].name + '</span>'
+                      +         '<span class="commentTime">' + getTimeString(configScreenshotDate, commentList[i].date) + '</span>'
+                      +         '<div class="commentText">' + emoticonReplace(commentList[i].content) + '</div>'
+                      +     '</div>'
+                      + '</div>';
                 }
             } else {
                 document.getElementById('comment').style.display = 'none';
@@ -1091,18 +1153,17 @@
             document.getElementById('generate').setAttribute('disabled', '');
             document.getElementById('generate').innerText = '生成中...';
 
-            var option = {
+            html2canvas(document.getElementById('fakeWechatMoment'), {
                 useCORS: true,
-                scale: 1
-            }
-            html2canvas(document.getElementById('fakeWechatMoment'), option).then(function (canvas) {
+                scale: 1,
+            }).then(function (canvas) {
                 var dURL = canvas.toDataURL();
                 document.getElementById('generated').src = dURL;
                 document.getElementById('save').setAttribute('href', dURL);
                 document.getElementById('save').setAttribute('download', (new Date()).getTime() + '.png');
                 (new mdui.Dialog(document.getElementById('generatedPopup'))).open();
 
-                //document.getElementById('fakeWechatMoment').style.display = 'none';
+                // document.getElementById('fakeWechatMoment').style.display = 'none';
                 document.getElementById('generate').removeAttribute('disabled');
                 document.getElementById('generate').innerText = '生成'
             });
