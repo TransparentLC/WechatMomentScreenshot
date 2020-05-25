@@ -5,7 +5,7 @@
 //允许跨域
 header('Access-Control-Allow-Origin: *');
 
-if (empty($_GET['url'])) {
+if (empty($_GET['url']) || strpos($_GET['url'], 'mp.weixin.qq.com') === false) {
     $result['title'] = '';
     $result['cover'] = '';
 } else {
@@ -20,10 +20,10 @@ if (empty($_GET['url'])) {
     ]);
     $response = curl_exec($ch);
 
-    preg_match('/var msg_title = "[\S\s]*?";/', $response, $matches);
-    $result['title'] = empty($matches[0]) ? '' : str_replace(array('var msg_title = "', '";'), '', $matches[0]);
+    preg_match('/var msg_title = \'[\S\s]*?\'.html\\(false\\);/', $response, $matches);
+    $result['title'] = empty($matches[0]) ? '' : htmlspecialchars_decode(str_replace(['var msg_title = \'', '\'.html(false);'], '', $matches[0]));
     preg_match('/var msg_cdn_url = "[\S\s]*?";/', $response, $matches);
-    $result['cover'] = empty($matches[0]) ? '' : str_replace(array('var msg_cdn_url = "', '";'), '', $matches[0]);
+    $result['cover'] = empty($matches[0]) ? '' : str_replace(['var msg_cdn_url = "', '";'], '', $matches[0]);
     curl_close($ch);
 };
 
@@ -38,7 +38,7 @@ if (!empty($result['cover'])) {
         CURLOPT_SSL_VERIFYHOST => false,
         CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko',
     ]);
-    $filename = md5(mt_rand()) . '.jpg';
+    $filename = bin2hex(random_bytes(16)) . '.jpg';
     file_put_contents($filename, curl_exec($ch));
     curl_close($ch);
 
