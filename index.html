@@ -772,14 +772,23 @@
     <script src="avatarURL.js"></script>
     <script src="emoticon.js"></script>
     <script>
-        //mdui.alert('<span class="mdui-typo">本工具已获得微信官方“绿色网站”认证（滑稽），请不要尝试在微信中使用本工具。<br /><br />作者坚决反对破坏自由（而不是所谓“绿色”）上网环境的<a href="https://www.zhihu.com/question/318459753/answer/641027942" target="_blank">作恶行为</a>。<br /><br />请支持 996.icu 项目：</span><a href="https://996.icu" target="_blank"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>');
+        mdui.confirm(
+            '本工具生成的截图，仅可用于<strong>应付各类强制要求转发朋友圈的情形</strong>，请勿用于其他用途。<br><br>如果对此有异议，你可以不使用本工具并立即离开当前页面。',
+            null,
+            null,
+            function () { location.href = 'about:blank' },
+            {
+                modal: true,
+                closeOnEsc: false,
+            }
+        );
 
         //输入微信文章的链接，通过后端自动获取文章标题和文章封面
         function getArticleInfo() {
             var requestDialog = new mdui.Dialog('#request');
             mdui.prompt('公众号文章链接', function (value) {
                 var xhr = new XMLHttpRequest;
-                xhr.open('GET', 'https://i.akarin.dev/misc/get_article_info.php?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
+                xhr.open('GET', 'https://wmsproxy.transparentlc.workers.dev/?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         var result = JSON.parse(xhr.responseText);
