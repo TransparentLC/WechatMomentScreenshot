@@ -38,7 +38,9 @@
 
 由于自己的服务器用了 Cloudflare 的免费 CDN，然而最近分配到的 IPv4 地址被墙了，所以后端（在墙内）不能用了……
 
-于是试着用 Cloudflare Worker 写了个简单的代理（参见文件 `cfworker_proxy.js`）解决之(〃′▽`)
+于是试着用 Cloudflare Worker 写了个~~简单的代理~~（参见文件 `cfworker_proxy.js`）解决之(〃′▽`)~~
+
+直接使用 [Images.weserv.nl](https://images.weserv.nl/) 的服务中转图片，就不需要部署后端了！
 
 #### 2019.12.5
 

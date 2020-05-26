@@ -7,26 +7,57 @@ addEventListener('fetch', event => {
  * @param {Request} request
  */
 async function handleRequest(request) {
-    let responseConfig = {
+    const result = {
+        success: false,
+        title: '',
+        cover: '',
+    };
+    const responseConfig = {
         status: 200,
         headers: {
             'Access-Control-Allow-Origin': 'https://akarin.dev',
             'Content-Type': 'application/json',
         },
     }
-    let articleURL = new URL(request.url).searchParams.get('url');
+    const articleURL = new URL(request.url).searchParams.get('url');
 
-    if (!articleURL || !articleURL.startsWith('https://mp.weixin.qq.com')) {
-        return new Response('{"success":false}', responseConfig);
+    try {
+        if (!articleURL || !articleURL.startsWith('https://mp.weixin.qq.com')) throw new Error('Invalid URL');
+
+        const articleContent = await (
+            await fetch(articleURL)
+        ).text();
+
+        const match = articleContent.match(
+            /var msg_title = \'(?<title>[\S\s]*?)\'.html\(false\);[\S\s]*?var msg_cdn_url = "(?<cover>[\S\s]*?)";/
+        );
+        if (!match) throw new Error('Unable to match content');
+
+        result.title = match.groups.title;
+        for (const [k, v] of Object.entries({
+            '&#96;': '`',
+            '&#39;': '\'',
+            '&quot;': '"',
+            '&nbsp;': ' ',
+            '&gt;': '>',
+            '&lt;': '<',
+            '&yen;': '¥',
+        })) result.title = result.title.replace(new RegExp(k, 'g'), v);
+
+        result.cover = new URL('https://images.weserv.nl');
+        for (const [k, v] of Object.entries({
+            url: match.groups.cover,
+            il: '',
+            we: '',
+            h: 360,
+            q: 70,
+        })) result.cover.searchParams.set(k, v);
+        result.cover = result.cover.toString();
+
+        result.success = true;
+    } catch (error) {
+        console.log(error);
     }
-
-    let requestURL = new URL('https://i.akarin.dev/misc/get_article_info.php');
-    requestURL.searchParams.set('url', articleURL);
-
-    return new Response(
-        await (
-            await fetch(requestURL.toString())
-        ).text(), 
-        responseConfig
-    );
+    
+    return new Response(JSON.stringify(result), responseConfig);
 }
