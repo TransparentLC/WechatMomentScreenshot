@@ -4,6 +4,7 @@
     <title>朋友圈转发截图生成工具</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="author" content="TransparentLC" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta http-equiv="Cache-Control" content="no-transform" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css" integrity="sha256-6qmBnKuMpat5q87DddBqPCow5gfT/seDX7MMCqcF23g=" crossorigin="anonymous">
@@ -324,7 +325,6 @@
 	                c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7
 	                c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5
 	                c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z" />
-
                 </svg>
             </a>
         </div>
@@ -772,9 +772,16 @@
     <script src="avatarURL.js"></script>
     <script src="emoticon.js"></script>
     <script>
-        mdui.confirm(
-            '本工具生成的截图，仅可用于<strong>应付各类强制要求转发朋友圈的情形</strong>，请勿用于其他用途。<br><br>如果对此有异议，你可以不使用本工具并立即离开当前页面。',
-            null,
+        mdui.confirm(''
+              + '<div class="mdui-typo">'
+              +     '<p>'
+              +         '使用本工具不需要强制关注任何公众号或转发任何内容到朋友圈。如果你发现有公众号存在类似<strong>“关注○○，发送○○，转发○○到朋友圈领取○○”</strong>的行为，请对此类<strong>诱导行为</strong>进行<strong>投诉</strong>。'
+              +         '<a href="https://mp.weixin.qq.com/cgi-bin/readtemplate?t=business/faq_operation_tmpl#3dot3_3" target="_blank">什么是诱导行为？</a>'
+              +     '</p>'
+              +     '<p>本工具生成的截图，仅可用于<strong>应付各类强制要求转发朋友圈的情形</strong>，请勿用于其他用途。</p>'
+              +     '<p>当你生成截图时，你应该确定由此产生的结果是你自己可以接受的，在此之前你可以不使用本工具并离开当前页面。</p>'
+              + '</div>',
+            '在开始使用之前……',
             null,
             function () { location.href = 'about:blank' },
             {
