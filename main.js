@@ -35,9 +35,9 @@ if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScri
 if (!window.Promise) loadScript('https://cdn.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js');
 
 var avatarURL = [];
-xhrGet('avatarURL.json', function (result) { avatarURL = JSON.parse(result) });
+xhrGet('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/avatarURL.json', function (result) { avatarURL = JSON.parse(result) });
 var emoticon = [];
-xhrGet('emoticon.json', function (result) { emoticon = JSON.parse(result) });
+xhrGet('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/emoticon.json', function (result) { emoticon = JSON.parse(result) });
 
 //输入微信文章的链接，通过后端自动获取文章标题和文章封面
 function getArticleInfo() {
