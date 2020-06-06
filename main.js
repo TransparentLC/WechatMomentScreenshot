@@ -30,7 +30,7 @@ mdui.confirm(''
     }
 );
 
-if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScript('fuckWechat.js');
+if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScript('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/fuckWechat.min.js');
 
 if (!window.Promise) loadScript('https://cdn.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js');
 

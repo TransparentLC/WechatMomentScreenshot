@@ -1,0 +1,300 @@
+body {
+    margin: 0 0 0 0;
+    overflow-x: hidden;
+}
+
+#fakeWechatMoment {
+    background-color: #fff;
+    display: block;
+    position: fixed;
+    left: 100%;
+    top: 0;
+}
+
+.topBar {
+    width: calc(100% - 32px);
+    height: 72px;
+    background-color: #303030;
+    font-size: 34px;
+    font-weight: 500;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: Center;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.header {
+    width: 100%;
+    height: 132px;
+    background-color: #303030;
+    font-size: 48px;
+    color: #fff;
+    display: flex;
+    align-items: Center;
+}
+
+.main {
+    margin-left: 33px;
+    margin-right: 33px;
+}
+
+.footer {
+    width: calc(100% - 64px);
+    height: 132px;
+    border-top: 2px solid #d8d8d8;
+    position: relative;
+    display: flex;
+    align-items: Center;
+    justify-content: center;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-color: #f5f5f5;
+}
+
+.avatarOut {
+    display: inline-block;
+    background-color: #f1f1f1;
+    width: 116px;
+    height: 116px;
+    vertical-align: top;
+}
+
+.avatarIn {
+    position: relative;
+    left: 6px;
+    top: 6px;
+    width: 104px;
+    height: 104px;
+}
+
+.content {
+    position: relative;
+    display: inline-block;
+    width: calc(100% - 143px);
+    left: 22px;
+    vertical-align: top;
+}
+
+.name {
+    color: #576b95;
+    font-size: 40px;
+}
+
+.text {
+    font-size: 36px;
+    line-height: 1.25em;
+}
+
+.article {
+    background-color: #ececec;
+    margin-top: 36px;
+    height: 170px;
+    display: flex;
+    align-items: Center;
+}
+
+.articleIcon {
+    position: relative;
+    left: 16px;
+    width: 138px;
+    height: 138px;
+}
+
+.articleTitle {
+    position: relative;
+    left: 32px;
+    width: calc(100% - 170px);
+    font-size: 36px;
+    max-width: 700px;
+    /* html2canvas不支持文本截断 */
+    /* https://github.com/niklasvh/html2canvas/issues/324 */
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+    overflow: hidden;
+}
+
+.singleImage {
+    margin-top: 28px;
+}
+
+.multiImage {
+    margin-top: 28px;
+}
+
+.image {
+    max-width: 550px;
+    max-height: 550px;
+}
+
+.multiImageBox {
+    width: 265px;
+    height: 265px;
+    margin: 0 8px 8px 0;
+    display: inline-block;
+}
+
+.info {
+    display: inline-block;
+    color: #808080;
+    font-size: 32px;
+    width: calc(100% - 65px);
+}
+
+.like {
+    width: 100%;
+    background-color: #eee;
+    font-size: 0;
+}
+
+.likeAvatarList {
+    position: relative;
+    display: inline-block;
+    width: calc(100% - 92px);
+    left: 60px;
+    vertical-align: top;
+}
+
+.likeAvatar {
+    width: 84px;
+    height: 84px;
+    margin: 17px 17px 0 0;
+    display: inline-block;
+}
+
+#generatedPopup {
+    text-align: center;
+}
+
+#generated {
+    width: auto;
+    height: 400px;
+    display: inline-block;
+}
+
+.squareImage {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.emoticon {
+    width: 1.25em;
+    height: 1.25em;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.topBarIcon {
+    height: 36px;
+    width: auto;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#topBarAppIcons{
+    height: 36px;
+}
+
+.commentItem {
+    padding: 22px 0;
+}
+
+.commentName {
+    color: #576b95;
+    font-size: 34px;
+}
+
+.commentTime {
+    color: #808080;
+    font-size: 34px;
+    float: right;
+    margin-right: 25px;
+}
+
+.commentText {
+    font-size: 39px;
+    line-height: 1.25em;
+    color: #454545;
+    margin-top: 15px;
+}
+
+.commentAvatar {
+    width: 88px;
+    height: 88px;
+    display: inline-block;
+}
+
+.commentInput {
+    border: none;
+    border-bottom: 2px solid #5ec838;
+    font-size: 40px; color: #bbb;
+    width:760px;
+    height: 88px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.commentSend {
+    border: 2px solid #dcdcdc;
+    border-radius: 7px;
+    font-size: 36px;
+    color: #dcdcdc;
+    width: 122px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heimu{
+    background-color: #000;
+    color: #000;
+    transition: color .2s ease;
+}
+.heimu:hover{
+    color: #fff;
+}
+
+.whiteUI #topBarTime {
+    color: #000;
+}
+
+.whiteUI .topBar,
+.whiteUI .header {
+    background-color: #efefef;
+    color: #181818;
+}
+
+.whiteUI #topBarTime {
+    color: #626262;
+}
+
+.whiteUI .squareImage {
+    border-radius: 10px;
+}
+
+.whiteUI .avatarOut {
+    background-color: transparent;
+}
+
+.whiteUI .avatarIn {
+    left: 0;
+    top: 0;
+    width: 116px;
+    height: 116px;
+}
+
+.whiteUI .footer {
+    border-top: #bfbfbf;
+    background-color: #f7f7f7;
+}
+
+.whiteUI .commentInput {
+    background-color: #fff;
+    border: none;
+    color: #aaa;
+}

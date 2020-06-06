@@ -1,0 +1,473 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>朋友圈转发截图生成工具</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="author" content="TransparentLC">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui/dist/css/mdui.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/style.min.css">
+</head>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-appbar-with-toolbar">
+    <header class="mdui-appbar mdui-appbar-fixed">
+        <div class="mdui-toolbar mdui-color-theme">
+            <span class="mdui-typo-title">朋友圈转发截图生成工具</span>
+            <div class="mdui-toolbar-spacer"></div>
+            <a class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#about'}" mdui-tooltip="{content: '关于'}"><i class="mdui-icon material-icons">info_outline</i></a>
+            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '查看 GitHub'}">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon" style="width: 24px;height:24px;">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#ffffff" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5
+	                c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1
+	                c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4
+	                c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7
+	                c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5
+	                c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z" />
+                </svg>
+            </a>
+        </div>
+    </header>
+    <div class="mdui-container">
+        <div class="mdui-row">
+            <div class="mdui-col-xs-8 mdui-col-sm-10">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">用户名</label>
+                    <input id="configName" class="mdui-textfield-input" type="text" value="A 营销号免费广告姬" />
+                </div>
+            </div>
+            <div class="mdui-col-xs-4 mdui-col-sm-2">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">&nbsp;</label>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configAvatar').click();">上传头像</button>
+                    <input id="configAvatar" type="file" style="display: none;" />
+                </div>
+            </div>
+        </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">正文</label>
+            <textarea id="configText" class="mdui-textfield-input">很实用的教程[微笑]&#10;需要收集五个赞&nbsp;谢谢大家啦～(　^ω^)</textarea>
+        </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">截图类型</label>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-6">
+                <label class="mdui-radio">
+                    <input id="configTypeText" type="radio" name="group" checked />
+                    <i class="mdui-radio-icon"></i>纯文字
+                </label>
+            </div>
+            <div class="mdui-col-xs-6">
+                <label class="mdui-radio">
+                    <input id="configTypeWebsite" type="radio" name="group" />
+                    <i class="mdui-radio-icon"></i>分享网页/公众号文章
+                </label>
+            </div>
+            <div class="mdui-col-xs-6">
+                <label class="mdui-radio">
+                    <input id="configTypeSingleImage" type="radio" name="group" />
+                    <i class="mdui-radio-icon"></i>图片（单张）
+                </label>
+            </div>
+            <div class="mdui-col-xs-6">
+                <label class="mdui-radio">
+                    <input id="configTypeMultiImage" type="radio" name="group" />
+                    <i class="mdui-radio-icon"></i>图片（九宫格）
+                </label>
+            </div>
+        </div>
+
+        <div id="configWebsite" style="display: none;">
+            <div class="mdui-textfield">
+                <label class="mdui-textfield-label">网页标题</label>
+                <input id="configArticleTitle" class="mdui-textfield-input" type="text" value="还不会用Google的你，就要被时代淘汰了" />
+            </div>
+            <div class="mdui-row">
+                <div class="mdui-col-xs-6">
+                    <button class="mdui-btn mdui-ripplet mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configArticleIcon').click();">上传网页图标</button>
+                    <input id="configArticleIcon" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-6">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: getArticleInfo();">自动获取公众号文章标题/封面图</button>
+                </div>
+            </div>
+            <div class="mdui-textfield">
+                <label class="mdui-textfield-label">转发出处</label>
+                <input id="configApp" class="mdui-textfield-input" type="text" value="" />
+            </div>
+        </div>
+
+        <div id="configSingleImage" style="display: none;">
+            <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetSingleImage').click();">上传图片</button>
+            <input id="configSetSingleImage" type="file" style="display: none;" />
+        </div>
+
+        <div id="configMultiImage" style="display: none;">
+            <div class="mdui-m-y-1">请按图片 1 - 9 的顺序添加图片～<br>如果只需要显示一张图片，建议选择“图片（单张）”。</div>
+            <div class="mdui-row">
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage1').click();">上传图片 1</button>
+                    <input id="configSetMultiImage1" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage2').click();">上传图片 2</button>
+                    <input id="configSetMultiImage2" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage3').click();">上传图片 3</button>
+                    <input id="configSetMultiImage3" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage4').click();">上传图片 4</button>
+                    <input id="configSetMultiImage4" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage5').click();">上传图片 5</button>
+                    <input id="configSetMultiImage5" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage6').click();">上传图片 6</button>
+                    <input id="configSetMultiImage6" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage7').click();">上传图片 7</button>
+                    <input id="configSetMultiImage7" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage8').click();">上传图片 8</button>
+                    <input id="configSetMultiImage8" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-4">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage9').click();">上传图片 9</button>
+                    <input id="configSetMultiImage9" type="file" style="display: none;" />
+                </div>
+                <div class="mdui-col-xs-12">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: clearMultiImage();">清空所有图片</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">定位</label>
+            <input id="configLocation" class="mdui-textfield-input" type="text" value="" />
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-textfield mdui-col-xs-6">
+                <label class="mdui-textfield-label">发表日期</label>
+                <input id="configPostDate" class="mdui-textfield-input" type="date" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-3">
+                <label class="mdui-textfield-label">发表时间</label>
+                <input id="configPostTimeHour" class="mdui-textfield-input" type="number" min="0" max="23" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-3">
+                <label class="mdui-textfield-label">&nbsp;</label>
+                <input id="configPostTimeMinute" class="mdui-textfield-input" type="number" min="0" max="59" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-6">
+                <label class="mdui-textfield-label">截图日期</label>
+                <input id="configScreenshotDate" class="mdui-textfield-input" type="date" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-3">
+                <label class="mdui-textfield-label">截图时间</label>
+                <input id="configScreenshotTimeHour" class="mdui-textfield-input" type="number" min="0" max="23" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-3">
+                <label class="mdui-textfield-label">&nbsp;</label>
+                <input id="configScreenshotTimeMinute" class="mdui-textfield-input" type="number" min="0" max="59" />
+            </div>
+            <div class="mdui-textfield mdui-col-xs-4 mdui-col-sm-6">
+                <label class="mdui-textfield-label">点赞数</label>
+                <input id="configLike" class="mdui-textfield-input" type="number" min="0" />
+            </div>
+            <div class="mdui-col-xs-4 mdui-col-sm-3">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">图片长度</label>
+                    <input id="configHeight" class="mdui-textfield-input" type="number" value="1920" min="1920" />
+                </div>
+            </div>
+            <div class="mdui-col-xs-4 mdui-col-sm-3">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">&nbsp;</label>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-tooltip="{content: '图片宽度默认为 1080 像素，长度根据设备长宽比确定计算，可能和实际存在偏差'}" onclick="javascript: document.getElementById('configHeight').value = Math.round(document.body.clientHeight / document.body.clientWidth * 1080);">自动设定</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">评论区</label>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-12">
+                <label class="mdui-checkbox">
+                    <input id="configShowComment" type="checkbox" name="configShowComment" onclick="document.getElementById('configCommentPreview').classList.toggle('mdui-hidden');" />
+                    <i class="mdui-checkbox-icon"></i>
+                    显示评论区
+                </label>
+            </div>
+            <div id="configCommentPreview" class="mdui-col-xs-12 mdui-hidden">
+                <div class="mdui-table-fluid mdui-m-y-2">
+                    <table class="mdui-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>用户名</th>
+                                <th>评论内容</th>
+                                <th>时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="configCommentList">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mdui-row">
+                    <div class="mdui-col-xs-6">
+                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-dialog="{target: '#addComment'}">添加评论</button>
+                    </div>
+                    <div class="mdui-col-xs-6">
+                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="removeComment();">删除评论</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">界面</label>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-12">
+                <label class="mdui-checkbox">
+                    <input id="configUIWhite" type="checkbox" name="configUIWhite" />
+                    <i class="mdui-checkbox-icon"></i>使用 7.0 以上版本白色界面
+                </label>
+            </div>
+        </div>
+
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">通知栏</label>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-6">
+                <label class="mdui-checkbox">
+                    <input id="configTopBarAppIcons" type="checkbox" name="configTopBarAppIcons" />
+                    <i class="mdui-checkbox-icon"></i>
+                    显示 APP 图标
+                </label>
+            </div>
+            <div class="mdui-col-xs-6">
+                <label class="mdui-checkbox">
+                    <input id="configTopBarStatusIcons" type="checkbox" name="configTopBarStatusIcons" checked />
+                    <i class="mdui-checkbox-icon"></i>
+                    随机信号和电量
+                </label>
+            </div>
+        </div>
+
+        <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target: '#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="copyGitLink()">复制本工具的链接，分享给有需要的人(`ヮ´ )</button>
+        <div id="gitLink" style="display: none;">https://git.io/WMS</div>
+
+        <div id="fakeWechatMoment">
+            <div id="topBar" class="topBar">
+                <div id="topBarAppIcons"></div>
+                <div style="flex-grow: 1;"></div>
+                <img id="topBarIconWifi" class="topBarIcon" />
+                <img id="topBarIconSignal" class="topBarIcon" />
+                <img id="topBarIconBattery" class="topBarIcon" />
+                <span id="topBarTime"></span>
+            </div>
+            <div id="header" class="header">
+                <div style="width: 40px;"></div>
+                <img style="width: auto; height: 48px;" />
+                <div style="width: 40px;"></div>
+                详情
+            </div>
+            <div id="main" class="main">
+                <div style="height: 30px;"></div>
+                <div class="avatarOut">
+                    <div id="avatar" class="avatarIn squareImage" style="background-image: url(https://ae01.alicdn.com/kf/HTB1yE4fMmzqK1RjSZFp761kSXXal.png);"></div>
+                </div>
+                <div class="content">
+                    <div id="name" class="name"></div>
+                    <div style="height: 11px;"></div>
+                    <div id="text" class="text"></div>
+
+                    <div id="article" class="article" style="display: none;">
+                        <div id="articleIcon" class="articleIcon squareImage" style="background-image: url(https://ae01.alicdn.com/kf/HTB1ci0Da5zxK1RjSspjq6AS.pXaD.jpg);"></div>
+                        <div id="articleTitle" class="articleTitle"></div>
+                    </div>
+
+                    <div id="singleImage" class="singleImage" style="display: none;">
+                        <img id="image" class="image" src="https://ae01.alicdn.com/kf/HTB13rXuJCzqK1RjSZPxq6A4tVXae.jpg" />
+                    </div>
+
+                    <div id="multiImage" class="multiImage" style="display: none;">
+                        <div id="image1" class="multiImageBox squareImage"></div>
+                        <div id="image2" class="multiImageBox squareImage"></div>
+                        <div id="image3" class="multiImageBox squareImage"></div>
+                        <div id="image4" class="multiImageBox squareImage"></div>
+                        <div id="image5" class="multiImageBox squareImage"></div>
+                        <div id="image6" class="multiImageBox squareImage"></div>
+                        <div id="image7" class="multiImageBox squareImage"></div>
+                        <div id="image8" class="multiImageBox squareImage"></div>
+                        <div id="image9" class="multiImageBox squareImage"></div>
+                    </div>
+
+                    <div style="height: 20px;"></div>
+                    <div class="info">
+                        <span id="location" style="color: #576b95;"></span>
+                        <div style="height: 20px;"></div>
+                        <span id="time"></span>&nbsp;<span style="color: #576b95">删除</span>
+                    </div>
+                    <img style="position: relative; display: inline-block; width: auto; height: 42px; top: 9px;" />
+                </div>
+                <div style="height: 50px;"></div>
+                <img id="triangle" src="triangle.svg" width="40" height="16" style="position: relative; left: 25px; top: 5px;" />
+                <div id="like" class="like">
+                    <img src="like.svg" width="32" height="32" style="position: relative; left: 30px; top: 43px; display: inline-block; vertical-align: top;" />
+                    <div id="likeAvatarList" class="likeAvatarList"></div>
+                    <div style="height: 17px;"></div>
+                </div>
+                <div id="comment" class="like" style="margin-top: 1px;">
+                    <img src="commentlist.svg" width="32" height="32" style="position: relative; left: 30px; top: 45px; display: inline-block; vertical-align: top;" />
+                    <div id="commentList" class="likeAvatarList"></div>
+                </div>
+            </div>
+            <div id="footer" class="footer">
+                <div class="commentInput">评论</div>
+                <div style="width: 22px; display: inline-block;"></div>
+                <img style="width: 88px !important; height: 88px !important;" />
+                <div style="width: 40px; display: inline-block;"></div>
+                <div class="commentSend">发送</div>
+            </div>
+        </div>
+
+        <div class="mdui-m-y-2" style="text-align: center; line-height: 1.5em;">
+            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" target="_blank" style="text-decoration: none;"><img src="https://img.shields.io/github/stars/TransparentLC/WechatMomentScreenshot.svg?style=social" />&nbsp;<img src="https://camo.githubusercontent.com/cdd9212da6fa5f588cee15ca9f7e750928031f73/687474703a2f2f686974732e6477796c2e696f2f5472616e73706172656e744c432f5765636861744d6f6d656e7453637265656e73686f742e737667" style="border-radius: 2px;" /></a>
+            <br>
+            <span class="mdui-typo-caption-opacity">©&nbsp;2020&nbsp;✨小透明・宸✨</span>
+        </div>
+
+        <div id="addComment" class="mdui-dialog">
+            <div class="mdui-dialog-title">添加评论</div>
+            <div class="mdui-dialog-content mdui-typo">
+                <div class="mdui-row">
+                    <div class="mdui-col-xs-8 mdui-col-sm-10">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">用户名</label>
+                            <input id="configCommentName" class="mdui-textfield-input" type="text" value="" />
+                        </div>
+                    </div>
+                    <div class="mdui-col-xs-4 mdui-col-sm-2">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">&nbsp;</label>
+                            <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configCommentAvatar').click();">上传头像</button>
+                            <input id="configCommentAvatar" type="file" style="display: none;" />
+                        </div>
+                    </div>
+                    <div class="mdui-col-xs-12">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">评论内容</label>
+                            <textarea id="configCommentText" class="mdui-textfield-input"></textarea>
+                        </div>
+                    </div>
+                    <div class="mdui-textfield mdui-col-xs-6">
+                        <label class="mdui-textfield-label">评论日期</label>
+                        <input id="configCommentDate" class="mdui-textfield-input" type="date" />
+                    </div>
+                    <div class="mdui-textfield mdui-col-xs-3">
+                        <label class="mdui-textfield-label">评论时间</label>
+                        <input id="configCommentTimeHour" class="mdui-textfield-input" type="number" min="0" max="23" />
+                    </div>
+                    <div class="mdui-textfield mdui-col-xs-3">
+                        <label class="mdui-textfield-label">&nbsp;</label>
+                        <input id="configCommentTimeMinute" class="mdui-textfield-input" type="number" min="0" max="59" />
+                    </div>
+                </div>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>CANCEL</button>
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close onclick="if (typeof (document.getElementById('configCommentAvatar').files[0]) == 'undefined') { mdui.alert('还没有设定头像啦⊂彡☆))∀`)'); } else { var configCommentDate = document.getElementById('configCommentDate').valueAsDate; configCommentDate.setHours(document.getElementById('configCommentTimeHour').value); configCommentDate.setMinutes(document.getElementById('configCommentTimeMinute').value); addComment(window.URL.createObjectURL(document.getElementById('configCommentAvatar').files[0]), document.getElementById('configCommentName').value, document.getElementById('configCommentText').value, configCommentDate); }">OK</button>
+            </div>
+        </div>
+
+        <div id="generatedPopup" class="mdui-dialog">
+            <div class="mdui-dialog-title">生成完毕| ω・`)</div>
+            <img id="generated" />
+
+            <div class="mdui-typo-caption-opacity mdui-m-y-2">
+                如果点击“保存”没有反应
+                <br>
+                请尝试长按/右键图片进行另存为操作(　ﾟ 3ﾟ)
+            </div>
+            <div class="mdui-dialog-actions">
+                <a id="save" class="mdui-btn mdui-ripple">保存</a>
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
+            </div>
+        </div>
+
+        <div id="about" class="mdui-dialog">
+            <div class="mdui-dialog-title">关于</div>
+            <div class="mdui-dialog-content mdui-typo">
+                <h4>这个小工具是什么？</h4>
+                一个因为不喜欢也不想往朋友圈发某些不得不发的废文而做出来的摸鱼产物。
+                <h4>为什么生成的截图和我在手机上截的不一样？能不能做出 iOS 的样式？</h4>
+                不同手机的界面总是有那么一点区别的，要和真正的截图完全一样……我也很难办啊！（摊手）
+                <h4>能不能生成纯文字/转发图片的截图？</h4>
+                <del>懒得写样式，心情好的时候再加上～(*´ω`*)</del>
+                <br>
+                已经可以生成啦～
+                <h4>生成图片后点击“保存”没有反应？</h4>
+                也可以试试长按图片手动另存为呢(　ﾟ 3ﾟ)
+                <h4>开源就是好</h4>
+                <ul>
+                    <li>
+                        <a href="https://html2canvas.hertzen.com">html2canvas</a>&nbsp;开源许可：<a href="https://github.com/niklasvh/html2canvas/blob/master/LICENSE">The MIT License</a>
+                    </li>
+                    <li>
+                        <a href="https://www.mdui.org">MDUI</a>&nbsp;开源许可：<a href="https://github.com/zdhxiong/mdui/blob/master/LICENSE">The MIT License</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/google/material-design-icons">Material Design icons</a>&nbsp;开源许可：<a href="https://github.com/google/material-design-icons/blob/master/LICENSE">Apache License 2.0</a>
+                    </li>
+                    <li>
+                        <a href="https://www.iconfont.cn">Iconfont 阿里巴巴矢量图标库</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
+            </div>
+        </div>
+
+        <div id="request" class="mdui-dialog">
+            <div id="requestResult" class="mdui-dialog-title"></div>
+            <div id="requestResultContent" class="mdui-dialog-content mdui-typo"></div>
+            <div class="mdui-dialog-actions">
+                <button id="requestAction" class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
+            </div>
+        </div>
+
+        <div id="donate" class="mdui-dialog">
+            <div class="mdui-dialog-title">请小透明喝一瓶肥宅快乐水～(*´∀`)</div>
+            <div class="mdui-dialog-content mdui-typo">
+                <div style="text-align: center;">
+                    <div>
+                        <img id="donateWechat" width="50%" src="https://ae01.alicdn.com/kf/HTB1DpS1VMHqK1RjSZFE763GMXXac.png"><img id="donateAlipay" width="50%" src="https://ae01.alicdn.com/kf/HTB1.nuUVHvpK1RjSZPi762mwXXat.png">
+                    </div>
+                    <span class="mdui-typo-caption-opacity">扫一扫(`ε´ )<br>左：微信 右：支付宝</span>
+                </div>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mdui/dist/js/mdui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script>
+</body>
+</html>
