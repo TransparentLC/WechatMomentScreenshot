@@ -1,7 +1,4 @@
-// 禁止使用微信内置浏览器打开网页
-// 小透明・宸 2019.1.15
-
-if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) {
+(function (document) {
     var div = document.createElement('div');
     div.setAttribute('id', 'fuckWechat');
     document.querySelector('.mdui-appbar').style.filter = 'blur(2px)';
@@ -10,20 +7,12 @@ if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) {
     div.innerHTML = ''
       + '<div>'
       +     '<h1>(　^ω^)</h1>'
-      +     '<p><a href="https://www.zhihu.com/question/271184234" style="color:#175199">“为什么一些人只使用 QQ 而不使用微信？”</a></p>'
-      +     '<p>因为微信是个：</p>'
-      +     '<ul>'
-      +         '<li>电脑版功能不全还只能扫码登录</li>'
-      +         '<li>做不出夜间模式</li>'
-      +         '<li>群聊不能禁言</li>'
-      +         '<li>把人拉进群聊不需要本人同意</li>'
-      +         '<li>无法一键清除小红点</li>'
-      +         '<li>公众号文章插个外部链接都不行</li>'
-      +     '</ul>'
-      +     '<p>……的辣鸡软件 : )</p>'
-      +     '<p><button style="width: 100%; background-color: #175199; color: #fff; border: none; border-radius: 4px; height: 2em;" onclick="document.body.removeChild(document.getElementById(\'fuckWechat\'));document.querySelector(\'.mdui-appbar\').style.filter=\'\';document.querySelector(\'.mdui-container\').style.filter=\'\';">继续</button></p>'
-      +     '<p style="text-align: center; color: #bbb; font-size: 14px">使用浏览器打开此页面，即可直接跳过遮罩层</p>'
+      +     '<p>为什么你还在使用这个<a href="https://www.zhihu.com/question/271184234" target="_blank" style="color:#175199">功能残缺</a>的辣鸡社交软件？</p>'
+      +     '<p>一个必须使用手机扫🐴才能登录电脑版客户端的软件有什么使用的必要吗？</p>'
+      +     '<p>隔壁的 QQ 不好用吗？</p>'
+      +     '<p><button style="width:100%;background-color:#175199;color:#fff;border:none;border-radius:4px;height:2em" onclick="document.body.removeChild(document.getElementById(\'fuckWechat\'));document.querySelector(\'.mdui-appbar\').style.filter=\'\';document.querySelector(\'.mdui-container\').style.filter=\'\';">继续</button></p>'
+      +     '<p style="text-align:center;color:#bbb;font-size:14px">你没看错，这个遮罩层就是来 yygq 的<br>在微信以外的环境打开此页面，不会出现此遮罩层</p>'
       + '</div>';
 
     document.body.append(div);
-}
+})(document)
