@@ -17,7 +17,7 @@ mdui.confirm(''
         +         '使用本工具不需要强制关注任何公众号或转发任何内容到朋友圈。如果你发现有公众号存在类似<strong>“关注○○，发送○○，转发○○到朋友圈领取○○”</strong>的行为，请对此类<strong>诱导行为</strong>进行<strong>投诉</strong>。'
         +         '<a href="https://mp.weixin.qq.com/cgi-bin/readtemplate?t=business/faq_operation_tmpl#3dot3_3" target="_blank">什么是诱导行为？</a>'
         +     '</p>'
-        +     '<p>本工具生成的截图，仅可用于<strong>应付各类强制要求转发朋友圈的情形</strong>，请勿用于其他用途。</p>'
+        +     '<p>本工具生成的截图，仅可用于<strong>个人应付各类强制要求转发朋友圈的情形</strong>，请勿<strong>批量生成截图</strong>或将截图用于其他用途。<br><small>“批量生成”显然超出了个人使用的范围吧……</small></p>'
         +     '<p>当你生成截图时，你应该确定由此产生的结果是你自己可以接受的，在此之前你可以不使用本工具并离开当前页面。</p>'
         + '</div>',
     '在开始使用之前……',
