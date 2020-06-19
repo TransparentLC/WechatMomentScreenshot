@@ -39,6 +39,37 @@ xhrGet('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/avatarU
 var emoticon = [];
 xhrGet('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/emoticon.json', function (result) { emoticon = JSON.parse(result) });
 
+// 读取配置
+var configDefault = {
+    name: 'A 营销号免费广告姬',
+    text: '很实用的教程[微笑]\n需要收集五个赞 谢谢大家啦～(　^ω^)',
+    location: '',
+    app: '',
+    height: 1920,
+    uiWhite: false,
+    appIcon: false,
+    statusIcon: true,
+};
+var config;
+var avatarFile;
+try {
+    config = JSON.parse(localStorage.getItem('config')) || {};
+} catch (error) {
+    config = {};
+}
+for (var k in configDefault) {
+    if (config[k] === undefined) config[k] = configDefault[k];
+}
+document.getElementById('configName').value = config.name;
+document.getElementById('configText').value = config.text;
+document.getElementById('configLocation').value = config.location;
+document.getElementById('configApp').value = config.app;
+document.getElementById('configHeight').value = config.height;
+document.getElementById('configUIWhite').checked = config.uiWhite;
+document.getElementById('configTopBarAppIcons').checked = config.appIcon;
+document.getElementById('configTopBarStatusIcons').checked = config.statusIcon;
+document.getElementById('avatar').style.backgroundImage = 'url(' + (localStorage.getItem('avatar') || 'https://ae01.alicdn.com/kf/HTB1yE4fMmzqK1RjSZFp761kSXXal.png') + ')';
+
 //输入微信文章的链接，通过后端自动获取文章标题和文章封面
 function getArticleInfo() {
     var requestDialog = new mdui.Dialog('#request');
@@ -244,23 +275,20 @@ document.getElementById('configLike').addEventListener('input', function () {
 
 //上传图片
 document.getElementById('configAvatar').addEventListener('change', function () {
-    document.getElementById('avatar').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+    avatarFile = this.files[0];
+    document.getElementById('avatar').style.backgroundImage = 'url(\"' + URL.createObjectURL(avatarFile) + '\")';
 });
 document.getElementById('configArticleIcon').addEventListener('change', function () {
-    document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+    document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + URL.createObjectURL(this.files[0]) + '\")';
 });
 document.getElementById('configSetSingleImage').addEventListener('change', function () {
-    var reader = new FileReader;
-    reader.readAsDataURL(this.files[0]);
-    reader.onload = function () {
-        document.getElementById('image').src = this.result;
-    }
+    document.getElementById('image').src = URL.createObjectURL(this.files[0]);
 });
 
 for (var i = 1; i <= 9; i++) {
     !function (i) {
         document.getElementById('configSetMultiImage' + i).addEventListener('change', function () {
-            document.getElementById('image' + i).style.backgroundImage = 'url(\"' + window.URL.createObjectURL(this.files[0]) + '\")';
+            document.getElementById('image' + i).style.backgroundImage = 'url(\"' + URL.createObjectURL(this.files[0]) + '\")';
         });
     }(i);
 }
@@ -423,11 +451,32 @@ document.getElementById('generate').addEventListener('click', function () {
         var dURL = canvas.toDataURL();
         document.getElementById('generated').src = dURL;
         document.getElementById('save').setAttribute('href', dURL);
-        document.getElementById('save').setAttribute('download', (new Date()).getTime() + '.png');
+        document.getElementById('save').setAttribute('download', (+new Date) + '.png');
         (new mdui.Dialog(document.getElementById('generatedPopup'))).open();
 
         // document.getElementById('fakeWechatMoment').style.display = 'none';
         document.getElementById('generate').removeAttribute('disabled');
-        document.getElementById('generate').innerText = '生成'
+        document.getElementById('generate').innerText = '生成';
+
+        // 保存配置
+        var config = {
+            name: document.getElementById('configName').value,
+            text: document.getElementById('configText').value,
+            location: document.getElementById('configLocation').value,
+            app: document.getElementById('configApp').value,
+            height: parseInt(document.getElementById('configHeight').value),
+            uiWhite: document.getElementById('configUIWhite').checked,
+            appIcon: document.getElementById('configTopBarAppIcons').checked,
+            statusIcon: document.getElementById('configTopBarStatusIcons').checked,
+        };
+        localStorage.setItem('config', JSON.stringify(config));
+
+        if (avatarFile) {
+            var reader = new FileReader;
+            reader.readAsDataURL(avatarFile);
+            reader.onload = function () {
+                localStorage.setItem('avatar', this.result);
+            };
+        }
     });
 });

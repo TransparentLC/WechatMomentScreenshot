@@ -3,7 +3,7 @@
     div.setAttribute('id', 'fuckWechat');
     document.querySelector('.mdui-appbar').style.filter = 'blur(2px)';
     document.querySelector('.mdui-container').style.filter = 'blur(2px)';
-    div.style.cssText = 'position:fixed;left:0;top:0;width:100%;height:100%;box-sizing:border-box;padding:18px;font-size:16px;line-height:1.5em;background-color:rgba(255,255,255,.8);z-index:2147483647;display:flex;justify-content:center;align-items:center'
+    div.style.cssText = 'position:fixed;left:0;top:0;width:100%;height:100%;box-sizing:border-box;padding:18px;font-size:16px;line-height:1.5em;background-color:rgba(255,255,255,.9);z-index:2147483647;display:flex;justify-content:center;align-items:center'
     div.innerHTML = ''
       + '<div>'
       +     '<h1>(　^ω^)</h1>'

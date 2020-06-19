@@ -33,20 +33,20 @@
             <div class="mdui-col-xs-8 mdui-col-sm-10">
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">用户名</label>
-                    <input id="configName" class="mdui-textfield-input" type="text" value="A 营销号免费广告姬" />
+                    <input id="configName" class="mdui-textfield-input" type="text" />
                 </div>
             </div>
             <div class="mdui-col-xs-4 mdui-col-sm-2">
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">&nbsp;</label>
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configAvatar').click();">上传头像</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configAvatar').click();">选择头像</button>
                     <input id="configAvatar" type="file" style="display: none;" />
                 </div>
             </div>
         </div>
         <div class="mdui-textfield">
             <label class="mdui-textfield-label">正文</label>
-            <textarea id="configText" class="mdui-textfield-input">很实用的教程[微笑]&#10;需要收集五个赞&nbsp;谢谢大家啦～(　^ω^)</textarea>
+            <textarea id="configText" class="mdui-textfield-input"></textarea>
         </div>
         <div class="mdui-textfield">
             <label class="mdui-textfield-label">截图类型</label>
@@ -257,7 +257,7 @@
             </div>
             <div class="mdui-col-xs-6">
                 <label class="mdui-checkbox">
-                    <input id="configTopBarStatusIcons" type="checkbox" name="configTopBarStatusIcons" checked />
+                    <input id="configTopBarStatusIcons" type="checkbox" name="configTopBarStatusIcons" />
                     <i class="mdui-checkbox-icon"></i>
                     随机信号和电量
                 </label>
@@ -267,6 +267,7 @@
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target: '#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="copyGitLink()">复制本工具的链接，分享给有需要的人(`ヮ´ )</button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="localStorage.removeItem('config');localStorage.removeItem('avatar');mdui.snackbar({message:'已清除～刷新后将使用默认设置'})">清除保存的设置信息</button>
         <div id="gitLink" style="display: none;">https://git.io/WMS</div>
 
         <div id="fakeWechatMoment">
@@ -287,7 +288,7 @@
             <div id="main" class="main">
                 <div style="height: 30px;"></div>
                 <div class="avatarOut">
-                    <div id="avatar" class="avatarIn squareImage" style="background-image: url(https://ae01.alicdn.com/kf/HTB1yE4fMmzqK1RjSZFp761kSXXal.png);"></div>
+                    <div id="avatar" class="avatarIn squareImage"></div>
                 </div>
                 <div class="content">
                     <div id="name" class="name"></div>
@@ -398,9 +399,8 @@
             <img id="generated" />
 
             <div class="mdui-typo-caption-opacity mdui-m-y-2">
-                如果点击“保存”没有反应
-                <br>
-                请尝试长按/右键图片进行另存为操作(　ﾟ 3ﾟ)
+                <p>如果点击“保存”没有反应<br>请尝试长按/右键图片进行另存为操作(　ﾟ 3ﾟ)</p>
+                <p>当前使用的头像与设置已保存到本地<br>下次打开本工具将自动读取～</p>
             </div>
             <div class="mdui-dialog-actions">
                 <a id="save" class="mdui-btn mdui-ripple">保存</a>
@@ -468,6 +468,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/mdui/dist/js/mdui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script> -->
+    <script src="main.js"></script>
 </body>
 </html>
