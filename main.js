@@ -14,11 +14,12 @@ function xhrGet(url, callback) {
 mdui.confirm(''
         + '<div class="mdui-typo">'
         +     '<p>'
-        +         '使用本工具不需要强制关注任何公众号或转发任何内容到朋友圈。如果你发现有公众号存在类似<strong>“关注○○，发送○○，转发○○到朋友圈领取○○”</strong>的行为，请对此类<strong>诱导行为</strong>进行<strong>投诉</strong>。'
+        +         '使用本工具<strong>不需要强制关注任何公众号或转发任何内容到朋友圈</strong>。如果你发现有公众号存在类似<strong>“关注○○，发送○○，转发○○到朋友圈领取○○”</strong>的行为，请对此类<strong>诱导行为</strong>进行<strong>投诉</strong>。'
         +         '<a href="https://mp.weixin.qq.com/cgi-bin/readtemplate?t=business/faq_operation_tmpl#3dot3_3" target="_blank">什么是诱导行为？</a>'
         +     '</p>'
-        +     '<p>本工具生成的截图，仅可用于<strong>个人应付各类强制要求转发朋友圈的情形</strong>，请勿<strong>批量生成截图</strong>或将截图用于其他用途。<br><small>“批量生成”显然超出了个人使用的范围吧……</small></p>'
-        +     '<p>当你生成截图时，你应该确定由此产生的结果是你自己可以接受的，在此之前你可以不使用本工具并离开当前页面。</p>'
+        +     '<p>本工具生成的截图，仅可用于<strong>个人应付各类强制要求转发朋友圈的情形</strong>，请勿<strong>批量生成截图</strong>或将截图用于微商宣传等其他用途。</p>'
+        +     '<p>当你生成截图时，你应该确定你可以接受向他人发送该截图将会带来的后果和影响，否则请不要使用本工具并离开当前页面。</p>'
+        +     '<p>本工具谢绝肖战粉丝使用。<a href="https://w.url.cn/s/AC2atup" target="_blank">#我是普通人,我讨厌肖战#</a></p>'
         + '</div>',
     '在开始使用之前……',
     null,
@@ -454,10 +455,6 @@ document.getElementById('generate').addEventListener('click', function () {
         document.getElementById('save').setAttribute('download', (+new Date) + '.png');
         (new mdui.Dialog(document.getElementById('generatedPopup'))).open();
 
-        // document.getElementById('fakeWechatMoment').style.display = 'none';
-        document.getElementById('generate').removeAttribute('disabled');
-        document.getElementById('generate').innerText = '生成';
-
         // 保存配置
         var config = {
             name: document.getElementById('configName').value,
@@ -478,5 +475,18 @@ document.getElementById('generate').addEventListener('click', function () {
                 localStorage.setItem('avatar', this.result);
             };
         }
+    }).catch(function (error) {
+        mdui.alert(''
+            + '<div class="mdui-typo">'
+            +     '<p>错误信息：</p>'
+            +     '<pre>' + error + '</pre>'
+            +     '<p>你可以通过 <a href="https://github.com/TransparentLC/WechatMomentScreenshot/issues" target="_blank">Issue</a> 向作者反馈 BUG～</p>'
+            + '</div>',
+            '生成失败'
+        );
+    }).finally(function () {
+        // document.getElementById('fakeWechatMoment').style.display = 'none';
+        document.getElementById('generate').removeAttribute('disabled');
+        document.getElementById('generate').innerText = '生成';
     });
 });
