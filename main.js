@@ -22,7 +22,7 @@ mdui.confirm(''
         +     '<p>本工具谢绝肖战粉丝使用。<a href="https://w.url.cn/s/AC2atup" target="_blank">#我是普通人,我讨厌肖战#</a></p>'
         + '</div>',
     '在开始使用之前……',
-    null,
+    function () {},
     function () { location.href = 'about:blank' },
     {
         modal: true,
@@ -106,7 +106,7 @@ function getArticleInfo() {
         document.getElementById('requestResultContent').innerHTML = '<div class="mdui-valign"><div class="mdui-spinner"></div><span class="mdui-m-l-2">获取中…… (oﾟωﾟo)</span></div>';
         mdui.updateSpinners();
         requestDialog.open();
-    }, null);
+    }, function () {});
 }
 
 //删除所有发表的九宫格图片
