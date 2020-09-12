@@ -397,9 +397,9 @@ document.getElementById('generate').addEventListener('click', function () {
         avatarUsedIndex = Math.floor(Math.random() * avatarSource.length);
         var div = document.createElement('div');
         div.setAttribute('class', 'likeAvatar squareImage');
-        div.setAttribute('style', 'background-image: url(\"' + avatarSource[avatarUsedIndex] + '\");');
+        div.setAttribute('style', 'background-image:url(\"' + avatarSource[avatarUsedIndex] + '\")');
         document.getElementById('likeAvatarList').appendChild(div);
-        avatarSource.splice(avatarUsedIndex, 1)
+        avatarSource.splice(avatarUsedIndex, 1);
     }
 
     //加入评论区
