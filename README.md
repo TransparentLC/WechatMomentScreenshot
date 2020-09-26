@@ -10,7 +10,7 @@
 >
 > 不接受定制请求，有功能请求可以添加 Issue，如果建议合理的话我可能就会添加～
 
-> 由于有广告机滥用 GitHub Pages 和 git.io 发广告，所有 git.io 短链接已获得微信的“绿色网站认证”。如果你需要在微信中使用，请使用完整链接 https://transparentlc.github.io/WechatMomentScreenshot 。当然我更建议你抵制或尽量减少使用这类**正在制造“墙中墙”的 APP**。
+> 由于有广告机滥用 GitHub Pages 和 git.io 发广告，所有 git.io 短链接已获得微信的“绿色网站认证”。~~如果你需要在微信中使用，请使用完整链接 https://transparentlc.github.io/WechatMomentScreenshot~~ Yattaze！这个工具也已经荣获微信的“认证”啦！(　\^ω\^) 当然我更建议你抵制或尽量减少使用这类**正在制造“墙中墙”的 APP**。
 >
 > *本工具是开源的，如果有人愿意自己部署镜像站并分享给大家使用，那就太棒了！你可以通过 Issue 提交镜像站地址。*
 
@@ -28,7 +28,7 @@
 
 微信中除 Emoji 之外的其它表情符号实际上是特定的文本，复制后粘贴到别处时就可以看到，在微信中则显示为表情符号。
 
-比如<img src="https://ae01.alicdn.com/kf/HTB1kEKaXe3tHKVjSZSg7604QFXas.png" style="width: 1em;" />这个表情，从简体中文版微信中发送的实际上是`[再见]`，繁体中文是`[再見]`，英文是`[Bye]`。即使不选择表情符号而是手动输入`[再见]`、`[再見]`或`[Bye]`（任选一个输入即可，和微信的语言设置无关），发送后它们都会显示为<img src="https://ae01.alicdn.com/kf/HTB1kEKaXe3tHKVjSZSg7604QFXas.png" style="width: 1em;" />。
+比如<img src="https://ae01.alicdn.com/kf/HTB1kEKaXe3tHKVjSZSg7604QFXas.png" style="width:1em">这个表情，从简体中文版微信中发送的实际上是`[再见]`，繁体中文是`[再見]`，英文是`[Bye]`。即使不选择表情符号而是手动输入`[再见]`、`[再見]`或`[Bye]`（任选一个输入即可，和微信的语言设置无关），发送后它们都会显示为<img src="https://ae01.alicdn.com/kf/HTB1kEKaXe3tHKVjSZSg7604QFXas.png" style="width:1em">。
 
 在这个小工具的“正文”处输入表情符号对应的文本，生成截图时也会被替换成对应的表情符号～
 
@@ -41,6 +41,8 @@
 另外，头像并未按照不同类型出现的频率整理，也就是说某种类型的头像在截图中出现的概率可能会明显偏离实际 ( ﾟ∀。)
 
 ### 更新记录
+
+姿势水平太低，当时的代码写得太乱了，或许应该重写一下，或者……🕊️了！
 
 <details>
 
