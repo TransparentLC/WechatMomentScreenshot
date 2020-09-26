@@ -7,18 +7,20 @@
     <meta name="author" content="TransparentLC">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui/dist/css/mdui.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/mdui@1/dist/css/mdui.min.css,gh/TransparentLC/WechatMomentScreenshot/style.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1/dist/css/mdui.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/style.min.css"> -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-appbar-with-toolbar">
     <header class="mdui-appbar mdui-appbar-fixed">
         <div class="mdui-toolbar mdui-color-theme">
             <span class="mdui-typo-title">朋友圈转发截图生成工具</span>
             <div class="mdui-toolbar-spacer"></div>
-            <a class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#about'}" mdui-tooltip="{content: '关于'}"><i class="mdui-icon material-icons">info_outline</i></a>
-            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '查看 GitHub'}">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon" style="width: 24px;height:24px;">
-                <path fill-rule="evenodd" clip-rule="evenodd" fill="#ffffff" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5
+            <a class="mdui-btn mdui-btn-icon" mdui-dialog="{target:'#about'}" mdui-tooltip="{content:'关于'}"><i class="mdui-icon material-icons">info_outline</i></a>
+            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content:'查看 GitHub'}">
+                <svg viewBox="0 0 36 36" class="mdui-icon" style="width:24px;height:24px;">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#fff" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5
 	                c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1
 	                c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4
 	                c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7
@@ -40,7 +42,7 @@
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">&nbsp;</label>
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configAvatar').click();">选择头像</button>
-                    <input id="configAvatar" type="file" style="display: none;" />
+                    <input id="configAvatar" type="file" style="display:none" />
                 </div>
             </div>
         </div>
@@ -86,7 +88,7 @@
             <div class="mdui-row">
                 <div class="mdui-col-xs-6">
                     <button class="mdui-btn mdui-ripplet mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configArticleIcon').click();">上传网页图标</button>
-                    <input id="configArticleIcon" type="file" style="display: none;" />
+                    <input id="configArticleIcon" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-6">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: getArticleInfo();">自动获取公众号文章标题/封面图</button>
@@ -100,7 +102,7 @@
 
         <div id="configSingleImage" style="display: none;">
             <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetSingleImage').click();">上传图片</button>
-            <input id="configSetSingleImage" type="file" style="display: none;" />
+            <input id="configSetSingleImage" type="file" style="display:none" />
         </div>
 
         <div id="configMultiImage" style="display: none;">
@@ -108,39 +110,39 @@
             <div class="mdui-row">
                 <div class="mdui-col-xs-4">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage1').click();">上传图片 1</button>
-                    <input id="configSetMultiImage1" type="file" style="display: none;" />
+                    <input id="configSetMultiImage1" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage2').click();">上传图片 2</button>
-                    <input id="configSetMultiImage2" type="file" style="display: none;" />
+                    <input id="configSetMultiImage2" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage3').click();">上传图片 3</button>
-                    <input id="configSetMultiImage3" type="file" style="display: none;" />
+                    <input id="configSetMultiImage3" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage4').click();">上传图片 4</button>
-                    <input id="configSetMultiImage4" type="file" style="display: none;" />
+                    <input id="configSetMultiImage4" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage5').click();">上传图片 5</button>
-                    <input id="configSetMultiImage5" type="file" style="display: none;" />
+                    <input id="configSetMultiImage5" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage6').click();">上传图片 6</button>
-                    <input id="configSetMultiImage6" type="file" style="display: none;" />
+                    <input id="configSetMultiImage6" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage7').click();">上传图片 7</button>
-                    <input id="configSetMultiImage7" type="file" style="display: none;" />
+                    <input id="configSetMultiImage7" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage8').click();">上传图片 8</button>
-                    <input id="configSetMultiImage8" type="file" style="display: none;" />
+                    <input id="configSetMultiImage8" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage9').click();">上传图片 9</button>
-                    <input id="configSetMultiImage9" type="file" style="display: none;" />
+                    <input id="configSetMultiImage9" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-12">
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: clearMultiImage();">清空所有图片</button>
@@ -223,10 +225,10 @@
                 </div>
                 <div class="mdui-row">
                     <div class="mdui-col-xs-6">
-                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-dialog="{target: '#addComment'}">添加评论</button>
+                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-dialog="{target:'#addComment'}">添加评论</button>
                     </div>
                     <div class="mdui-col-xs-6">
-                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="removeComment();">删除评论</button>
+                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="removeComment()">删除评论</button>
                     </div>
                 </div>
             </div>
@@ -265,46 +267,46 @@
         </div>
 
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
-        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target: '#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target:'#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="copyGitLink()">复制本工具的链接，分享给有需要的人(`ヮ´ )</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="localStorage.removeItem('config');localStorage.removeItem('avatar');mdui.snackbar({message:'已清除～刷新后将使用默认设置'})">清除保存的设置信息</button>
-        <div id="gitLink" style="display: none;">https://git.io/WMS</div>
+        <div id="gitLink" style="display:none">https://git.io/WMS</div>
 
         <div id="fakeWechatMoment">
             <div id="topBar" class="topBar">
                 <div id="topBarAppIcons"></div>
-                <div style="flex-grow: 1;"></div>
+                <div style="flex-grow:1"></div>
                 <img id="topBarIconWifi" class="topBarIcon" />
                 <img id="topBarIconSignal" class="topBarIcon" />
                 <img id="topBarIconBattery" class="topBarIcon" />
                 <span id="topBarTime"></span>
             </div>
             <div id="header" class="header">
-                <div style="width: 40px;"></div>
-                <img style="width: auto; height: 48px;" />
-                <div style="width: 40px;"></div>
+                <div style="width:40px"></div>
+                <img style="width:auto;height:48px" />
+                <div style="width:40px"></div>
                 详情
             </div>
             <div id="main" class="main">
-                <div style="height: 30px;"></div>
+                <div style="height:30px"></div>
                 <div class="avatarOut">
                     <div id="avatar" class="avatarIn squareImage"></div>
                 </div>
                 <div class="content">
                     <div id="name" class="name"></div>
-                    <div style="height: 11px;"></div>
+                    <div style="height:11px"></div>
                     <div id="text" class="text"></div>
 
-                    <div id="article" class="article" style="display: none;">
-                        <div id="articleIcon" class="articleIcon squareImage" style="background-image: url(https://ae01.alicdn.com/kf/HTB1ci0Da5zxK1RjSspjq6AS.pXaD.jpg);"></div>
+                    <div id="article" class="article" style="display:none">
+                        <div id="articleIcon" class="articleIcon squareImage" style="background-image:url(https://ae01.alicdn.com/kf/HTB1ci0Da5zxK1RjSspjq6AS.pXaD.jpg)"></div>
                         <div id="articleTitle" class="articleTitle"></div>
                     </div>
 
-                    <div id="singleImage" class="singleImage" style="display: none;">
+                    <div id="singleImage" class="singleImage" style="display:none">
                         <img id="image" class="image" src="https://ae01.alicdn.com/kf/HTB13rXuJCzqK1RjSZPxq6A4tVXae.jpg" />
                     </div>
 
-                    <div id="multiImage" class="multiImage" style="display: none;">
+                    <div id="multiImage" class="multiImage" style="display:none">
                         <div id="image1" class="multiImageBox squareImage"></div>
                         <div id="image2" class="multiImageBox squareImage"></div>
                         <div id="image3" class="multiImageBox squareImage"></div>
@@ -316,37 +318,37 @@
                         <div id="image9" class="multiImageBox squareImage"></div>
                     </div>
 
-                    <div style="height: 20px;"></div>
+                    <div style="height:20px"></div>
                     <div class="info">
-                        <span id="location" style="color: #576b95;"></span>
-                        <div style="height: 20px;"></div>
-                        <span id="time"></span>&nbsp;<span style="color: #576b95">删除</span>
+                        <span id="location" style="color:#576b95"></span>
+                        <div style="height:20px"></div>
+                        <span id="time"></span>&nbsp;<span style="color:#576b95">删除</span>
                     </div>
-                    <img style="position: relative; display: inline-block; width: auto; height: 42px; top: 9px;" />
+                    <img style="position:relative;display:inline-block;width:auto;height:42px;top:9px" />
                 </div>
-                <div style="height: 50px;"></div>
+                <div style="height:50px"></div>
                 <img id="triangle" src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/triangle.svg" width="40" height="16" style="position: relative; left: 25px; top: 5px;" />
                 <div id="like" class="like">
                     <img src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/like.svg" width="32" height="32" style="position: relative; left: 30px; top: 43px; display: inline-block; vertical-align: top;" />
                     <div id="likeAvatarList" class="likeAvatarList"></div>
-                    <div style="height: 17px;"></div>
+                    <div style="height:17px"></div>
                 </div>
-                <div id="comment" class="like" style="margin-top: 1px;">
+                <div id="comment" class="like" style="margin-top:1px">
                     <img src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/commentlist.svg" width="32" height="32" style="position: relative; left: 30px; top: 45px; display: inline-block; vertical-align: top;" />
                     <div id="commentList" class="likeAvatarList"></div>
                 </div>
             </div>
             <div id="footer" class="footer">
                 <div class="commentInput">评论</div>
-                <div style="width: 22px; display: inline-block;"></div>
-                <img style="width: 88px !important; height: 88px !important;" />
-                <div style="width: 40px; display: inline-block;"></div>
+                <div style="width:22px;display:inline-block"></div>
+                <img style="width:88px!important;height:88px!important" />
+                <div style="width:40px;display:inline-block"></div>
                 <div class="commentSend">发送</div>
             </div>
         </div>
 
-        <div class="mdui-m-y-2" style="text-align: center; line-height: 1.5em;">
-            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" target="_blank" style="text-decoration: none;"><img src="https://img.shields.io/github/stars/TransparentLC/WechatMomentScreenshot.svg?style=social" />&nbsp;<img src="https://camo.githubusercontent.com/cdd9212da6fa5f588cee15ca9f7e750928031f73/687474703a2f2f686974732e6477796c2e696f2f5472616e73706172656e744c432f5765636861744d6f6d656e7453637265656e73686f742e737667" style="border-radius: 2px;" /></a>
+        <div class="mdui-m-y-2" style="text-align:center;line-height:1.5em">
+            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" target="_blank" style="text-decoration:none"><img src="https://img.shields.io/github/stars/TransparentLC/WechatMomentScreenshot.svg?style=social" />&nbsp;<img src="https://camo.githubusercontent.com/cdd9212da6fa5f588cee15ca9f7e750928031f73/687474703a2f2f686974732e6477796c2e696f2f5472616e73706172656e744c432f5765636861744d6f6d656e7453637265656e73686f742e737667" style="border-radius: 2px;" /></a>
             <br>
             <span class="mdui-typo-caption-opacity">©&nbsp;2020&nbsp;✨小透明・宸✨</span>
         </div>
@@ -466,8 +468,10 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/mdui/dist/js/mdui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/mdui@1/dist/js/mdui.min.js,npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js,gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/mdui@1/dist/js/mdui.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script> -->
+    <!-- <script src="main.js"></script> -->
 </body>
 </html>
