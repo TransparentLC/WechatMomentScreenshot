@@ -157,7 +157,7 @@ function addComment(avatar, name, content, date) {
     });
 
     var tr = document.createElement('tr');
-    tr.innerHTML = '<th>' + (document.getElementById('configCommentList').childElementCount + 1) + '</th><th>' + name + '</th><th>' + content + '</th><th>' + date.toLocaleString() + '</th>';
+    tr.innerHTML = '<th>' + commentList.length + '</th><th>' + name + '</th><th>' + content + '</th><th>' + date.toLocaleString() + '</th>';
     document.getElementById('configCommentList').append(tr);
 }
 
@@ -165,7 +165,7 @@ function addComment(avatar, name, content, date) {
 function removeComment() {
     if (commentList.length) {
         commentList.pop();
-        document.getElementById('configCommentList').removeChild(document.getElementById('configCommentList').childNodes[document.getElementById('configCommentList').childElementCount]);
+        document.getElementById('configCommentList').removeChild(document.getElementById('configCommentList').lastChild);
     }
 }
 
