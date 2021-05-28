@@ -1,5 +1,18 @@
 addEventListener('fetch', event => {
-    event.respondWith(handleRequest(event.request))
+    let response = handleRequest(event.request);
+    const origin = event.request.headers.get('Origin');
+    if ([
+        'http://localhost',
+        'https://akarin.dev',
+        'https://transparentlc.github.io',
+        // Add other mirrors
+    ].includes(origin)) {
+        response = response.then(e => {
+            e.headers.set('Access-Control-Allow-Origin', origin);
+            return e;
+        });
+    }
+    event.respondWith(response);
 });
 
 /**
@@ -15,7 +28,6 @@ async function handleRequest(request) {
     const responseConfig = {
         status: 200,
         headers: {
-            'Access-Control-Allow-Origin': 'https://akarin.dev',
             'Content-Type': 'application/json',
         },
     }
@@ -24,9 +36,7 @@ async function handleRequest(request) {
     try {
         if (!articleURL || !articleURL.startsWith('https://mp.weixin.qq.com')) throw new Error('Invalid URL');
 
-        const articleContent = await (
-            await fetch(articleURL)
-        ).text();
+        const articleContent = await fetch(articleURL).then(res => res.text());
 
         const match = articleContent.match(
             /var msg_title = \'(?<title>[\S\s]*?)\'.html\(false\);[\S\s]*?var msg_cdn_url = "(?<cover>[\S\s]*?)";/
@@ -58,6 +68,6 @@ async function handleRequest(request) {
     } catch (error) {
         console.log(error);
     }
-    
+
     return new Response(JSON.stringify(result), responseConfig);
 }
