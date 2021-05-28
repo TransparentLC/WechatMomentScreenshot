@@ -1,7 +1,5 @@
 # WechatMomentScreenshot
 
-[![HitCount](http://hits.dwyl.io/TransparentLC/WechatMomentScreenshot.svg)](http://hits.dwyl.io/TransparentLC/WechatMomentScreenshot)
-
 朋友圈转发截图生成工具
 
 [去这里使用](https://transparentlc.github.io/WechatMomentScreenshot)
@@ -20,7 +18,11 @@
 >
 > * 由 [@794TD](https://github.com/794TD) 提供：https://wl.shadiaoforever.xyz/
 >
-> 本工具是开源的，如果有人愿意自己部署镜像站并分享给大家使用，那就太棒了！你可以通过 Issue 提交镜像站地址，二次部署时请不要删除原作者相关信息。
+> 本工具是开源的，如果有人愿意自己部署镜像站并分享给大家使用，那就太棒了！你可以通过 Issue 提交镜像站地址，**二次部署时请不要删除原作者相关信息**。
+>
+> 以下网站二次部署时抹去了原作者相关信息，原作者对此表示非常遗憾，在此列出来批判一番：
+>
+> * h**ps://www.41661.com/ 甚至还替换了赞赏的收款码
 
 ---
 
