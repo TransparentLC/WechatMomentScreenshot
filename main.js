@@ -69,6 +69,7 @@ var configDefault = {
     app: '',
     height: 1920,
     uiWhite: false,
+    firstAvatar: false,
     appIcon: false,
     statusIcon: true,
 };
@@ -88,6 +89,7 @@ document.getElementById('configLocation').value = config.location;
 document.getElementById('configApp').value = config.app;
 document.getElementById('configHeight').value = config.height;
 document.getElementById('configUIWhite').checked = config.uiWhite;
+document.getElementById('configFirstAvatar').checked = config.firstAvatar;
 document.getElementById('configTopBarAppIcons').checked = config.appIcon;
 document.getElementById('configTopBarStatusIcons').checked = config.statusIcon;
 document.getElementById('avatar').style.backgroundImage = 'url(' + (localStorage.getItem('avatar') || 'https://ae01.alicdn.com/kf/HTB1yE4fMmzqK1RjSZFp761kSXXal.png') + ')';
@@ -409,18 +411,23 @@ document.getElementById('generate').addEventListener('click', function () {
     //加入点赞头像
     var avatar = document.getElementsByClassName('likeAvatar');
     var avatarSource = avatarURL.concat();
-    var avatarUsedIndex = 0;
+    var avatarUsed;
     document.getElementById('likeAvatarList').innerHTML = '';
     for (var i = 0; i < document.getElementById('configLike').value; i++) {
-        if (avatarSource.length <= 0) {
-            avatarSource = avatarURL.concat();
+        if (i === 0 && document.getElementById('configFirstAvatar').checked) {
+            avatarUsed = document.getElementById('avatar').style.backgroundImage.replace(/url\("(.+?)"\)/g, '$1');
+        } else {
+            if (avatarSource.length <= 0) {
+                avatarSource = avatarURL.concat();
+            }
+            var avatarUsedIndex = Math.floor(Math.random() * avatarSource.length);
+            avatarUsed = avatarSource[avatarUsedIndex];
+            avatarSource.splice(avatarUsedIndex, 1);
         }
-        avatarUsedIndex = Math.floor(Math.random() * avatarSource.length);
         var div = document.createElement('div');
         div.setAttribute('class', 'likeAvatar squareImage');
-        div.setAttribute('style', 'background-image:url(\"' + avatarSource[avatarUsedIndex] + '\")');
+        div.setAttribute('style', 'background-image:url(\"' + avatarUsed + '\")');
         document.getElementById('likeAvatarList').appendChild(div);
-        avatarSource.splice(avatarUsedIndex, 1);
     }
 
     //加入评论区
