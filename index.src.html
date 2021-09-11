@@ -202,7 +202,7 @@
         <div class="mdui-row">
             <div class="mdui-col-xs-12">
                 <label class="mdui-checkbox">
-                    <input id="configShowComment" type="checkbox" name="configShowComment" onclick="document.getElementById('configCommentPreview').classList.toggle('mdui-hidden');" />
+                    <input id="configShowComment" type="checkbox" name="configShowComment" onclick="document.getElementById('configCommentPreview').classList[this.checked ? 'remove' : 'add']('mdui-hidden');" />
                     <i class="mdui-checkbox-icon"></i>
                     显示评论区
                 </label>
@@ -393,11 +393,17 @@
                         <label class="mdui-textfield-label">&nbsp;</label>
                         <input id="configCommentTimeMinute" class="mdui-textfield-input" type="number" min="0" max="59" />
                     </div>
+                    <div class="mdui-col-xs-12">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">回复给……（可选）</label>
+                            <textarea id="configCommentReply" class="mdui-textfield-input"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mdui-dialog-actions">
                 <button class="mdui-btn mdui-ripple" mdui-dialog-close>CANCEL</button>
-                <button class="mdui-btn mdui-ripple" mdui-dialog-close onclick="if (typeof (document.getElementById('configCommentAvatar').files[0]) == 'undefined') { mdui.alert('还没有设定头像啦⊂彡☆))∀`)'); } else { var configCommentDate = document.getElementById('configCommentDate').valueAsDate; configCommentDate.setHours(document.getElementById('configCommentTimeHour').value); configCommentDate.setMinutes(document.getElementById('configCommentTimeMinute').value); addComment(window.URL.createObjectURL(document.getElementById('configCommentAvatar').files[0]), document.getElementById('configCommentName').value, document.getElementById('configCommentText').value, configCommentDate); }">OK</button>
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close onclick="if (typeof (document.getElementById('configCommentAvatar').files[0]) == 'undefined') { mdui.alert('还没有设定头像啦⊂彡☆))∀`)'); } else { var configCommentDate = document.getElementById('configCommentDate').valueAsDate; configCommentDate.setHours(document.getElementById('configCommentTimeHour').value); configCommentDate.setMinutes(document.getElementById('configCommentTimeMinute').value); addComment(window.URL.createObjectURL(document.getElementById('configCommentAvatar').files[0]), document.getElementById('configCommentName').value, document.getElementById('configCommentText').value, configCommentDate, document.getElementById('configCommentReply').value); }">OK</button>
             </div>
         </div>
 

@@ -171,16 +171,17 @@ function copyGitLink() {
 var commentList = [];
 
 //添加评论
-function addComment(avatar, name, content, date) {
+function addComment(avatar, name, content, date, reply) {
     commentList.push({
-        'avatar': avatar,
-        'name': name,
-        'content': content,
-        'date': date
+        avatar,
+        name,
+        content,
+        date,
+        reply,
     });
 
     var tr = document.createElement('tr');
-    tr.innerHTML = '<th>' + commentList.length + '</th><th>' + name + '</th><th>' + content + '</th><th>' + date.toLocaleString() + '</th>';
+    tr.innerHTML = '<th>' + commentList.length + '</th><th>' + name + (reply ? ('（回复' + reply + '）') : '') + '</th><th>' + content + '</th><th>' + date.toLocaleString() + '</th>';
     document.getElementById('configCommentList').append(tr);
 }
 
@@ -435,13 +436,14 @@ document.getElementById('generate').addEventListener('click', function () {
     if (document.getElementById('configShowComment').checked && commentList.length) {
         document.getElementById('comment').style.display = 'block';
         for (var i = 0; i < commentList.length; i++) {
+            var comment = commentList[i];
             document.getElementById('commentList').innerHTML += ''
                 + '<div class="commentItem">'
-                +     '<div class="commentAvatar squareImage" style="background-image: url(' + commentList[i].avatar + ');"></div>'
+                +     '<div class="commentAvatar squareImage" style="background-image: url(' + comment.avatar + ');"></div>'
                 +     '<div class="content">'
-                +         '<span class="commentName">' + commentList[i].name + '</span>'
-                +         '<span class="commentTime">' + getTimeString(configScreenshotDate, commentList[i].date) + '</span>'
-                +         '<div class="commentText">' + emoticonReplace(commentList[i].content) + '</div>'
+                +         '<span class="commentName">' + comment.name + '</span>'
+                +         '<span class="commentTime">' + getTimeString(configScreenshotDate, comment.date) + '</span>'
+                +         '<div class="commentText">' + (comment.reply ? ('回复<span style="color:#576b95">' + comment.reply + '</span>: ') : '') + emoticonReplace(comment.content) + '</div>'
                 +     '</div>'
                 + '</div>';
         }
