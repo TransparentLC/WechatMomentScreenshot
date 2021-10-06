@@ -195,7 +195,7 @@ function removeComment() {
 
 //替换表情文字和换行符为对应的HTML标签
 function emoticonReplace(text) {
-    text = text.replace(/\r\n/g, '<br>').replace(/\n/g, '<br>');
+    text = text.replace(/\r?\n/g, '<br>');
     for (var i = 0; i < emoticon.length; i++) {
         text = text.replace(new RegExp(emoticon[i].name, 'g'), '<img class="emoticon" src="' + emoticon[i].URL + '">');
     }
@@ -344,8 +344,13 @@ document.getElementById('generate').addEventListener('click', function () {
         document.getElementById('location').innerText = document.getElementById('configLocation').value;
     }
 
-    //表情替换
-    document.getElementById('text').innerHTML = emoticonReplace(document.getElementById('text').innerText);
+    //表情替换、朋友圈话题和URL变蓝色
+    document.getElementById('text').innerHTML = emoticonReplace(
+        document.getElementById('text').innerText
+            .replace(/((?:^|\s)#\S+(?:$|\s))/gm, '<span style="color:#576b95">$1</span>')
+            .replace(/(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&//=]*))/g, '<span style="color:#576b95">$1</span>')
+    );
+    console.log(document.getElementById('text').innerHTML);
 
     //九宫格模式设定
     if (document.getElementById('configTypeMultiImage').checked) {
