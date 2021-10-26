@@ -11,6 +11,8 @@ function xhrGet(url, callback) {
     xhr.send();
 }
 
+location.hash = '';
+
 mdui.confirm(''
         + '<div class="mdui-typo">'
         +     '<p>'
