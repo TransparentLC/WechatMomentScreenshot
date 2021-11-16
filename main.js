@@ -518,8 +518,8 @@ document.getElementById('generate').addEventListener('click', function () {
     }).catch(function (error) {
         mdui.alert(''
             + '<div class="mdui-typo">'
-            +     '<p>错误信息：</p>'
-            +     '<pre>' + error + '</pre>'
+            +     '<p>' + error + '</p>'
+            +     '<pre>' + error.stack + '</pre>'
             +     '<p>你可以通过 <a href="https://github.com/TransparentLC/WechatMomentScreenshot/issues" target="_blank">Issue</a> 向作者反馈 BUG～</p>'
             + '</div>',
             '生成失败'
