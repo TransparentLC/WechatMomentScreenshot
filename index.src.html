@@ -40,7 +40,7 @@
             <div class="mdui-col-xs-4 mdui-col-sm-2">
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">&nbsp;</label>
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configAvatar').click();">选择头像</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configAvatar').click();">选择头像</button>
                     <input id="configAvatar" type="file" style="display:none" />
                 </div>
             </div>
@@ -86,21 +86,24 @@
             </div>
             <div class="mdui-row">
                 <div class="mdui-col-xs-6">
-                    <button class="mdui-btn mdui-ripplet mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configArticleIcon').click();">上传网页图标</button>
+                    <button class="mdui-btn mdui-ripplet mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configArticleIcon').click();">上传网页图标</button>
                     <input id="configArticleIcon" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-6">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: getArticleInfo();">自动获取公众号文章标题/封面图</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="getArticleInfo();">自动获取公众号文章标题/封面图</button>
                 </div>
-            </div>
-            <div class="mdui-textfield">
-                <label class="mdui-textfield-label">转发出处</label>
-                <input id="configApp" class="mdui-textfield-input" type="text" value="" />
             </div>
         </div>
 
         <div id="configSingleImage" style="display: none;">
-            <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetSingleImage').click();">上传图片</button>
+            <div class="mdui-row">
+                <div class="mdui-col-xs-6">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetSingleImage').click();">上传图片</button>
+                </div>
+                <div class="mdui-col-xs-6">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="addPlayIcon()">添加视频播放图标</button>
+                </div>
+            </div>
             <input id="configSetSingleImage" type="file" style="display:none" />
         </div>
 
@@ -108,43 +111,43 @@
             <div class="mdui-m-y-1">请按图片 1 - 9 的顺序添加图片～<br>如果只需要显示一张图片，建议选择“图片（单张）”。</div>
             <div class="mdui-row">
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage1').click();">上传图片 1</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetMultiImage1').click();">上传图片 1</button>
                     <input id="configSetMultiImage1" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage2').click();">上传图片 2</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetMultiImage2').click();">上传图片 2</button>
                     <input id="configSetMultiImage2" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage3').click();">上传图片 3</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetMultiImage3').click();">上传图片 3</button>
                     <input id="configSetMultiImage3" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage4').click();">上传图片 4</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetMultiImage4').click();">上传图片 4</button>
                     <input id="configSetMultiImage4" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage5').click();">上传图片 5</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetMultiImage5').click();">上传图片 5</button>
                     <input id="configSetMultiImage5" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage6').click();">上传图片 6</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetMultiImage6').click();">上传图片 6</button>
                     <input id="configSetMultiImage6" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage7').click();">上传图片 7</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetMultiImage7').click();">上传图片 7</button>
                     <input id="configSetMultiImage7" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage8').click();">上传图片 8</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetMultiImage8').click();">上传图片 8</button>
                     <input id="configSetMultiImage8" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-4">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configSetMultiImage9').click();">上传图片 9</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configSetMultiImage9').click();">上传图片 9</button>
                     <input id="configSetMultiImage9" type="file" style="display:none" />
                 </div>
                 <div class="mdui-col-xs-12">
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: clearMultiImage();">清空所有图片</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="clearMultiImage();">清空所有图片</button>
                 </div>
             </div>
         </div>
@@ -152,6 +155,11 @@
         <div class="mdui-textfield">
             <label class="mdui-textfield-label">定位</label>
             <input id="configLocation" class="mdui-textfield-input" type="text" value="" />
+        </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">转发出处</label>
+            <input id="configApp" class="mdui-textfield-input" type="text" value="" />
+            <div class="mdui-textfield-helper">设置为“视频号 · ○○○”时将以链接的浅蓝色显示</div>
         </div>
         <div class="mdui-row">
             <div class="mdui-textfield mdui-col-xs-6">
@@ -191,7 +199,7 @@
             <div class="mdui-col-xs-4 mdui-col-sm-3">
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">&nbsp;</label>
-                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-tooltip="{content:'图片宽度默认为 1080 像素，长度根据设备长宽比确定计算，可能和实际存在偏差'}" onclick="javascript: document.getElementById('configHeight').value = Math.round(document.body.clientHeight / document.body.clientWidth * 1080);">自动设定</button>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-tooltip="{content:'图片宽度默认为 1080 像素，长度根据设备长宽比确定计算，可能和实际存在偏差'}" onclick="document.getElementById('configHeight').value = Math.round(document.body.clientHeight / document.body.clientWidth * 1080);">自动设定</button>
                 </div>
             </div>
         </div>
@@ -224,7 +232,7 @@
                 </div>
                 <div class="mdui-row">
                     <div class="mdui-col-xs-6">
-                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-dialog="{target:'#addComment'}">添加评论</button>
+                        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-dialog="{target:'#addComment'}" onclick="document.getElementById('configCommentName').value = randomName(); document.getElementById('configCommentAvatar').value = null;">添加评论</button>
                     </div>
                     <div class="mdui-col-xs-6">
                         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="removeComment()">删除评论</button>
@@ -366,12 +374,13 @@
                         <div class="mdui-textfield">
                             <label class="mdui-textfield-label">用户名</label>
                             <input id="configCommentName" class="mdui-textfield-input" type="text" value="" />
+                            <div class="mdui-textfield-helper">默认的名字是随机生成的，未选择头像则会随机抽取一个头像。</div>
                         </div>
                     </div>
                     <div class="mdui-col-xs-4 mdui-col-sm-2">
                         <div class="mdui-textfield">
                             <label class="mdui-textfield-label">&nbsp;</label>
-                            <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="javascript: document.getElementById('configCommentAvatar').click();">上传头像</button>
+                            <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="document.getElementById('configCommentAvatar').click();">上传头像</button>
                             <input id="configCommentAvatar" type="file" style="display: none;" />
                         </div>
                     </div>
@@ -403,7 +412,7 @@
             </div>
             <div class="mdui-dialog-actions">
                 <button class="mdui-btn mdui-ripple" mdui-dialog-close>CANCEL</button>
-                <button class="mdui-btn mdui-ripple" mdui-dialog-close onclick="if (typeof (document.getElementById('configCommentAvatar').files[0]) == 'undefined') { mdui.alert('还没有设定头像啦⊂彡☆))∀`)'); } else { var configCommentDate = document.getElementById('configCommentDate').valueAsDate; configCommentDate.setHours(document.getElementById('configCommentTimeHour').value); configCommentDate.setMinutes(document.getElementById('configCommentTimeMinute').value); addComment(window.URL.createObjectURL(document.getElementById('configCommentAvatar').files[0]), document.getElementById('configCommentName').value, document.getElementById('configCommentText').value, configCommentDate, document.getElementById('configCommentReply').value); }">OK</button>
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close onclick="var avatarSrc = document.getElementById('configCommentAvatar').files[0] ? window.URL.createObjectURL(document.getElementById('configCommentAvatar').files[0]) : avatarURL[Math.floor(Math.random() * avatarURL.length)]; var configCommentDate = document.getElementById('configCommentDate').valueAsDate; configCommentDate.setHours(document.getElementById('configCommentTimeHour').value); configCommentDate.setMinutes(document.getElementById('configCommentTimeMinute').value); addComment(avatarSrc, document.getElementById('configCommentName').value, document.getElementById('configCommentText').value, configCommentDate, document.getElementById('configCommentReply').value);">OK</button>
             </div>
         </div>
 
@@ -481,7 +490,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/combine/npm/mdui@1/dist/js/mdui.min.js,npm/html2canvas@1/dist/html2canvas.min.js,gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/html2canvas@1/dist/html2canvas.min.js,npm/mdui@1/dist/js/mdui.min.js,gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/mdui@1/dist/js/mdui.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1/dist/html2canvas.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script> -->
