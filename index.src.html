@@ -7,9 +7,10 @@
     <meta name="author" content="TransparentLC">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1/dist/css/mdui.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/style.min.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1/dist/css/mdui.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/style.min.css"> -->
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1/dist/css/mdui.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-appbar-with-toolbar">
     <header class="mdui-appbar mdui-appbar-fixed">
@@ -340,14 +341,14 @@
                     <img style="position:relative;display:inline-block;width:auto;height:42px;top:9px" />
                 </div>
                 <div style="height:50px"></div>
-                <img id="triangle" src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/triangle.svg" width="40" height="16" style="position: relative; left: 25px; top: 5px;" />
+                <img id="triangle" src="triangle.svg" width="40" height="16" style="position: relative; left: 25px; top: 5px;" />
                 <div id="like" class="like">
-                    <img src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/like.svg" width="32" height="32" style="position: relative; left: 30px; top: 43px; display: inline-block; vertical-align: top;" />
+                    <img src="like.svg" width="32" height="32" style="position: relative; left: 30px; top: 43px; display: inline-block; vertical-align: top;" />
                     <div id="likeAvatarList" class="likeAvatarList"></div>
                     <div style="height:17px"></div>
                 </div>
                 <div id="comment" class="like" style="margin-top:1px">
-                    <img src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/commentlist.svg" width="32" height="32" style="position: relative; left: 30px; top: 45px; display: inline-block; vertical-align: top;" />
+                    <img src="commentlist.svg" width="32" height="32" style="position: relative; left: 30px; top: 45px; display: inline-block; vertical-align: top;" />
                     <div id="commentList" class="likeAvatarList"></div>
                 </div>
             </div>
@@ -490,10 +491,12 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/combine/npm/mdui@1/dist/js/mdui.min.js,npm/html2canvas@1/dist/html2canvas.min.js,gh/TransparentLC/WechatMomentScreenshot@latest/main.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/combine/npm/mdui@1/dist/js/mdui.min.js,npm/html2canvas@1/dist/html2canvas.min.js,gh/TransparentLC/WechatMomentScreenshot@latest/main.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/mdui@1/dist/js/mdui.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1/dist/html2canvas.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script> -->
-    <!-- <script src="main.js"></script> -->
+    <script src="https://unpkg.com/mdui@1/dist/js/mdui.min.js"></script>
+    <script src="https://unpkg.com/html2canvas@1/dist/html2canvas.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
