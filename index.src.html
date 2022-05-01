@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="author" content="TransparentLC">
+    <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1/dist/css/mdui.min.css">
@@ -282,7 +283,7 @@
         </div>
 
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
-        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" mdui-dialog="{target:'#donate'}">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="window.open('https://i.akarin.dev/donate/')">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="copyGitLink()">复制本工具的链接，分享给有需要的人(`ヮ´ )</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="localStorage.removeItem('config');localStorage.removeItem('avatar');mdui.snackbar({message:'已清除～刷新后将使用默认设置'})">清除保存的设置信息</button>
         <div id="gitLink" style="display:none">https://git.io/WMS</div>
@@ -473,21 +474,6 @@
             <div id="requestResultContent" class="mdui-dialog-content mdui-typo"></div>
             <div class="mdui-dialog-actions">
                 <button id="requestAction" class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
-            </div>
-        </div>
-
-        <div id="donate" class="mdui-dialog">
-            <div class="mdui-dialog-title">请小透明喝一瓶肥宅快乐水～(*´∀`)</div>
-            <div class="mdui-dialog-content mdui-typo">
-                <div style="text-align: center;">
-                    <div>
-                        <img id="donateWechat" width="50%" src="https://ae01.alicdn.com/kf/HTB1DpS1VMHqK1RjSZFE763GMXXac.png"><img id="donateAlipay" width="50%" src="https://ae01.alicdn.com/kf/HTB1.nuUVHvpK1RjSZPi762mwXXat.png">
-                    </div>
-                    <span class="mdui-typo-caption-opacity">扫一扫(`ε´ )<br>左：微信 右：支付宝</span>
-                </div>
-            </div>
-            <div class="mdui-dialog-actions">
-                <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
             </div>
         </div>
     </div>
