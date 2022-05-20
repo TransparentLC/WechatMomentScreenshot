@@ -54,14 +54,14 @@ if (inBlacklist) {
     );
 }
 
-if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScript('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/fuckWechat.min.js');
+if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScript('https://fastly.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/fuckWechat.min.js');
 
-if (!window.Promise) loadScript('https://cdn.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js');
+if (!window.Promise) loadScript('https://fastly.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js');
 
 var avatarURL = [];
-xhrGet('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/avatarURL.json', function (result) { avatarURL = JSON.parse(result) });
+xhrGet('https://fastly.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/avatarURL.json', function (result) { avatarURL = JSON.parse(result) });
 var emoticon = [];
-xhrGet('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/emoticon.json', function (result) { emoticon = JSON.parse(result) });
+xhrGet('https://fastly.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/emoticon.json', function (result) { emoticon = JSON.parse(result) });
 
 // 读取配置
 var configDefault = {
