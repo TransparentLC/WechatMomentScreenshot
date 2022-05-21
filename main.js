@@ -101,7 +101,7 @@ function getArticleInfo() {
     var requestDialog = new mdui.Dialog('#request');
     mdui.prompt('公众号文章链接', function (value) {
         var xhr = new XMLHttpRequest;
-        xhr.open('GET', 'https://wmsproxy.transparentlc.workers.dev/?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
+        xhr.open('GET', 'https://i.akarin.dev/wmsproxy/?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var result = JSON.parse(xhr.responseText);
