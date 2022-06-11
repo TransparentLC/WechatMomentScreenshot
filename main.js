@@ -22,7 +22,7 @@ mdui.confirm(''
         +     '<p>请勿以<strong>“关注○○，发送○○获取工具地址”</strong>或类似方式使用本工具为自己的公众号引流。如果想要推荐的话，请<strong>直接在正文里留下地址或二维码</strong>～</p>'
         +     '<p>本工具生成的截图，仅可用于<strong>个人应付各类强制要求转发朋友圈的情形</strong>，请勿<strong>批量生成截图</strong>或将截图用于<strong>造谣诽谤、微商宣传</strong>等非法或令人反感的用途，请勿用于商业用途，<strong>二次部署请勿删除原作者相关信息</strong>。</p>'
         +     '<p>当你生成截图时，你应该确定你可以接受向他人发送该截图将会带来的后果和影响，否则请不要使用本工具并离开当前页面。</p>'
-        +     '<p>本工具谢绝肖战粉丝（<a href="https://w.url.cn/s/AC2atup" target="_blank">#我是普通人,我讨厌肖战#</a>）和“芦苇岛匿名版”用户（<a href="https://m.weibo.cn/detail/4777390159170190" target="_blank">此网站不是“A 岛匿名版” (　^ω^)</a>）使用。</p>'
+        +     '<p>本工具谢绝肖战粉丝（<a href="https://w.url.cn/s/AC2atup" target="_blank">#我是普通人,我讨厌肖战#</a>）和“阿苇岛匿名版”用户（<a href="https://m.weibo.cn/detail/4777390159170190" target="_blank">此网站不是“A 岛匿名版” (　^ω^)</a>）使用。</p>'
         + '</div>',
     '在开始使用之前……',
     function () {},
