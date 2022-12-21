@@ -4,6 +4,7 @@
 
 //允许跨域
 header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 
 if (empty($_GET['url']) || strpos($_GET['url'], 'mp.weixin.qq.com') === false) {
     $result['title'] = '';
@@ -27,40 +28,14 @@ if (empty($_GET['url']) || strpos($_GET['url'], 'mp.weixin.qq.com') === false) {
     curl_close($ch);
 };
 
-//下载封面图，转存到alicdn
 if (!empty($result['cover'])) {
-    $ch = curl_init($result['cover']);
-    curl_setopt_array($ch, [
-        CURLOPT_VERBOSE => true,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_SSL_VERIFYHOST => false,
-        CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko',
+    $result['cover'] = 'https://images.weserv.nl/?' . http_build_query([
+        'url' => $result['cover'],
+        'il' => '',
+        'we' => '',
+        'h' => 360,
+        'q' => 70,
     ]);
-    $filename = bin2hex(random_bytes(16)) . '.jpg';
-    file_put_contents($filename, curl_exec($ch));
-    curl_close($ch);
-
-    $ch = curl_init('https://kfupload.alibaba.com/mupload');
-    curl_setopt_array($ch, [
-        CURLOPT_VERBOSE => true,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_SSL_VERIFYHOST => false,
-        CURLOPT_USERAGENT => 'iAliexpress/6.22.1 (iPhone; iOS 12.1.2; Scale/2.00)',
-        CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => [
-            'file' => new CurlFile($filename),
-            'scene' => 'aeMessageCenterV2ImageRule',
-            'name' => $filename,
-        ],
-    ]);
-    $result['cover'] = json_decode(curl_exec($ch), true)['url'];
-    curl_close($ch);
-
-    unlink($filename);
 }
 
 $result['success'] = !empty($result['title']) && !empty($result['cover']);
