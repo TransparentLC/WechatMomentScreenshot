@@ -21,6 +21,7 @@
 * 由 [@gaohan085](https://github.com/gaohan085) 提供：https://gaohan086.xyz/wechat/
 * 由 [@drpasserby](https://github.com/drpasserby) 提供：https://my.wulvxinchen.cn/makewechat/
 * 由 [@Allenorz](https://github.com/Allenorz) 提供：https://www.wanshiwutool.cn/
+* 由 [@jinzi1007](https://github.com/jinzi1007) 提供：https://quziyuan.cn/zhuanti/zhuanfa/
 
 本工具是开源的，但是由于这个工具是我初学前端时写的，源代码非常混乱，所以即使开源了也没有多少学习的价值（暂时也没有重写的打算）。不过，你仍然可以下载源代码到自己的服务器上来部署一个镜像站，然后通过 Issue 提交镜像站地址～**二次部署时请不要删除原作者相关信息**，别忘了从这里获取最新的更新。
 
