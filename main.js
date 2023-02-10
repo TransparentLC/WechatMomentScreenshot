@@ -54,14 +54,20 @@ if (inBlacklist) {
     );
 }
 
-if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScript('https://fastly.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/fuckWechat.min.js');
+if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScript('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/fuckWechat.min.js');
 
-if (!window.Promise) loadScript('https://fastly.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js');
+if (!window.Promise) loadScript('https://cdn.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js');
 
 var avatarURL = [];
-xhrGet('https://fastly.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/avatarURL.json', function (result) { avatarURL = JSON.parse(result) });
+
+function loadAvatarSet(s, n) {
+    avatarURL = s.split('\n').filter(Boolean).map(function (e) {
+        return e.trim();
+    });
+    if (n) mdui.snackbar('加载成功，头像库中一共有 ' + avatarURL.length + ' 个头像');
+}
 var emoticon = [];
-xhrGet('https://fastly.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/emoticon.json', function (result) { emoticon = JSON.parse(result) });
+xhrGet('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/emoticon.json', function (result) { emoticon = JSON.parse(result) });
 
 // 读取配置
 var configDefault = {
@@ -74,6 +80,7 @@ var configDefault = {
     firstAvatar: false,
     appIcon: false,
     statusIcon: true,
+    avatarSet: '',
 };
 var config;
 var avatarFile;
@@ -95,6 +102,9 @@ document.getElementById('configFirstAvatar').checked = config.firstAvatar;
 document.getElementById('configTopBarAppIcons').checked = config.appIcon;
 document.getElementById('configTopBarStatusIcons').checked = config.statusIcon;
 document.getElementById('avatar').style.backgroundImage = 'url(' + (localStorage.getItem('avatar') || 'https://ae01.alicdn.com/kf/HTB1yE4fMmzqK1RjSZFp761kSXXal.png') + ')';
+document.getElementById('configAvatarSet').value = config.avatarSet;
+
+xhrGet(config.avatarSet || 'https://i.akarin.dev/wms-avatar/avatar-stable.txt', function (result) { loadAvatarSet(result) });
 
 //输入微信文章的链接，通过后端自动获取文章标题和文章封面
 function getArticleInfo() {
@@ -549,6 +559,7 @@ document.getElementById('generate').addEventListener('click', function () {
             uiWhite: document.getElementById('configUIWhite').checked,
             appIcon: document.getElementById('configTopBarAppIcons').checked,
             statusIcon: document.getElementById('configTopBarStatusIcons').checked,
+            avatarSet: document.getElementById('configAvatarSet').value,
         };
         localStorage.setItem('config', JSON.stringify(config));
 
