@@ -8,9 +8,8 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
-    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/mdui@1/dist/css/mdui.min.css">
-    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/style.min.css">
-    <!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1/dist/css/mdui.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1/dist/css/mdui.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/style.min.css">
     <!-- <link rel="stylesheet" href="style.css"> -->
 
     <!-- <script src="https://fastly.jsdelivr.net/npm/eruda"></script><script>eruda.init()</script> -->
@@ -205,6 +204,21 @@
                 <div class="mdui-textfield">
                     <label class="mdui-textfield-label">&nbsp;</label>
                     <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" mdui-tooltip="{content:'图片宽度默认为 1080 像素，长度根据设备长宽比确定计算，可能和实际存在偏差'}" onclick="document.getElementById('configHeight').value = Math.round(document.body.clientHeight / document.body.clientWidth * 1080);">自动设定</button>
+                </div>
+            </div>
+            <div class="mdui-textfield mdui-col-xs-8 mdui-col-sm-10">
+                <label class="mdui-textfield-label">自定义头像库</label>
+                <input id="configAvatarSet" class="mdui-textfield-input" type="text" list="presetAvatarSet" />
+                <datalist id="presetAvatarSet">
+                    <option value="https://i.akarin.dev/wms-avatar/avatar-stable.txt">
+                    <option value="https://i.akarin.dev/wms-avatar/avatar-fast.txt">
+                </datalist>
+                <div class="mdui-textfield-helper">高级功能，点击<a href="javascript:;" class="mdui-text-color-theme-accent" mdui-dialog="{target:'#aboutAvatarSet'}">这里</a>查看详细说明</div>
+            </div>
+            <div class="mdui-col-xs-4 mdui-col-sm-2">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">&nbsp;</label>
+                    <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent" onclick="xhrGet(document.getElementById('configAvatarSet').value || 'https://i.akarin.dev/wms-avatar/avatar-stable.txt', function (result) {loadAvatarSet(result, true); config.avatarSet = document.getElementById('configAvatarSet').value})">应用</button>
                 </div>
             </div>
         </div>
@@ -471,6 +485,28 @@
             </div>
         </div>
 
+        <div id="aboutAvatarSet" class="mdui-dialog">
+            <div class="mdui-dialog-title">“自定义头像库”的说明</div>
+            <div class="mdui-dialog-content mdui-typo">
+                <p>如果你希望在生成的截图的点赞区域中显示自定义的头像，可以按照以下步骤操作：</p>
+                <ol>
+                    <li>收集你想要的头像，并上传到图床之类的地方。</li>
+                    <li>将这些头像的 URL 以一行一个的格式保存为纯文本，以下是示例。</li>
+                    <pre><code>https://example.com/avatar-0.jpg
+https://example.com/avatar-1.jpg
+https://example.com/avatar-2.jpg
+...</code></pre>
+                    <li>将这个文本文件上传到某个地方，例如自己的网站上，也可以按照这一格式动态生成头像库的内容，总之需要使头像库也能通过 URL 访问到。</li>
+                    <li>在“自定义头像库”中输入头像库的 URL，点击“应用”后会进行读取，之后在生成截图时就会从头像库抽取头像了。</li>
+                    <li>头像和头像库都需要支持跨域访问（响应头 <code>Access-Control-Allow-Origin: *</code>）</li>
+                </ol>
+                <p>这个功能有一定的技术门槛，因此并不能保证每个人都有条件使用这一功能。留空后点击“应用”将会使用默认头像库。</p>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
+            </div>
+        </div>
+
         <div id="request" class="mdui-dialog">
             <div id="requestResult" class="mdui-dialog-title"></div>
             <div id="requestResultContent" class="mdui-dialog-content mdui-typo"></div>
@@ -480,12 +516,10 @@
         </div>
     </div>
 
-    <script src="https://fastly.jsdelivr.net/combine/npm/html2canvas@1/dist/html2canvas.min.js,npm/mdui@1/dist/js/mdui.min.js,gh/TransparentLC/WechatMomentScreenshot@latest/main.min.js"></script>
-    <!-- <script src="https://fastly.jsdelivr.net/npm/mdui@1/dist/js/mdui.min.js"></script> -->
-    <!-- <script src="https://fastly.jsdelivr.net/npm/html2canvas@1/dist/html2canvas.min.js"></script> -->
-    <!-- <script src="https://fastly.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script> -->
-    <!-- <script src="https://unpkg.com/mdui@1/dist/js/mdui.min.js"></script> -->
-    <!-- <script src="https://unpkg.com/html2canvas@1/dist/html2canvas.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/combine/npm/html2canvas@1/dist/html2canvas.min.js,npm/mdui@1/dist/js/mdui.min.js,gh/TransparentLC/WechatMomentScreenshot@4eb58e74aac866380d9cf24bb2567f785bba883e/main.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/mdui@1/dist/js/mdui.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1/dist/html2canvas.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script> -->
     <!-- <script src="main.js"></script> -->
 </body>
 </html>
