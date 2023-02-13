@@ -52,6 +52,7 @@ async function handleRequest(request) {
             '&gt;': '>',
             '&lt;': '<',
             '&yen;': '¥',
+            '&amp;': '&',
         })) result.title = result.title.replace(new RegExp(k, 'g'), v);
 
         result.cover = new URL('https://images.weserv.nl');
