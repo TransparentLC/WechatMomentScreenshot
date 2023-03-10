@@ -29,16 +29,22 @@
 
 ### ⚠️ Hall of Shame ⚠️
 
-以下网站二次部署时抹去了原作者相关信息，或移除了指向这个 repo 的链接，在此列出来批判一番。
+以下网站二次部署时存在**抹去页脚的原作者相关信息、或移除右上角的指向这个 repo 的链接等违反了上面的使用规则的行为**，在此列出来批判一番。
 
 这里不是为这些网站引流的地方，所以用 `(dot)` 替换了链接中的 `.`。
 
-* h**ps://www(dot)41661(dot)com/ 目前以“本工具全新开发中”为理由关闭了截图生成功能，但实际上也并没有为本仓库提交过任何代码
-* h**ps://dz(dot)luyashe(dot)top/
-* h**p://zan(dot)liflag(dot)cn/
-* h**ps://zxxgj(dot)net/tools/tuxiang/pyqjietu/
-* h**ps://oss(dot)361s(dot)cn/tool/pyq/
-* h**p://www(dot)chwl2015(dot)cn/
+* h**ps://www(dot)41661(dot)com/ 移除原作者信息和源代码链接，目前以“本工具全新开发中”为理由关闭了截图生成功能，但实际上也并没有为本仓库提交过任何代码
+* h**ps://dz(dot)luyashe(dot)top/ 移除原作者信息
+* h**p://zan(dot)liflag(dot)cn/ “立 flag 网” 移除原作者信息和源代码链接
+* h**ps://zxxgj(dot)net/tools/tuxiang/pyqjietu/ “在线小工具” 移除原作者信息和源代码链接
+* h**ps://oss(dot)361s(dot)cn/tool/pyq/ “天乐博客” 移除原作者信息和源代码链接
+* h**p://www(dot)chwl2015(dot)cn/ 移除原作者信息和源代码链接
+* h**ps://www(dot)yeyulingfeng(dot)com/tools/zan/ “夜雨聆风” 移除原作者信息和源代码链接
+* h**p://pyq(dot)cttuwen(dot)cn/ 移除源代码链接
+* h**p://wxpyq(dot)ssltgm(dot)com/ “三石论坛” 移除原作者信息和源代码链接
+* h**ps://www(dot)dkewl(dot)com/code/detail2196.html “刀客源码” 移除原作者信息和源代码链接
+* h**ps://www(dot)chichisvip(dot)com/post/37497.html “痴痴资源网” 有偿售卖源代码
+* h**ps://mirror(dot)xyz/z22222.eth/2DBLOfyd05xlHqOdBD0-ZI1pejXp009838kLvrVSDv0 “Free DAO” 在介绍中诱导将生成的截图有偿售卖和用于灰产，公众号和私域流量引流
 
 ---
 
