@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1/dist/css/mdui.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot@05d514cfcec6d64690d67f7c2125497711456646/style.min.css">
     <!-- <link rel="stylesheet" href="style.css"> -->
 
     <!-- <script src="https://fastly.jsdelivr.net/npm/eruda"></script><script>eruda.init()</script> -->
@@ -21,7 +21,7 @@
             <span class="mdui-typo-title">朋友圈转发截图生成工具</span>
             <div class="mdui-toolbar-spacer"></div>
             <a class="mdui-btn mdui-btn-icon" mdui-dialog="{target:'#about'}" mdui-tooltip="{content:'关于'}"><i class="mdui-icon material-icons">info_outline</i></a>
-            <a href="https://github.com/TransparentLC/WechatMomentScreenshot" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content:'查看 GitHub'}">
+            <a id="sourceRepo" href="https://github.com/TransparentLC/WechatMomentScreenshot" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content:'查看 GitHub'}">
                 <svg viewBox="0 0 36 36" class="mdui-icon" style="width:24px;height:24px;">
                 <path fill-rule="evenodd" clip-rule="evenodd" fill="#fff" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5
 	                c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1
@@ -354,12 +354,11 @@
                     <div class="info">
                         <span id="location" style="color:#576b95"></span>
                         <div style="height:20px"></div>
-                        <span id="time"></span>&nbsp;<span style="color:#576b95">删除</span>
+                        <span id="time"></span>&nbsp;&nbsp;&nbsp;<span style="color:#576b95">删除</span>
                     </div>
                     <img style="position:relative;display:inline-block;width:auto;height:42px;top:9px" />
                 </div>
                 <div style="height:50px"></div>
-                <img id="triangle" src="triangle.svg" width="40" height="16" style="position: relative; left: 25px; top: 5px;" />
                 <div id="like" class="like">
                     <img src="like.svg" width="32" height="32" style="position: relative; left: 30px; top: 43px; display: inline-block; vertical-align: top;" />
                     <div id="likeAvatarList" class="likeAvatarList"></div>
@@ -379,10 +378,10 @@
             </div>
         </div>
 
-        <div class="mdui-m-y-2" style="text-align:center;line-height:1.5em">
+        <div id="aboutFooter" class="mdui-m-y-2" style="text-align:center;line-height:1.5em">
             <a href="https://github.com/TransparentLC/WechatMomentScreenshot" target="_blank" style="text-decoration:none"><img src="https://img.shields.io/github/stars/TransparentLC/WechatMomentScreenshot.svg?style=social"></a>
             <br>
-            <span class="mdui-typo-caption-opacity">© 2022 ✨小透明・宸✨</span>
+            <span class="mdui-typo-caption-opacity">© 2023 ✨小透明・宸✨</span>
         </div>
 
         <div id="addComment" class="mdui-dialog">
@@ -516,7 +515,7 @@ https://example.com/avatar-2.jpg
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/combine/npm/html2canvas@1/dist/html2canvas.min.js,npm/mdui@1/dist/js/mdui.min.js,gh/TransparentLC/WechatMomentScreenshot@11ee53a4dc93ca5afc1cb6e47a41be86437beb0d/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/html2canvas@1/dist/html2canvas.min.js,npm/mdui@1/dist/js/mdui.min.js,gh/TransparentLC/WechatMomentScreenshot@05d514cfcec6d64690d67f7c2125497711456646/main.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/mdui@1/dist/js/mdui.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1/dist/html2canvas.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script> -->
