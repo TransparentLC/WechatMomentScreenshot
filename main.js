@@ -34,26 +34,6 @@ mdui.confirm(''
     }
 );
 
-var inBlacklist = [
-    'www.41661.com',
-    '41661.com',
-].indexOf(location.hostname) !== -1;
-
-if (inBlacklist) {
-    mdui.alert(
-        '你所访问的网站（' + location.hostname + '）由于在转载本工具时抹去了原作者相关信息，已被原作者列入黑名单。点击下方按钮将跳转到原作者自己部署的页面。',
-        function () {
-            location.href = 'https://akarin.dev/WechatMomentScreenshot/';
-            document.querySelector('.mdui-container').innerHTML = '';
-        },
-        {
-            modal: true,
-            closeOnEsc: false,
-            history: false,
-        }
-    );
-}
-
 if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScript('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/fuckWechat.min.js');
 
 if (!window.Promise) loadScript('https://cdn.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js');
@@ -520,13 +500,7 @@ document.getElementById('generate').addEventListener('click', function () {
     document.getElementById('fakeWechatMoment').style.height = ((window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') > height) ? window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') : height) + 'px';
 
     //点赞数为0时隐藏点赞区
-    if (document.getElementById('configLike').value <= 0) {
-        document.getElementById('triangle').style.display = 'none';
-        document.getElementById('like').style.display = 'none';
-    } else {
-        document.getElementById('triangle').style.display = 'block';
-        document.getElementById('like').style.display = 'block';
-    }
+    document.getElementById('like').style.display = document.getElementById('configLike').value ? 'block' : 'none';
 
     //修正底部位置
     var offset = Number(window.getComputedStyle(document.getElementById('topBar')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('header')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('main')).height.replace('px', ''));
@@ -536,8 +510,8 @@ document.getElementById('generate').addEventListener('click', function () {
     document.getElementById('generate').setAttribute('disabled', '');
     document.getElementById('generate').innerText = '生成中...';
 
-    (inBlacklist ?
-        Promise.reject('你所访问的网站（' + location.hostname + '）由于在转载本工具时抹去了原作者相关信息，已被原作者列入黑名单，无法生成截图。') :
+    ((document.getElementById('aboutFooter').innerText.indexOf('✨小透明・宸✨') === -1 || document.getElementById('sourceRepo').href !== 'https://github.com/TransparentLC/WechatMomentScreenshot') ?
+        Promise.reject('<p>如一开始的说明所述，请不要删除原作者相关信息和右上角的指向源代码的链接。</p><p>既然你已经动手这么做了，去掉检测这个的代码对你来说应该也是很简单的事情，但是这样很没有互联网分享精神哦？</p><p>如果你仍然要这么做的话，毕竟我不可能阻止你使用一份开源的代码，但是我至少可以说一声：<strong>Shame on you!</strong></p>') :
         html2canvas(document.getElementById('fakeWechatMoment'), {
             useCORS: true,
             scale: 1,
@@ -574,7 +548,7 @@ document.getElementById('generate').addEventListener('click', function () {
         mdui.alert(''
             + '<div class="mdui-typo">'
             +     '<p>' + error + '</p>'
-            +     '<pre>' + error.stack + '</pre>'
+            +     (error.stack ? ('<pre>' + error.stack + '</pre>') : '')
             +     '<p>你可以通过 <a href="https://github.com/TransparentLC/WechatMomentScreenshot/issues" target="_blank">Issue</a> 向作者反馈 BUG～</p>'
             + '</div>',
             '生成失败'

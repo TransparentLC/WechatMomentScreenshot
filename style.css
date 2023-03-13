@@ -80,6 +80,7 @@ body {
 .name {
     color: #576b95;
     font-size: 40px;
+    font-weight: bold;
 }
 
 .text {
