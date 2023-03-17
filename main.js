@@ -510,7 +510,11 @@ document.getElementById('generate').addEventListener('click', function () {
     document.getElementById('generate').setAttribute('disabled', '');
     document.getElementById('generate').innerText = '生成中...';
 
-    ((document.getElementById('aboutFooter').innerText.indexOf('✨小透明・宸✨') === -1 || document.getElementById('sourceRepo').href !== 'https://github.com/TransparentLC/WechatMomentScreenshot') ?
+    ((
+        document.getElementById('aboutFooter').innerText.indexOf('✨小透明・宸✨') === -1 ||
+        document.getElementById('aboutFooterBadge').href !== 'https://github.com/TransparentLC/WechatMomentScreenshot' ||
+        document.getElementById('sourceRepo').href !== 'https://github.com/TransparentLC/WechatMomentScreenshot'
+    ) ?
         Promise.reject('<p>如一开始的说明所述，请不要删除原作者相关信息和右上角的指向源代码的链接。</p><p>既然你已经动手这么做了，去掉检测这个的代码对你来说应该也是很简单的事情，但是这样很没有互联网分享精神哦？</p><p>如果你仍然要这么做的话，毕竟我不可能阻止你使用一份开源的代码，但是我至少可以说一声：<strong>Shame on you!</strong></p>') :
         html2canvas(document.getElementById('fakeWechatMoment'), {
             useCORS: true,
