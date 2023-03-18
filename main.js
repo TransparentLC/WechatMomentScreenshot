@@ -326,7 +326,7 @@ document.getElementById('configCommentTimeMinute').addEventListener('input', fun
     }
 })
 document.getElementById('configLike').addEventListener('input', function () {
-    if (document.getElementById('configLike').value < 0) {
+    if (parseInt(document.getElementById('configLike').value) < 0) {
         document.getElementById('configLike').value = 0;
     }
 })
@@ -455,7 +455,7 @@ document.getElementById('generate').addEventListener('click', function () {
     var avatarSource = avatarURL.concat();
     var avatarUsed;
     document.getElementById('likeAvatarList').innerHTML = '';
-    for (var i = 0; i < document.getElementById('configLike').value; i++) {
+    for (var i = 0; i < parseInt(document.getElementById('configLike').value); i++) {
         if (i === 0 && document.getElementById('configFirstAvatar').checked) {
             avatarUsed = document.getElementById('avatar').style.backgroundImage.replace(/url\("(.+?)"\)/g, '$1');
         } else {
@@ -500,7 +500,7 @@ document.getElementById('generate').addEventListener('click', function () {
     document.getElementById('fakeWechatMoment').style.height = ((window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') > height) ? window.getComputedStyle(document.getElementById('fakeWechatMoment')).height.replace('px', '') : height) + 'px';
 
     //点赞数为0时隐藏点赞区
-    document.getElementById('like').style.display = document.getElementById('configLike').value ? 'block' : 'none';
+    document.getElementById('like').style.display = parseInt(document.getElementById('configLike').value) ? 'block' : 'none';
 
     //修正底部位置
     var offset = Number(window.getComputedStyle(document.getElementById('topBar')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('header')).height.replace('px', '')) + Number(window.getComputedStyle(document.getElementById('main')).height.replace('px', ''));
