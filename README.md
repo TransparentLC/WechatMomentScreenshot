@@ -45,6 +45,8 @@
 * h**ps://www(dot)dkewl(dot)com/code/detail2196.html “刀客源码” 移除原作者信息和源代码链接
 * h**ps://www(dot)chichisvip(dot)com/post/37497.html “痴痴资源网” 有偿售卖源代码
 * h**ps://mirror(dot)xyz/z22222.eth/2DBLOfyd05xlHqOdBD0-ZI1pejXp009838kLvrVSDv0 “Free DAO” 在介绍中诱导将生成的截图有偿售卖和用于灰产，公众号和私域流量引流
+* h**p://www(dot)jikexq(dot)cc/pyq/ “极客星球/宇宙领域科技” 移除原作者信息和源代码链接
+* h**p://xnw(dot)51tongxin(dot)cn/ 移除原作者信息和源代码链接
 
 ---
 
