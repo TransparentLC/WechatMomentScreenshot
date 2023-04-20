@@ -47,6 +47,7 @@
 * h**ps://mirror(dot)xyz/z22222.eth/2DBLOfyd05xlHqOdBD0-ZI1pejXp009838kLvrVSDv0 “Free DAO” 在介绍中诱导将生成的截图有偿售卖和用于灰产，公众号和私域流量引流
 * h**p://www(dot)jikexq(dot)cc/pyq/ “极客星球/宇宙领域科技” 移除原作者信息和源代码链接
 * h**p://xnw(dot)51tongxin(dot)cn/ 移除原作者信息和源代码链接
+* h**p://h5(dot)05zh(dot)com/erji/pyqdzsc/ “库简盒 APP” 移除原作者信息
 
 ---
 
