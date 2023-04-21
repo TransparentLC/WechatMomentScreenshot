@@ -510,56 +510,63 @@ document.getElementById('generate').addEventListener('click', function () {
     document.getElementById('generate').setAttribute('disabled', '');
     document.getElementById('generate').innerText = '生成中...';
 
-    ((
-        document.getElementById('aboutFooter').innerText.indexOf('✨小透明・宸✨') === -1 ||
-        document.getElementById('aboutFooterBadge').href !== 'https://github.com/TransparentLC/WechatMomentScreenshot' ||
-        document.getElementById('sourceRepo').href !== 'https://github.com/TransparentLC/WechatMomentScreenshot'
-    ) ?
-        Promise.reject('<p>如一开始的说明所述，请不要删除原作者相关信息和右上角的指向源代码的链接。</p><p>既然你已经动手这么做了，去掉检测这个的代码对你来说应该也是很简单的事情，但是这样很没有互联网分享精神哦？</p><p>如果你仍然要这么做的话，毕竟我不可能阻止你使用一份开源的代码，但是我至少可以说一声：<strong>Shame on you!</strong></p>') :
-        html2canvas(document.getElementById('fakeWechatMoment'), {
-            useCORS: true,
-            scale: 1,
-        })
-    ).then(function (canvas) {
-        var dURL = canvas.toDataURL();
-        document.getElementById('generated').src = dURL;
-        document.getElementById('save').setAttribute('href', dURL);
-        document.getElementById('save').setAttribute('download', (+new Date) + '.png');
-        (new mdui.Dialog(document.getElementById('generatedPopup'))).open();
+    // 就算添加了对删除原作者信息和源代码链接的检测还是有人尝试把它改掉，嗯……
+    // 用javascript-obfuscator对这部分代码加密了，但是仍然是防君子不防小人
+    // 如果你只会下载jsDelivr压缩后的JS，你也看不到下面这些注释掉的未加密的代码
+    // 如果你想到了可以在GitHub上找到这些未加密代码，我相信你也不会做出删除原作者信息这样的事情
+    (function () {
+        var _0xc9cc35=_0x5c91;(function(_0x1dfca0,_0x36de24){var _0x203f98=_0x5c91,_0x3dc4f2=_0x1dfca0();while(!![]){try{var _0x4889b0=parseInt(_0x203f98('0x117','2g*u'))/0x1*(parseInt(_0x203f98('0xb9','2g*u'))/0x2)+parseInt(_0x203f98('0xd1','nzy3'))/0x3*(parseInt(_0x203f98('0x10a','C%Om'))/0x4)+parseInt(_0x203f98('0xb2','Ldy4'))/0x5*(-parseInt(_0x203f98('0xb0','xpNb'))/0x6)+-parseInt(_0x203f98('0xff','NMDW'))/0x7*(-parseInt(_0x203f98('0xd8','F&2&'))/0x8)+-parseInt(_0x203f98('0x111','pDU9'))/0x9+parseInt(_0x203f98('0xe7','7ggT'))/0xa*(-parseInt(_0x203f98('0xe0','RJ4w'))/0xb)+-parseInt(_0x203f98('0xf7','y92n'))/0xc;if(_0x4889b0===_0x36de24)break;else _0x3dc4f2['push'](_0x3dc4f2['shift']());}catch(_0x933324){_0x3dc4f2['push'](_0x3dc4f2['shift']());}}}(_0x4e7b,0x31cd1),(document[_0xc9cc35('0x106','#&]y')](_0xc9cc35('0x105','%uur'))[_0xc9cc35('0xf6','NMDW')][_0xc9cc35('0xf0','xpNb')](_0xc9cc35('0xba','7B0K'))===-0x1||document[_0xc9cc35('0xfe','Ldy4')](_0xc9cc35('0xf5','F&2&'))[_0xc9cc35('0xdf','mXbQ')]!==_0xc9cc35('0x110','Ldy4')||document[_0xc9cc35('0xd2','IBTT')](_0xc9cc35('0x119','w#Ad'))[_0xc9cc35('0xd4','xPl0')]!==_0xc9cc35('0xeb','hOl7')?Promise[_0xc9cc35('0xe5','dWQ)')](_0xc9cc35('0xb1','A0l2')):html2canvas(document[_0xc9cc35('0xcd','Jt)2')](_0xc9cc35('0xc2','Q(3z')),{'useCORS':!![],'scale':0x1}))[_0xc9cc35('0x115','7B0K')](function(_0x4a2609){var _0x4df41e=_0xc9cc35,_0x2fdf5b=_0x4a2609[_0x4df41e('0x103','NMDW')]();document[_0x4df41e('0xbb','(gM@')](_0x4df41e('0xcb','VZwM'))[_0x4df41e('0xb7','F&2&')]=_0x2fdf5b,document[_0x4df41e('0xc9','7ggT')](_0x4df41e('0xbd','y92n'))[_0x4df41e('0xbf','m782')](_0x4df41e('0xcf','2g*u'),_0x2fdf5b),document[_0x4df41e('0xd6','V9zD')](_0x4df41e('0xc8','F&2&'))[_0x4df41e('0xf8','lbu7')](_0x4df41e('0x118','RJ4w'),+new Date()+_0x4df41e('0xf4','2g*u')),new mdui[(_0x4df41e('0x10b','PllC'))](document[_0x4df41e('0x11b','&]Uy')](_0x4df41e('0x104','ea@#')))[_0x4df41e('0xf1','xpNb')]();var _0x308abd={'name':document[_0x4df41e('0xc1','C%Om')](_0x4df41e('0xce','5ZQ9'))[_0x4df41e('0x108','8qD7')],'text':document[_0x4df41e('0xf2','nzy3')](_0x4df41e('0x113','8qD7'))[_0x4df41e('0xd9','VZwM')],'location':document[_0x4df41e('0xe9','[mUa')](_0x4df41e('0xe4','mXfd'))[_0x4df41e('0xfc','PllC')],'app':document[_0x4df41e('0xb8','RJ4w')](_0x4df41e('0xc0','vQxc'))[_0x4df41e('0x100','hOl7')],'height':parseInt(document[_0x4df41e('0xe3','mXbQ')](_0x4df41e('0xfa','*@Y)'))[_0x4df41e('0x100','hOl7')]),'uiWhite':document[_0x4df41e('0xca','2g*u')](_0x4df41e('0xb3','2g*u'))[_0x4df41e('0xc3','pDU9')],'appIcon':document[_0x4df41e('0xc6','VZwM')](_0x4df41e('0xd7','y92n'))[_0x4df41e('0xdd','ea@#')],'statusIcon':document[_0x4df41e('0xec','5ZQ9')](_0x4df41e('0xee','2g*u'))[_0x4df41e('0xb4','k(vB')],'avatarSet':document[_0x4df41e('0xbb','(gM@')](_0x4df41e('0xb5','!Y5B'))[_0x4df41e('0xf3','xpNb')]};localStorage[_0x4df41e('0xc4','hOl7')](_0x4df41e('0x107','IBTT'),JSON[_0x4df41e('0x109','C%Om')](_0x308abd));if(avatarFile){var _0x2e108c=new FileReader();_0x2e108c[_0x4df41e('0xbe','w#Ad')](avatarFile),_0x2e108c[_0x4df41e('0x102','C%Om')]=function(){var _0x4d262d=_0x4df41e;localStorage[_0x4d262d('0x11a','8qD7')](_0x4d262d('0xb6','7B0K'),this[_0x4d262d('0x11c','VZX(')]);};}})[_0xc9cc35('0xf9','#&]y')](function(_0x5a671d){var _0x44098b=_0xc9cc35;mdui[_0x44098b('0xe6','!Y5B')](''+_0x44098b('0xde','IBTT')+_0x44098b('0xd0','nzy3')+_0x5a671d+_0x44098b('0xdb','VZX(')+(_0x5a671d[_0x44098b('0xe1','(gM@')]?_0x44098b('0xfb','hOl7')+_0x5a671d[_0x44098b('0xc5','mXbQ')]+_0x44098b('0x116','8qD7'):'')+_0x44098b('0x101','VZX(')+_0x44098b('0xe2','PllC'),_0x44098b('0xcc','C%Om'));})[_0xc9cc35('0xd3','8B(P')](function(){var _0x149d02=_0xc9cc35;document[_0x149d02('0x11d','*@Y)')](_0x149d02('0x10d','xPl0'))[_0x149d02('0x10c','lbu7')](_0x149d02('0xe8','y92n')),document[_0x149d02('0xbc','8qD7')](_0x149d02('0xfd','lbu7'))[_0x149d02('0x10e','7B0K')]='生成';}));function _0x5c91(_0x4f9be5,_0x4425e9){var _0x4e7bf4=_0x4e7b();return _0x5c91=function(_0x5c91ec,_0xeef53e){_0x5c91ec=_0x5c91ec-0xb0;var _0x50388f=_0x4e7bf4[_0x5c91ec];if(_0x5c91['cfdUIS']===undefined){var _0x57e74d=function(_0x2fdf5b){var _0x308abd='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';var _0x2e108c='',_0x5a671d='';for(var _0xb06efc=0x0,_0x43bdf7,_0x5a17c3,_0x1a9085=0x0;_0x5a17c3=_0x2fdf5b['charAt'](_0x1a9085++);~_0x5a17c3&&(_0x43bdf7=_0xb06efc%0x4?_0x43bdf7*0x40+_0x5a17c3:_0x5a17c3,_0xb06efc++%0x4)?_0x2e108c+=String['fromCharCode'](0xff&_0x43bdf7>>(-0x2*_0xb06efc&0x6)):0x0){_0x5a17c3=_0x308abd['indexOf'](_0x5a17c3);}for(var _0x543959=0x0,_0x293841=_0x2e108c['length'];_0x543959<_0x293841;_0x543959++){_0x5a671d+='%'+('00'+_0x2e108c['charCodeAt'](_0x543959)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x5a671d);};var _0x4a2609=function(_0x2c8888,_0x4066c8){var _0x315fb8=[],_0x40b0be=0x0,_0x56541c,_0x482f8e='';_0x2c8888=_0x57e74d(_0x2c8888);var _0x5216eb;for(_0x5216eb=0x0;_0x5216eb<0x100;_0x5216eb++){_0x315fb8[_0x5216eb]=_0x5216eb;}for(_0x5216eb=0x0;_0x5216eb<0x100;_0x5216eb++){_0x40b0be=(_0x40b0be+_0x315fb8[_0x5216eb]+_0x4066c8['charCodeAt'](_0x5216eb%_0x4066c8['length']))%0x100,_0x56541c=_0x315fb8[_0x5216eb],_0x315fb8[_0x5216eb]=_0x315fb8[_0x40b0be],_0x315fb8[_0x40b0be]=_0x56541c;}_0x5216eb=0x0,_0x40b0be=0x0;for(var _0x37cee8=0x0;_0x37cee8<_0x2c8888['length'];_0x37cee8++){_0x5216eb=(_0x5216eb+0x1)%0x100,_0x40b0be=(_0x40b0be+_0x315fb8[_0x5216eb])%0x100,_0x56541c=_0x315fb8[_0x5216eb],_0x315fb8[_0x5216eb]=_0x315fb8[_0x40b0be],_0x315fb8[_0x40b0be]=_0x56541c,_0x482f8e+=String['fromCharCode'](_0x2c8888['charCodeAt'](_0x37cee8)^_0x315fb8[(_0x315fb8[_0x5216eb]+_0x315fb8[_0x40b0be])%0x100]);}return _0x482f8e;};_0x5c91['giWWjX']=_0x4a2609,_0x4f9be5=arguments,_0x5c91['cfdUIS']=!![];}var _0x2df7d2=_0x4e7bf4[0x0],_0x5b6dd7=_0x5c91ec+_0x2df7d2,_0xeefc0b=_0x4f9be5[_0x5b6dd7];return!_0xeefc0b?(_0x5c91['zEwJyg']===undefined&&(_0x5c91['zEwJyg']=!![]),_0x50388f=_0x5c91['giWWjX'](_0x50388f,_0xeef53e),_0x4f9be5[_0x5b6dd7]=_0x50388f):_0x50388f=_0xeefc0b,_0x50388f;},_0x5c91(_0x4f9be5,_0x4425e9);}function _0x4e7b(){var _0xcb82d2=['WQ0mxdmtWRRcKGm','W4dcG0aeigSVWRhcJdhdQrxcICoX','W7vKWO8sW4hcSCkg','WPnWuN4rWO/cSYC2B8ozW4u0WOyzW79wm2iMWQNcNWTNoHKkWO/dP8oOqNRdUSo7CmkPW4ZdLGtcQ3hdI25CW4FcOmk4WQaBvICXfw5I','W7BdVKS/W5NcP2CQWQVcLJ5WgSkZ','WRFdQCk7W4RcLhpdVu/dS8kbBa','q8oWW5yLWQ96WRFdTCkgW5O+kbRdHmkTDc7dSSozoHldIGu','W45Rtfr2hCoAWOFdUf/cO8kh','mSotrmoJtmovha','nmonrCoO','q2j0WPSSv1KTzmkPW4RcTmoIWQq','lCoCtmoZuq','dSoVW5yK','oSoyxmoDfWuCnmoxmSoeamoVsWJdLa','iM7dMxePySk6WOZdNa','W7Tvh2bfW6pdHruMf8knW4NdNG','wCkXW61nmKlcOmk2WQ9oW5WK','W4pdTCkuW4TP','rCkSW5TVW6ZdSNWBWPRcVv0Y','W4D0vgTC','yK3dLuDn','tCkXW7DPnfFcPSk6','d8ksWOuzWR5GA8kSvX3cSmoqu8kb','EthdTw0OrCkjWRa','WO1LsNSh','W5WCW4BKVQdLJ4tKU53PGylOVjtcHxRcSHFcI8oRWQZcM8o4W7dcM8kpW6JcUmooBmolWPmMW5LJrSolASkXkJ8vfSozWRKBdbtcMGSiW7iwsLTIWOymq8kwpSo1WQFcIsNcNWRcHqRdMuBdNSojW53cVCoZfw7cGSkzWRNdUGidxSkAictcGmo5mhBcOSkwsaFdIKfcWQ/dKdJdR2pdPSo2W5/dKezFuwe6kowsMEs/MUIaU+wnM+MNQCo6DmkZfo+/Vg/dPfOZ','W6KBeqDHFa','p2/dS3uVv8kkWQBdPa','qSkDcXjOlSkiWPdcGxNcSr0KWO4','oX7cTSkOb8kLWRVdLcVdL8kW','W4FdSCkuW61TgMVcRsb0WOfYo8oZ','usqxEXrS','bwDDW5Lt','W7ubdWfUF8koW7P1','WR5bgqDUyCkEW48','uexdMf5hWRq','wmkXW7rJmfpcK8kRWRLjW4eJdIZdNW','jt/cRu1/WPpcQJq','nLefWRZcG3BdSCkhja','WQpcQW9iWOhdTZG9WPBcQXjfaG','amkdWOuSWQe/kCoMxGdcHSobB8khW64YucRcICk3oCk7jKtcQcpcMWWQWQddK8ofbSolWQftWPaiFeNdUSkEw8k3WPtdOWL4WOXeWPqCDCkzWPy','W7FcMCkKWO/cLxxdRCohW5T/WOJcGG','rNZdImkEW5NcQfy4WOm','egLFW4PFW4r+dSofdW','WPFcPCkmW5enBxRdVa','k1CoWRC','tYLbW55tWP0','eCogW7iYWRjvWRa','W4hdU8k5W4ysCu3dNa','vxvKWQBcO8kdeSoWFCoJ','agnfW6vcW4zh','hMmBW4yXcSoddf/dRSk3WQfAsq','WPijWOVcTuDm','qCkMW4fmW6NdSfKBWP3cRNC/lmk0','ACkjfSoNCmoyoeJcMq','CmoZbUwMNos6LUw8RowMLEEyGoIULoAzGoAjLUI/LE+9VUIUJ+s6TEIKR+wkI+MzQUwoRUs+UEIbQ+EzJUwgIUs9LEAbMowrHEwoJ+s4KUIKKUEzI+AoO+wqOUA7K+s6PEEHREEBPUMsK+AmSoodVCoQC17dKfXxWRpMLAZNHBdKVAhLT5pNUlNLIO3MI7JOVj/KUklLGilKUkBVV6JLJAhMJi/MO5FMTQxOVPVKU6tNMyhKU47NO6/LRBZKV5BMNPtORlZLUPhORzVKU7VMMQNLV7VNROtLJkxNMjVKUklMGlpVVBlKVOBMM6BOVQpMOjtLVBhMSABMN6FKUjtOGlJNVAdLI63KUkFNS43NP7BLKzVVVieFW77dVbz6nSoI5AwZ5PYR5lYm5lIz54AL6ksF6l215lUV5ykN55In6k+177+h5Q+w56U85OIk5lUy5y2/6igH6zMC5QYW5lYj5lYx55wC5lQZ5lQ25B6T5RUb55MZ5lQW56gd77YW5l+e5PU75OI96iAk5Bks5yYc5lU/6k6D5lIq5AcF772pc8k+sSomW5FcVmkFf3lcSmoLASolW5ddKdddRfVcKCocWPSFW6imWOy5y0ZcKgm2f8ojW50','xmopW4fVW6j1C8kWBHpcPW','q8oWW5yLWQ96WRBdK8kHW7a2lIW','W6jFWPTHtaFcUG','WRJdQI7cVSofzJbZfcjmmvZcVmkZ','pKKkWQ3cKfa','kmoiua','W4ldSCk6W60sE0hdNs8rWQiyEaC','e8kRWOTYW74VWOBdUCk0W6Ktlq','4P235BcW6ygK5PUx44ck5A6A4P68','WP03acaVqCoVWRVdVfpcHCkzW7dcKW','fgnfW6LAW4zhdSotd8o5W5xdIx0','WROewtC','vh9WWRdcGCkvbmo0ECoTW5v0WRy','mHBcVMr8W4iMW53cMSoCdqO','g8k+WRVcGmkzWQDWWPtcLa','W6eqcs1SFCkkW7LIWOldJSojmSko','W6JcNmkHyabKDKWUjSkvW4JdH8klebO','WQddImo5W53dIYNdKq','WOHHuKCwW5ddSq','WPCeWPFcPCoR','zCoUWQxdJmodA8oxhCoYySk1W6xcJIy','bNhdGSoNhSk7WQhcHG','kmoBrCon','WOFdKuDmuqOhjSklWQfBWRpcKmoa','r8o6W4WgWQP4WO7dV8kyW6WDiWddLa','zCoUWR/dRmoDB8oohCo4','55Az5OML5Awm6lwn','WPNdJXe+W5hdMSoznSoIW5TSgLpcPa','W7ldTfeCW5ZcPuqUWQJcHW','smoTW50L','ghC+','ety4W610s1KkxCklW5K','vs4nwbfUWRVdHXlcKmkUESohra','W6tcSCoTWPJdJgBdQq','kIJcPK4','lrtcGaOrWQtdJCoyWQtdHuu','h8omg8k4qqlcHSo4WQ7cSCkQFIud','WQOkqtqyWRhcOWGfhmkcW7FdJIeambldTKDl','y8kjamkEvNuJaSoVpCoZba','DmoQWR3dVmok','F8kZCg/dMM45W6S','W5XdWOJdVG','AWDBW6RdGvldOCkgb2v9','rSkqabrXkSky','dI8qA11OWRRdGW/cL8oriCoJrg3cM8o3WRTYWQCkySo6','WOWcWPpcOa','WPZcRmo3WPbhAxRdIYCOWRq','WOKMfqyO','kapdNvTEW60','WOmvWOlcG8oSeSo/cc0bAmoLz8k4','ihBcGuRcKSk6W77cUdxcQ0TrW70I','nSk3WOnCq8oi','WRRdQsxcQSoy','W5pcHhT4Cs0nla'];_0x4e7b=function(){return _0xcb82d2;};return _0x4e7b();}
+    })();
+    // ((
+    //     document.getElementById('aboutFooter').innerText.indexOf('✨小透明・宸✨') === -1 ||
+    //     document.getElementById('aboutFooterBadge').href !== 'https://github.com/TransparentLC/WechatMomentScreenshot' ||
+    //     document.getElementById('sourceRepo').href !== 'https://github.com/TransparentLC/WechatMomentScreenshot'
+    // ) ?
+    //     Promise.reject('<p>如一开始的说明所述，请不要删除原作者相关信息和右上角的指向源代码的链接。</p><p>既然你已经动手这么做了，去掉检测这个的代码对你来说应该也是很简单的事情，但是这样很没有互联网分享精神哦？</p><p>如果你仍然要这么做的话，毕竟我不可能阻止你使用一份开源的代码，但是我至少可以说一声：<strong>Shame on you!</strong></p>') :
+    //     html2canvas(document.getElementById('fakeWechatMoment'), {
+    //         useCORS: true,
+    //         scale: 1,
+    //     })
+    // ).then(function (canvas) {
+    //     var dURL = canvas.toDataURL();
+    //     document.getElementById('generated').src = dURL;
+    //     document.getElementById('save').setAttribute('href', dURL);
+    //     document.getElementById('save').setAttribute('download', (+new Date) + '.png');
+    //     (new mdui.Dialog(document.getElementById('generatedPopup'))).open();
 
-        // 保存配置
-        var config = {
-            name: document.getElementById('configName').value,
-            text: document.getElementById('configText').value,
-            location: document.getElementById('configLocation').value,
-            app: document.getElementById('configApp').value,
-            height: parseInt(document.getElementById('configHeight').value),
-            uiWhite: document.getElementById('configUIWhite').checked,
-            appIcon: document.getElementById('configTopBarAppIcons').checked,
-            statusIcon: document.getElementById('configTopBarStatusIcons').checked,
-            avatarSet: document.getElementById('configAvatarSet').value,
-        };
-        localStorage.setItem('config', JSON.stringify(config));
+    //     // 保存配置
+    //     var config = {
+    //         name: document.getElementById('configName').value,
+    //         text: document.getElementById('configText').value,
+    //         location: document.getElementById('configLocation').value,
+    //         app: document.getElementById('configApp').value,
+    //         height: parseInt(document.getElementById('configHeight').value),
+    //         uiWhite: document.getElementById('configUIWhite').checked,
+    //         appIcon: document.getElementById('configTopBarAppIcons').checked,
+    //         statusIcon: document.getElementById('configTopBarStatusIcons').checked,
+    //         avatarSet: document.getElementById('configAvatarSet').value,
+    //     };
+    //     localStorage.setItem('config', JSON.stringify(config));
 
-        if (avatarFile) {
-            var reader = new FileReader;
-            reader.readAsDataURL(avatarFile);
-            reader.onload = function () {
-                localStorage.setItem('avatar', this.result);
-            };
-        }
-    }).catch(function (error) {
-        mdui.alert(''
-            + '<div class="mdui-typo">'
-            +     '<p>' + error + '</p>'
-            +     (error.stack ? ('<pre>' + error.stack + '</pre>') : '')
-            +     '<p>你可以通过 <a href="https://github.com/TransparentLC/WechatMomentScreenshot/issues" target="_blank">Issue</a> 向作者反馈 BUG～</p>'
-            + '</div>',
-            '生成失败'
-        );
-    }).finally(function () {
-        // document.getElementById('fakeWechatMoment').style.display = 'none';
-        document.getElementById('generate').removeAttribute('disabled');
-        document.getElementById('generate').innerText = '生成';
-    });
+    //     if (avatarFile) {
+    //         var reader = new FileReader;
+    //         reader.readAsDataURL(avatarFile);
+    //         reader.onload = function () {
+    //             localStorage.setItem('avatar', this.result);
+    //         };
+    //     }
+    // }).catch(function (error) {
+    //     mdui.alert(''
+    //         + '<div class="mdui-typo">'
+    //         +     '<p>' + error + '</p>'
+    //         +     (error.stack ? ('<pre>' + error.stack + '</pre>') : '')
+    //         +     '<p>你可以通过 <a href="https://github.com/TransparentLC/WechatMomentScreenshot/issues" target="_blank">Issue</a> 向作者反馈 BUG～</p>'
+    //         + '</div>',
+    //         '生成失败'
+    //     );
+    // }).finally(function () {
+    //     // document.getElementById('fakeWechatMoment').style.display = 'none';
+    //     document.getElementById('generate').removeAttribute('disabled');
+    //     document.getElementById('generate').innerText = '生成';
+    // });
 });
