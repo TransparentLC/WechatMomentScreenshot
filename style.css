@@ -11,6 +11,10 @@ body {
     top: 0;
 }
 
+#fakeWechatMoment.iosStyle {
+    font-family: "SF Pro SC", "SF Pro Display", "SF Pro Icons", "Apple WebExp Icons Custom", "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .topBar {
     width: calc(100% - 32px);
     height: 72px;
@@ -20,9 +24,23 @@ body {
     color: #fff;
     display: flex;
     justify-content: space-between;
-    align-items: Center;
+    align-items: center;
     padding-left: 16px;
     padding-right: 16px;
+}
+
+.topBarIos {
+    width: calc(100% - 256px);
+    background-color: #303030;
+    font-size: 40px;
+    font-weight: 900;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 52px;
+    padding-left: 128px;
+    padding-right: 128px;
 }
 
 .header {
@@ -260,11 +278,12 @@ body {
     color: #fff;
 }
 
-.whiteUI #topBarTime {
+.whiteUI #topBarTime, .whiteUI #topBarTimeIos {
     color: #000;
 }
 
 .whiteUI .topBar,
+.whiteUI .topBarIos,
 .whiteUI .header {
     background-color: #efefef;
     color: #181818;
@@ -272,6 +291,9 @@ body {
 
 .whiteUI #topBarTime {
     color: #626262;
+}
+.whiteUI #topBarTimeIos {
+    color: #000;
 }
 
 .whiteUI .squareImage {
