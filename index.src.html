@@ -10,7 +10,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1/dist/css/mdui.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot@05d514cfcec6d64690d67f7c2125497711456646/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot@64cb6a726d82f13cf79155ee814ba5ee8ce83b1d/style.min.css">
     <!-- <link rel="stylesheet" href="style.css"> -->
 
     <!-- <script src="https://fastly.jsdelivr.net/npm/eruda"></script><script>eruda.init()</script> -->
@@ -265,18 +265,25 @@
             <label class="mdui-textfield-label">通知栏</label>
         </div>
         <div class="mdui-row">
-            <div class="mdui-col-xs-6">
+            <div class="mdui-col-xs-6 mdui-col-sm-4">
                 <label class="mdui-checkbox">
                     <input id="configTopBarAppIcons" type="checkbox" name="configTopBarAppIcons" />
                     <i class="mdui-checkbox-icon"></i>
                     显示 APP 图标
                 </label>
             </div>
-            <div class="mdui-col-xs-6">
+            <div class="mdui-col-xs-6 mdui-col-sm-4">
                 <label class="mdui-checkbox">
                     <input id="configTopBarStatusIcons" type="checkbox" name="configTopBarStatusIcons" />
                     <i class="mdui-checkbox-icon"></i>
                     随机信号和电量
+                </label>
+            </div>
+            <div class="mdui-col-xs-12  mdui-col-sm-4">
+                <label class="mdui-checkbox">
+                    <input id="configTopBarIos" type="checkbox" name="configTopBarIos" />
+                    <i class="mdui-checkbox-icon"></i>
+                    使用 iOS 的样式（以上两项不可用）
                 </label>
             </div>
         </div>
@@ -313,6 +320,11 @@
                 <img id="topBarIconSignal" class="topBarIcon" />
                 <img id="topBarIconBattery" class="topBarIcon" />
                 <span id="topBarTime"></span>
+            </div>
+            <div id="topBarIos" class="topBarIos">
+                <span id="topBarTimeIos"></span>
+                <div style="flex-grow:1"></div>
+                <img id="topBarIconIos" class="topBarIcon" />
             </div>
             <div id="header" class="header">
                 <div style="width:40px"></div>
@@ -458,6 +470,8 @@
                 不同手机的界面总是有那么一点区别的，要和真正的截图完全一样……我也很难办啊！（摊手）
                 <br>
                 如果实在是很在意通知栏的样式的话，可以从自己的手机上截一个通知栏的图然后覆盖上去……
+                <br>
+                iOS 的样式已经添加了，不过因为我并没有 iOS 设备，所以只能参考网上找到的截图来写样式，<strong>不一定能做到和实机一样</strong>。
                 <h4>能不能生成纯文字/转发图片的截图？</h4>
                 <del>懒得写样式，心情好的时候再加上～(*´ω`*)</del>
                 <br>
@@ -516,7 +530,7 @@ https://example.com/avatar-2.jpg
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/combine/npm/html2canvas@1/dist/html2canvas.min.js,npm/mdui@1/dist/js/mdui.min.js,gh/TransparentLC/WechatMomentScreenshot@afad1d0bde65c14fca0cdabe226bf1d0c62717e0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/html2canvas@1/dist/html2canvas.min.js,npm/mdui@1/dist/js/mdui.min.js,gh/TransparentLC/WechatMomentScreenshot@64cb6a726d82f13cf79155ee814ba5ee8ce83b1d/main.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/mdui@1/dist/js/mdui.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1/dist/html2canvas.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script> -->
