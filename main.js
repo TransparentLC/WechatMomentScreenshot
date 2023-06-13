@@ -410,14 +410,21 @@ document.getElementById('generate').addEventListener('click', function () {
         }
     }
 
-    if (document.getElementById('configTopBarIos').checked) {
+    if (document.getElementById('configTopBarCustom').checked) {
+        document.getElementById('topBar').style.display = 'none';
+        document.getElementById('topBarIos').style.display = 'none';
+        document.getElementById('topBarCustom').style.display = 'flex';
+        document.getElementById('topBarCustomImage').src = URL.createObjectURL(document.getElementById('configTopBarCustomImage').files[0]);
+    } else if (document.getElementById('configTopBarIos').checked) {
         document.getElementById('topBar').style.display = 'none';
         document.getElementById('topBarIos').style.display = 'flex';
+        document.getElementById('topBarCustom').style.display = 'none';
         document.getElementById('topBarIconIos').src = 'mdicons/' + (useWhiteUI ? 'black_icons' : 'white_icons') + '/ios_status.svg';
         document.getElementById('fakeWechatMoment').classList.add('iosStyle');
     } else {
         document.getElementById('topBar').style.display = 'flex';
         document.getElementById('topBarIos').style.display = 'none';
+        document.getElementById('topBarCustom').style.display = 'none';
         document.getElementById('fakeWechatMoment').classList.remove('iosStyle');
         //设置顶栏图标
         var iconWifi = [4, 4, 4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 0];
