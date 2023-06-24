@@ -34,6 +34,23 @@ mdui.confirm(''
     }
 );
 
+mdui.alert(''
+        + '<div class="mdui-typo">'
+        + '<p><strong>“极客星球/宇宙领域科技”</strong>在自行部署本工具时，<strong>抹去了原作者和 repo 的相关信息</strong>，并且通过缩小字号、设置隐藏样式等方式<strong>与相关的检测代码进行恶意对抗</strong>（<a href="https://web.archive.org/web/20230624084502/http://www.jikexq.cc/p/" target="_blank">Wayback Machine 快照</a>）。</p>'
+        + '<p><img src="https://cc-im-kefu-cos.7moor-fs1.com/im/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/BaY_kUl4.png"></p>'
+        + '<p>此外，该网站<strong>完全复制了原作者的打赏页面及页面上记录的打赏留言内容</strong>（<a href="https://web.archive.org/web/20230624084633/http://www.jikexq.cc/donate/" target="_blank">Wayback Machine 快照</a>），同样替换了<strong>包括收款码在内</strong>的原作者相关信息（左为原版，右为复制品）。</p>'
+        + '<p><img src="https://cc-im-kefu-cos.7moor-fs1.com/im/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/qN4r10oS.png"></p>'
+        + '<p>本工具的原作者在此声明：原作者与“极客星球/宇宙领域科技”<strong>不存在任何关联</strong>，对此类一边自称“写免费好用的新功能”，实际上却在进行着<strong>无断转载</strong>的行为表示<strong style="color:red">强烈谴责</strong>，请“极客星球/宇宙领域科技”<strong style="color:red">立即停止此类行为</strong>。</p>'
+        + '</div>',
+    'Hall of Shame',
+    function () {},
+    {
+        modal: true,
+        closeOnEsc: false,
+        history: false,
+    }
+)
+
 if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScript('https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/fuckWechat.min.js');
 
 if (!window.Promise) loadScript('https://cdn.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js');
