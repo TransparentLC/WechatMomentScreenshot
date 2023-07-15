@@ -58,6 +58,9 @@
 * h**p://xnw(dot)51tongxin(dot)cn/ 移除原作者信息和源代码链接
 * h**p://h5(dot)05zh(dot)com/erji/pyqdzsc/ “库简盒 APP” 移除原作者信息
 * h**ps://baitan(dot)lepinpin(dot)cn/dz/ “皇冠联盟数据工作室” 移除原作者信息
+* h**p://lanmei(dot)freeee(dot)ml/pyq/ “蓝魅网络科技” 移除原作者信息和源代码链接
+* h**p://pyq(dot)ggahh(dot)cn/ “郭郭爱花花” 移除原作者信息
+* h**p://api(dot)xiaok1(dot)com/web/WechatLike/ 移除原作者信息和源代码链接
 
 ---
 
