@@ -30,7 +30,7 @@ async function handleRequest(request) {
         const articleContent = await fetch(articleURL).then(r => r.text());
 
         let match = articleContent.match(
-            /var nickname = "(?<author>[\S\s]*?)";[\S\s]*?var msg_title = \'(?<title>[\S\s]*?)\'.html\(false\);[\S\s]*?var msg_cdn_url = "(?<cover>[\S\s]*?)";/
+            /var nickname = htmlDecode\("(?<author>[\S\s]*?)"\);[\S\s]*?var msg_title = \'(?<title>[\S\s]*?)\'.html\(false\);[\S\s]*?var msg_cdn_url = "(?<cover>[\S\s]*?)";/
         );
         if (!match) {
             // Test case:
