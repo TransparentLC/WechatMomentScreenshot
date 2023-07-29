@@ -61,8 +61,11 @@
 * h**p://lanmei(dot)freeee(dot)ml/pyq/ “蓝魅网络科技” 移除原作者信息和源代码链接
 * h**p://pyq(dot)ggahh(dot)cn/ “郭郭爱花花” 移除原作者信息
 * h**p://api(dot)xiaok1(dot)com/web/WechatLike/ 移除原作者信息和源代码链接
-* h**ps://soujiz.com/web/wechatimg/ “大雄搜集站” 移除原作者信息和源代码链接
-* h**ps://soujiz.com/10084.html “大雄搜集站” 有偿售卖整合本工具源代码的“全功能在线截图生成器工具网页版”，这一整套源码也极有可能并非该网站原创，原作者我暂时没有考证到，但在别的地方找到了时间更早且免费发布的[同一套源码](https://www.bilibili.com/read/cv22111444/)
+* h**ps://soujiz(dot)com/web/wechatimg/ “大雄搜集站” 移除原作者信息和源代码链接
+* h**ps://soujiz(dot)com/10084.html “大雄搜集站” 有偿售卖整合本工具源代码的“全功能在线截图生成器工具网页版”，这一整套源码也极有可能并非该网站原创，原作者我暂时没有考证到，但在别的地方找到了时间更早且免费发布的[同一套源码](https://www.bilibili.com/read/cv22111444/)
+* h**ps://lab(dot)adoi(dot)cn/html/pyq/ “多易 Web 实验室” 移除原作者信息和源代码链接
+* h**p://vx(dot)alphag(dot)cn/ “小刀娱乐网” 移除原作者信息和源代码链接
+* h**ps://api(dot)qiuliqi(dot)top/wx_pyq/ “小秋秋 API” 移除原作者信息
 
 ---
 
