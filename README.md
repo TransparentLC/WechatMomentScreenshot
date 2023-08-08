@@ -66,6 +66,7 @@
 * h**ps://lab(dot)adoi(dot)cn/html/pyq/ “多易 Web 实验室” 移除原作者信息和源代码链接
 * h**p://vx(dot)alphag(dot)cn/ “小刀娱乐网” 移除原作者信息和源代码链接
 * h**ps://api(dot)qiuliqi(dot)top/wx_pyq/ “小秋秋 API” 移除原作者信息
+* h**ps://lijile(dot)github(dot)io/moment/ 移除原作者信息和源代码链接，将源代码链接替换为自己的 repo 后重新上传到 GitHub
 
 ---
 
