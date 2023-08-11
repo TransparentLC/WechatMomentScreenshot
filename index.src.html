@@ -10,7 +10,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1/dist/css/mdui.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot@8092d732c140378a811b5531bb80e9eab596e060/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot@5153ab08ffb7c9bdce15bd5ae1f1f15e57e3f927/style.min.css">
     <!-- <link rel="stylesheet" href="style.css"> -->
 
     <!-- <script src="https://fastly.jsdelivr.net/npm/eruda"></script><script>eruda.init()</script> -->
@@ -288,7 +288,7 @@
             </div>
             <div class="mdui-col-xs-8 mdui-col-sm-10">
                 <label class="mdui-checkbox">
-                    <input id="configTopBarCustom" type="checkbox" name="configTopBarIos" />
+                    <input id="configTopBarCustom" type="checkbox" name="configTopBarCustom" />
                     <i class="mdui-checkbox-icon"></i>
                     使用自定义通知栏图片
                 </label>
@@ -319,6 +319,7 @@
 
         <button id="generate" class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-btn-block mdui-m-t-2">生成</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="window.open('https://i.akarin.dev/donate/')">请小透明喝一瓶肥宅快乐水～(*´∀`)</button>
+        <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="window.open('https://i.akarin.dev/wms-archive/')">公众号资源分享</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="copyGitLink()">复制本工具的链接，分享给有需要的人(`ヮ´ )</button>
         <button class="mdui-btn mdui-ripple mdui-btn-block mdui-text-color-theme-accent mdui-m-t-1" onclick="localStorage.removeItem('config');localStorage.removeItem('avatar');mdui.snackbar({message:'已清除～刷新后将使用默认设置'})">清除保存的设置信息</button>
         <div id="gitLink" style="display:none">https://git.io/WMS</div>
@@ -361,7 +362,7 @@
                     </div>
 
                     <div id="singleImage" class="singleImage" style="display:none">
-                        <img id="image" class="image" src="https://ae01.alicdn.com/kf/HTB13rXuJCzqK1RjSZPxq6A4tVXae.jpg" />
+                        <img id="image" class="image" src="https://cc-im-kefu-cos.7moor-fs1.com/im/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/S9rwwjJo.jpg">
                     </div>
 
                     <div id="multiImage" class="multiImage" style="display:none">
@@ -466,11 +467,15 @@
 
         <div id="generatedPopup" class="mdui-dialog">
             <div class="mdui-dialog-title">生成完毕| ω・`)</div>
-            <img id="generated" />
-
-            <div class="mdui-typo-caption-opacity mdui-m-y-2">
-                <p>如果点击“保存”没有反应<br>请尝试长按/右键图片进行另存为操作(　ﾟ 3ﾟ)</p>
-                <p>当前使用的头像与设置已保存到本地<br>下次打开本工具将自动读取～</p>
+            <div class="mdui-dialog-content">
+                <img id="generated">
+                <div class="mdui-typo-caption-opacity mdui-text-center">
+                    <p>如果点击“保存”没有反应<br>请尝试长按/右键图片进行另存为操作 (　ﾟ 3ﾟ)</p>
+                </div>
+                <div class="mdui-typo">
+                    <p class="mdui-m-b-1">如果这个工具帮到了你，请推荐给更多的人～</p>
+                    <p>如果你从公众号获取了资源，欢迎通过<a href="https://wj.qq.com/s2/12913387/8254/" target="_blank" rel="noopener noreferrer">这个问卷</a>分享给工具的其他用户。你也可以在<a href="https://i.akarin.dev/wms-archive/" target="_blank">这里</a>查看其他人分享的资源。</p>
+                </div>
             </div>
             <div class="mdui-dialog-actions">
                 <a id="save" class="mdui-btn mdui-ripple">保存</a>
@@ -549,7 +554,7 @@ https://example.com/avatar-2.jpg
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/combine/npm/html2canvas@1/dist/html2canvas.min.js,npm/mdui@1/dist/js/mdui.min.js,gh/TransparentLC/WechatMomentScreenshot@5b18540816ddccf7423eec5520e9b746b6d81cb2/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/html2canvas@1/dist/html2canvas.min.js,npm/mdui@1/dist/js/mdui.min.js,gh/TransparentLC/WechatMomentScreenshot@5153ab08ffb7c9bdce15bd5ae1f1f15e57e3f927/main.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/mdui@1/dist/js/mdui.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1/dist/html2canvas.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/TransparentLC/WechatMomentScreenshot/main.min.js"></script> -->
