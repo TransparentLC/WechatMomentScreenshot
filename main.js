@@ -42,6 +42,7 @@ mdui.alert(''
         + '<p>此外，该网站<strong>完全复制了原作者的打赏页面及页面上记录的打赏留言内容</strong>（<a href="https://web.archive.org/web/20230624084633/http://www.jikexq.cc/donate/" target="_blank">Wayback Machine 快照</a>），同样替换了<strong>包括收款码在内</strong>的原作者相关信息（左为原版，右为复制品）。</p>'
         + '<p><img src="https://cc-im-kefu-cos.7moor-fs1.com/im/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/qN4r10oS.png"></p>'
         + '<p>本工具的原作者在此声明：原作者与“极客星球/宇宙领域科技”<strong>不存在任何关联</strong>，对此类一边自称“写免费好用的新功能”，实际上却在进行着<strong>无断转载</strong>的行为表示<strong style="color:red">强烈谴责</strong>，请“极客星球/宇宙领域科技”<strong style="color:red">立即停止此类行为</strong>。</p>'
+        + '<p>在“极客星球/宇宙领域科技”删除相关页面前，此弹窗将一直保留。</p>'
         + '</div>',
     'Hall of Shame',
     function () {},
@@ -133,7 +134,7 @@ document.getElementById('configFirstAvatar').checked = config.firstAvatar;
 document.getElementById('configTopBarAppIcons').checked = config.appIcon;
 document.getElementById('configTopBarStatusIcons').checked = config.statusIcon;
 document.getElementById('configTopBarIos').checked = config.statusIos;
-document.getElementById('avatar').style.backgroundImage = 'url(' + (localStorage.getItem('avatar') || 'https://ae01.alicdn.com/kf/HTB1yE4fMmzqK1RjSZFp761kSXXal.png') + ')';
+document.getElementById('avatar').style.backgroundImage = 'url(' + (localStorage.getItem('avatar') || 'https://cc-im-kefu-cos.7moor-fs1.com/im/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/jKe8Qc5l.png') + ')';
 document.getElementById('configAvatarSet').value = config.avatarSet;
 
 xhrGet(config.avatarSet || 'https://i.akarin.dev/wms-avatar/avatar-stable.txt', function (result) { loadAvatarSet(result) });

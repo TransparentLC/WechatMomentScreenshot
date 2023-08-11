@@ -185,14 +185,17 @@ body {
     display: inline-block;
 }
 
-#generatedPopup {
-    text-align: center;
-}
-
 #generated {
     width: auto;
-    height: 400px;
-    display: inline-block;
+    height: 270px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    #generated {
+        height: 400px;
+    }
 }
 
 .squareImage {
