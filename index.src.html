@@ -214,7 +214,7 @@
                     <option value="https://i.akarin.dev/wms-avatar/avatar-stable.txt">
                     <option value="https://i.akarin.dev/wms-avatar/avatar-fast.txt">
                 </datalist>
-                <div class="mdui-textfield-helper">高级功能，点击<a href="javascript:;" class="mdui-text-color-theme-accent" mdui-dialog="{target:'#aboutAvatarSet'}">这里</a>查看详细说明</div>
+                <div class="mdui-textfield-helper">高级功能，点击<a href="https://github.com/TransparentLC/WechatMomentScreenshot/issues/77" target="_blank" class="mdui-text-color-theme-accent">这里</a>查看详细说明</div>
             </div>
             <div class="mdui-col-xs-4 mdui-col-sm-2">
                 <div class="mdui-textfield">
@@ -532,28 +532,6 @@
                         <a href="https://www.iconfont.cn">Iconfont 阿里巴巴矢量图标库</a>
                     </li>
                 </ul>
-            </div>
-            <div class="mdui-dialog-actions">
-                <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
-            </div>
-        </div>
-
-        <div id="aboutAvatarSet" class="mdui-dialog">
-            <div class="mdui-dialog-title">“自定义头像库”的说明</div>
-            <div class="mdui-dialog-content mdui-typo">
-                <p>如果你希望在生成的截图的点赞区域中显示自定义的头像，可以按照以下步骤操作：</p>
-                <ol>
-                    <li>收集你想要的头像，并上传到图床之类的地方。</li>
-                    <li>将这些头像的 URL 以一行一个的格式保存为纯文本，以下是示例。</li>
-                    <pre><code>https://example.com/avatar-0.jpg
-https://example.com/avatar-1.jpg
-https://example.com/avatar-2.jpg
-...</code></pre>
-                    <li>将这个文本文件上传到某个地方，例如自己的网站上，也可以按照这一格式动态生成头像库的内容，总之需要使头像库也能通过 URL 访问到。</li>
-                    <li>在“自定义头像库”中输入头像库的 URL，点击“应用”后会进行读取，之后在生成截图时就会从头像库抽取头像了。</li>
-                    <li>头像和头像库都需要支持跨域访问（响应头 <code>Access-Control-Allow-Origin: *</code>）</li>
-                </ol>
-                <p>这个功能有一定的技术门槛，因此并不能保证每个人都有条件使用这一功能。留空后点击“应用”将会使用默认头像库。</p>
             </div>
             <div class="mdui-dialog-actions">
                 <button class="mdui-btn mdui-ripple" mdui-dialog-close>OK</button>
