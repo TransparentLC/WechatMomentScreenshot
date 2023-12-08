@@ -72,6 +72,7 @@
 * h**p://tool(dot)mf2(dot)cn/gongju/pyq/index.html “魔方超级外链工具” 移除原作者信息
 * h**p://vx(dot)bbvmp(dot)com/ “好源码分享/爱源码” 移除原作者信息和源代码链接
 * h**ps://www(dot)php-asp(dot)net/product/view1047.html “好源码分享/爱源码” 有偿售卖源代码
+* h**ps://wechat(dot)sxcto(dot)com/give_a_like.html 移除原作者信息和源代码链接
 
 ---
 
