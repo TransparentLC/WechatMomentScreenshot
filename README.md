@@ -74,6 +74,8 @@
 * h**ps://wechat(dot)sxcto(dot)com/give_a_like.html 移除原作者信息和源代码链接
 * h**ps://ourboy(dot)cn/dz/ 移除原作者信息和源代码链接
 * h**p://app(dot)ippapp(dot)com/screenshot/ “小杯子 PYQ 截图生成工具” 移除原作者信息和源代码链接
+* h**ps://www(dot)nbey(dot)net/ “Nbey WeChat Moments Build Tool” 移除原作者信息和源代码链接
+* h**ps://icoolgo(dot)com/Tools/tuijian/pyq “花式玩客” 移除原作者信息和源代码链接
 
 ---
 
