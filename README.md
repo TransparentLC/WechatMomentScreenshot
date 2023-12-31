@@ -76,6 +76,8 @@
 * h**p://app(dot)ippapp(dot)com/screenshot/ “小杯子 PYQ 截图生成工具” 移除原作者信息和源代码链接
 * h**ps://www(dot)nbey(dot)net/ “Nbey WeChat Moments Build Tool” 移除原作者信息和源代码链接
 * h**ps://icoolgo(dot)com/Tools/tuijian/pyq “花式玩客” 移除原作者信息和源代码链接
+* h**p://pyq(dot)regqq(dot)com/ “宝尊网络” 移除原作者信息和源代码链接
+* h**p://www(dot)99pan(dot)top/w/4/index.html 移除原作者信息和源代码链接
 
 ---
 
