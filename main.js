@@ -141,40 +141,70 @@ xhrGet(config.avatarSet || 'https://i.akarin.dev/wms-avatar/avatar-stable.txt', 
 
 //输入微信文章的链接，通过后端自动获取文章标题和文章封面
 function getArticleInfo() {
-    var requestDialog = new mdui.Dialog('#request');
-    mdui.prompt('公众号文章链接（请勿提交数字藏品相关内容）', function (value) {
-        var xhr = new XMLHttpRequest;
-        xhr.open('GET', 'https://i.akarin.dev/wmsproxy/?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var result = JSON.parse(xhr.responseText);
-                document.getElementById('requestAction').innerText = 'OK';
+    var t = Date.now();
+    mdui.confirm(
+        '<div class="mdui-typo">'
+        +     '<p><strong style="color:red">（使用本功能前，请阅读使用须知至少 5 秒）</strong></p>'
+        +     '<p>本工具不得用于虚拟货币/数字藏品/数字艺术/数字文创/数字潮玩/NFT/……相关内容。</p>'
+        +     '<p>如果你提交的文章链接经关键词检测涉及以上内容，将不会返回自动获取标题的结果。在进一步确认核实后，<strong>你的 IP 地址（段）将会被封禁</strong>。</p>'
+        +     '<p>如果仍然有人继续尝试违反这一规则，不排除考虑关闭这一功能的可能性。</p>'
+        +     '<p><strong>我们已经警告过了。</strong></p>'
+        +     '<hr>'
+        +     '<blockquote>'
+        +         '<p>账号涉及虚拟货币相关的发行、交易与融资等内容，例如提供交易入口、指引、发行渠道引导等，包括但不限于以下类型：</p>'
+        +         '<p>……</p>'
+        +         '<p>账号提供与数字藏品二级交易相关的服务或内容的，也按照本条规范进行处理。</p>'
+        +         '<p>一经发现此类违规行为，微信公众平台将根据违规严重程度，对违规公众账号予以责令限期整改及限制账号部分功能直至永久封号的处理。”</p>'
+        +         '<p>——<a href="https://mp.weixin.qq.com/mp/opshowpage?action=newoplaw#t3-3-24" target="_blank">《微信公众平台运营规范》3.24 虚拟货币及数字藏品交易行为</a></p>'
+        +     '</blockquote>'
+        +     '<p>在添加相关限制前，将这个功能用于数字藏品相关的请求数占到了三分之一甚至更多 (　^ω^)</p>'
+        + '</div>',
+        '使用须知',
+        function () {
+            if (Date.now() - t < 5000) {
+                return mdui.snackbar('请阅读使用须知至少 5 秒');
+            }
+            var requestDialog = new mdui.Dialog('#request');
+            mdui.prompt('公众号文章链接（请勿提交数字藏品相关内容）', function (value) {
+                var xhr = new XMLHttpRequest;
+                xhr.open('GET', 'https://i.akarin.dev/wmsproxy/?url=' + encodeURIComponent(value)); //获取标题和封面的服务器
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var result = JSON.parse(xhr.responseText);
+                        document.getElementById('requestAction').innerText = 'OK';
 
-                if (requestDialog.getState() == 'opening' || requestDialog.getState() == 'opened') {
-                    if (typeof(result) != 'undefined' && result.success) {
-                        document.getElementById('configArticleTitle').value = result.title;
-                        document.getElementById('articleTitle').innerText = result.title;
-                        document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + result.cover + '\")';
-                        document.getElementById('requestResult').innerText = '获取成功！(ゝ∀･)';
-                        document.getElementById('requestResultContent').innerHTML = '标题：' + result.title + '<br>封面：<a target="_blank" href="' + result.cover + '">点此查看</a>';
+                        if (requestDialog.getState() == 'opening' || requestDialog.getState() == 'opened') {
+                            if (typeof(result) != 'undefined' && result.success) {
+                                document.getElementById('configArticleTitle').value = result.title;
+                                document.getElementById('articleTitle').innerText = result.title;
+                                document.getElementById('articleIcon').style.backgroundImage = 'url(\"' + result.cover + '\")';
+                                document.getElementById('requestResult').innerText = '获取成功！(ゝ∀･)';
+                                document.getElementById('requestResultContent').innerHTML = '标题：' + result.title + '<br>封面：<a target="_blank" href="' + result.cover + '">点此查看</a>';
+                            } else {
+                                document.getElementById('requestResult').innerText = '获取失败！( ´_っ`)';
+                                document.getElementById('requestResultContent').innerHTML = '输入的链接是否为微信公众号文章？<br>（链接通常以 <code>https://mp.weixin.qq.com/</code> 作为开头）';
+                            }
+                        }
                     } else {
                         document.getElementById('requestResult').innerText = '获取失败！( ´_っ`)';
-                        document.getElementById('requestResultContent').innerHTML = '输入的链接是否为微信公众号文章？<br>（链接通常以 <code>https://mp.weixin.qq.com/</code> 作为开头）';
+                        document.getElementById('requestResultContent').innerHTML = '无法连接到服务器。';
                     }
+                    requestDialog.handleUpdate();
                 }
-            } else {
-                document.getElementById('requestResult').innerText = '获取失败！( ´_っ`)';
-                document.getElementById('requestResultContent').innerHTML = '无法连接到服务器。';
-            }
-            requestDialog.handleUpdate();
-        }
-        xhr.send();
-        document.getElementById('requestResult').innerText = '';
-        document.getElementById('requestAction').innerText = 'CANCEL';
-        document.getElementById('requestResultContent').innerHTML = '<div class="mdui-valign"><div class="mdui-spinner"></div><span class="mdui-m-l-2">获取中…… (oﾟωﾟo)</span></div>';
-        mdui.updateSpinners();
-        requestDialog.open();
-    }, function () {});
+                xhr.send();
+                document.getElementById('requestResult').innerText = '';
+                document.getElementById('requestAction').innerText = 'CANCEL';
+                document.getElementById('requestResultContent').innerHTML = '<div class="mdui-valign"><div class="mdui-spinner"></div><span class="mdui-m-l-2">获取中…… (oﾟωﾟo)</span></div>';
+                mdui.updateSpinners();
+                requestDialog.open();
+            }, function () {});
+        },
+        function () {},
+        {
+            history: false,
+            modal: true,
+        },
+    );
 }
 
 //删除所有发表的九宫格图片
