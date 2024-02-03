@@ -78,6 +78,7 @@
 * h**ps://icoolgo(dot)com/Tools/tuijian/pyq “花式玩客” 移除原作者信息和源代码链接
 * h**p://pyq(dot)regqq(dot)com/ “宝尊网络” 移除原作者信息和源代码链接
 * h**p://www(dot)99pan(dot)top/w/4/index.html 移除原作者信息和源代码链接
+* h**ps://pyq(dot)soux2(dot)com/ “搜小二导航” 移除原作者信息和源代码链接
 
 ---
 
