@@ -327,3 +327,27 @@ body {
     border: none;
     color: #aaa;
 }
+
+/* Shame on you! */
+a[href="http://www.jikexq.cc"][mdui-tooltip="{content:'查看 GitHub'}"] {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: #fff !important;
+    border-radius: 0;
+}
+
+a[href="http://www.jikexq.cc"][mdui-tooltip="{content:'查看 GitHub'}"] svg {
+    display: none;
+}
+
+a[href="http://www.jikexq.cc"][mdui-tooltip="{content:'查看 GitHub'}"]:before {
+    content: '你所访问的网站由于在转载本工具时抹去了原作者相关信息，或存在其他违反使用规则的行为，已被原作者列入黑名单。\A请保存原作者自己部署的页面地址：https://akarin.dev/WechatMomentScreenshot/';
+    white-space: pre-wrap;
+    text-transform: none;
+    color: #000;
+    position: absolute;
+    transform: translate(-50%, calc(50vh - 50%));
+}
