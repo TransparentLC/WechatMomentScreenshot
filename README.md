@@ -83,6 +83,19 @@
 
 ---
 
+### 使用说明
+在浏览器直接访问`index.html`即可
+
+#### Docker
+```bash
+docker build -t wechat-moment-screenshot:1.0 .
+```
+
+```bash
+# 修改18888为你想要使用的端口
+docker run -dp 18888:80 wechat-moment-screenshot:1.0
+```
+
 ### 这个小工具是什么？
 
 一个因为不喜欢也不想往朋友圈发某些不得不发的废文而做出来的摸鱼产物。
