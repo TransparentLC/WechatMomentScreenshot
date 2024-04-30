@@ -144,7 +144,7 @@ function getArticleInfo() {
     var t = Date.now();
     mdui.confirm(
         '<div class="mdui-typo">'
-        +     '<p><strong style="color:red">（使用本功能前，请阅读使用须知至少 5 秒）</strong></p>'
+        +     '<p><strong style="color:red">（使用本功能前，请阅读使用须知至少 10 秒）</strong></p>'
         +     '<p>本工具不得用于虚拟货币/数字藏品/数字艺术/数字文创/数字潮玩/NFT/……相关内容。</p>'
         +     '<p>如果你提交的文章链接经关键词检测涉及以上内容，将不会返回自动获取标题的结果。在进一步确认核实后，<strong>你的 IP 地址（段）将会被封禁</strong>。</p>'
         +     '<p>如果仍然有人继续尝试违反这一规则，不排除考虑关闭这一功能的可能性。</p>'
@@ -161,8 +161,8 @@ function getArticleInfo() {
         + '</div>',
         '使用须知',
         function () {
-            if (Date.now() - t < 5000) {
-                return mdui.snackbar('请阅读使用须知至少 5 秒');
+            if (Date.now() - t < 10000) {
+                return mdui.snackbar('请阅读使用须知至少 10 秒');
             }
             var requestDialog = new mdui.Dialog('#request');
             mdui.prompt('公众号文章链接（请勿提交数字藏品相关内容）', function (value) {
