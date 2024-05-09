@@ -80,6 +80,7 @@
 * h**p://www(dot)99pan(dot)top/w/4/index.html 移除原作者信息和源代码链接
 * h**p://www(dot)sxw818(dot)com/ymfb/pyqdz/ “四夕网” 移除原作者信息和源代码链接
 * h**ps://wkut(dot)top/?tools/zan/ “夜雨聆風辅助箱” 移除原作者信息和源代码链接
+* h**p://wx(dot)chuangyihulian(dot)com/pyq.html “创意互联” 移除原作者信息
 
 ---
 
