@@ -83,6 +83,7 @@
 * h**p://wx(dot)chuangyihulian(dot)com/pyq.html “创意互联” 移除原作者信息
 * h**p://wx(dot)t7777f(dot)top/ 移除原作者信息和源代码链接
 * h**ps://demo(dot)bananayc(dot)com/wxpyq/ 移除原作者信息和源代码链接，并对检测是否删除原作者相关信息的源代码进行恶意对抗
+* h**ps://oss0539(dot)github(dot)io/ 移除源代码链接
 
 ---
 
